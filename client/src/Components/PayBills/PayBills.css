@@ -1,0 +1,11 @@
+.payBills{
+    width: 50vw;
+    height: 40vw;
+}
+
+@media screen and (max-width: 768px) {
+    .payBills{
+        width: 85vw;
+        height: 60vh;
+    }
+}

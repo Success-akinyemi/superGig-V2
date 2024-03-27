@@ -1,0 +1,45 @@
+.imageSlider{
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.imageSlider .leftArrw{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform:  translate(0, -50%);
+    z-index: 1;
+    cursor: pointer;
+    color: yellow;
+    font-size: 45px;
+}
+
+.imageSlider .rightArrw{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform:  translate(0, -50%);
+    z-index: 1;
+    cursor: pointer;
+    color: yellow;
+    font-size: 45px;
+}
+
+.imageSlider .dots{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    background: red;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    z-index: 2;
+}
+
+.imageSlider .dots .pointer{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    background: var(--color-dark);
+}

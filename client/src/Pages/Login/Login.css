@@ -1,0 +1,194 @@
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background: var( --color-info-dark);
+}
+
+.login .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: var(--color-background);
+}
+
+.login .box{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 20px 20px 30px 20px;
+    /**min-height: 620px;*/
+    min-height: 450px;
+    width: 350px;
+    background-color: rgba(255, 225, 225, 0.6);
+    border-radius: 30px;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    justify-content: center;
+}
+
+.login .logo{
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.login .box-login{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login .box-login .top-header{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.login .box-login .top-header small{
+    margin-top: -15px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.login .box-login .input-group{
+    width: 100%;
+}
+
+.login .input-group .input-field{
+    margin: 12px 0;
+    position: relative;
+    margin-bottom: 1.6rem;
+}
+
+.login .input-field .input-box{
+    width: 96%;
+    height: 50px;
+    font-size: 19px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+    color: var(--color-dark);
+    border: none;
+    border-radius: 10px;
+    background: rgba(224, 223, 223, 0.6);
+    backdrop-filter: blur(2px);
+    outline: none;
+
+    background: var(--color-background);
+}
+
+.login .input-field label{
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    font-size: 15px;
+    transition: .3s ease-in-out;
+}
+
+.login .input-field .input-box:focus ~ label,
+.login .input-field .input-box:valid ~ label{
+    top: 2px;
+    font-size: 11px;
+    color: var(--color-danger);
+    font-weight: 500;
+}
+
+.login .eye-area{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+.login .eye-box{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+}
+
+.login i{
+    position: absolute;
+    color: #444444;
+    cursor: pointer;
+}
+
+.login #eye,#eye-slash{
+    opacity: 1;
+}
+
+.login #eye-slash,#eye-slash-2{
+    opacity: 1;
+}
+
+.login .error{
+    text-align: center;
+    color: var(--color-danger);
+    font-weight: 600;
+    padding: 0;
+    font-size: 16px;
+    margin: 0;
+}
+
+.login .input-submit,
+.login button{
+    width: 100%;
+    height: 50px;
+    font-weight: 500;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    color: var(--color-white);
+    border-radius: 10px;
+    background: var(--second-color);
+    cursor: pointer;
+    margin-top: 1.7rem;
+    transition: all 0.4s ease;
+    outline: none;
+}
+
+.login .input-submit:hover{
+    background: var(--second-color-light-2);
+}
+
+
+.login button .spinner{
+    height: 35px;
+    width: 35px;
+    border: 3px solid var(--color-white);
+    border-color: var(--color-white) transparent var(--color-white) transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 1.3s ease infinite;
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.login .forgot{
+    text-align: center;
+    font-size: 15px;
+    font: 500;
+    margin-top: 40px;
+}
+
+.login .forgot .link{
+    color: #000;
+}

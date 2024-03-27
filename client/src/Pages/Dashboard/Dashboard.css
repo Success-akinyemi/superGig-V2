@@ -1,0 +1,212 @@
+.dashboard{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.dashboard .main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+}
+
+
+.dashboard .top{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.dashboard .top .create .link{
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: var(--second-color);
+    color: var(--color-white);
+}
+
+.dashboard .top .cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.6rem;
+    margin-top: 2rem;
+}
+
+.dashboard .top .cards > div{
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard .top .cards > div:hover{
+    box-shadow: none;
+}
+
+.dashboard .top .cards > div span{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.dashboard .top .cards > div .iconCard{
+    background: coral;
+    padding: 0.5rem;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.dashboard .top .cards > div .iconCard.two{
+    background: var(--color-success);
+}
+
+.dashboard .top .cards > div .iconCard.three{
+    background: var(--color-primary);
+}
+
+.dashboard .top .cards > div .iconCard.four{
+    background: var(--color-danger);
+}
+
+.dashboard .top .cards > div:last-child h3{
+    color: var(--second-color);
+}
+
+.dashboard .top .cards > div:last-child h1{
+    color: var(--second-color);
+}
+
+.dashboard .top .actions{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    border-bottom: 2.5px solid var(--color-info-dark);
+    padding-bottom: 1rem;
+}
+
+.dashboard .top .actions .actionsCard{
+    padding: 10px 15px;
+    border-radius: var(--border-radius-3);
+    background: var(--color-info-dark);
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.dashboard .top .actions .line{
+    width: 3px;
+    height: 30px;
+    background: var(--color-dark);
+}
+
+.dashboard .top .actions .moreActions{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.dashboard .top .moreActions span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: coral;
+    padding: 10px 15px;
+    color: var(--color-white);
+    border-radius: 20px;
+    cursor: pointer;
+    border: 3px solid coral;
+    transition: all 300ms ease;
+    font-weight: 600;
+}
+
+.dashboard .top .moreActions span:hover{
+    background: transparent;
+    color: coral;
+}
+
+.dashboard .top .moreActions span:nth-child(2){
+    background: var(--color-success);
+    border: 3px solid var(--color-success);
+}
+
+.dashboard .top .moreActions span:nth-child(2):hover{
+    background: transparent;
+    color: var(--color-success);
+}
+
+.dashboard .top .moreActions span:nth-child(3){
+    background: var(--color-primary);
+    border: 3px solid var(--color-primary);
+}
+
+.dashboard .top .moreActions span:nth-child(3):hover{
+    background: transparent;
+    color: var(--color-primary);
+}
+
+.dashboard .top .moreActions span:nth-child(4){
+    background: var(--second-color);
+    border: 3px solid var(--second-color);
+}
+
+.dashboard .top .moreActions span:nth-child(4):hover{
+    background: transparent;
+    color: var(--second-color);
+}
+
+.dashboard .middle{
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 200px;
+    margin-top: 4rem;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+.dashboard .Dashboardtable{
+    width: 100%;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard .Dashboardtable h3{
+    color: var(--color-dark-variant);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.dashboard .Dashboardtable .link{
+    color: var(--color-primary);
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 1200px) {
+    .dashboard .top .cards{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
