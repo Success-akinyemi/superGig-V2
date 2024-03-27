@@ -28,6 +28,11 @@ privateRouter.route('/getPaymentOrder/:id').get(Protect, controller.getUserPayme
 privateRouter.route('/getTransactionData/:id').get(Protect, controller.getTransactionData) //get user transaction data
 privateRouter.route('/getAllUserReferrees/:id').get(Protect, controller.getAllUserReferrees) //get all user referrees
 
+privateRouter.route('/getAllTaskCategory').get(Protect, controller.getAllTaskCategory)// get all task category (for creating new task by users)
+privateRouter.route('/getAllSocialMediaCategory').get(Protect, controller.getAllSocialMediaCategory)// get all social media category (for creating new task by users)
+privateRouter.route('/getAllSocialMediaTask').get(Protect, controller.getAllSocialMediaTask)// get all social media task (for creating new task by users)
+
+
 
 export default privateRouter
 

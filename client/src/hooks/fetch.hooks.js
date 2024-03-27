@@ -298,3 +298,57 @@ export function useFetchTaskAdmin(query){
 
     return taskData
 }
+
+/**Get All Task Category Data */
+export function useFetchAllTaskCategory(query){
+    const [taskCategoryData, setTaskCategoryData] = useState({ isLoadingTaskCategoryData: true, taskCategoryData: null, taskCategoryStatus: null, taskCategoryServerError: null})
+    
+    useEffect(() => {
+        const fetchTaskCategoryData =  async () => {
+            try {
+
+                const { data, status} = !query ? await axios.get(`/api/getAllTaskCategory`, {withCredentials: true}) : await axios.get(`/api/getAllTaskCategory`,  {withCredentials: true})
+                //console.log('Transaction Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setTaskCategoryData({ isLoadingTaskCategoryData: false, taskCategoryData: data, taskCategoryStatus: status, taskCategoryServerError: null})
+                } else{
+                    setTaskCategoryData({ isLoadingTaskCategoryData: false, taskCategoryData: null, taskCategoryStatus: status, taskCategoryServerError: null})
+                }
+            } catch (error) {
+                console.log('COULF NOT FETCH DATA Transactions', error)
+                setTaskCategoryData({ isLoadingTaskCategoryData: false, taskCategoryData: null, taskCategoryStatus: null, taskCategoryServerError: error})
+            }
+        };
+        fetchTaskCategoryData()
+    }, [query])
+
+    return taskCategoryData
+}
+
+/**Get All Social Media Category Data */
+export function useFetchAllSocialMediaCategory(query){
+    const [socialMediaCategory, setSocialMediaCategory] = useState({ isLoadingSocialMediaCategory: true, SocialMediaCategoryData: null, SocialMediaCategoryStatus: null, SocialMediaCategoryServerError: null})
+    
+    useEffect(() => {
+        const fetchSocialMediaCategory =  async () => {
+            try {
+
+                const { data, status} = !query ? await axios.get(`/api/getAllSocialMediaCategory`, {withCredentials: true}) : await axios.get(`/api/getAllSocialMediaCategory`,  {withCredentials: true})
+                //console.log('Transaction Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setSocialMediaCategory({ isLoadingSocialMediaCategory: false, SocialMediaCategoryData: data, SocialMediaCategoryStatus: status, SocialMediaCategoryServerError: null})
+                } else{
+                    setSocialMediaCategory({ isLoadingSocialMediaCategory: false, SocialMediaCategoryData: null, SocialMediaCategoryStatus: status, SocialMediaCategoryServerError: null})
+                }
+            } catch (error) {
+                console.log('COULF NOT FETCH DATA socail media category', error)
+                setSocialMediaCategory({ isLoadingSocialMediaCategory: false, SocialMediaCategoryData: null, SocialMediaCategoryStatus: null, SocialMediaCategoryServerError: error})
+            }
+        };
+        fetchSocialMediaCategory()
+    }, [query])
+
+    return socialMediaCategory
+}

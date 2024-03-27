@@ -9,7 +9,9 @@ privateRouter.route('/confirmPayment').post(Protect, AdminProtect, controller.co
 privateRouter.route('/sendEmail').post(controller.sendEmail); //send promotion email
 //TASK
 privateRouter.route('/newTaskCategory').post(controller.createTaskCategory); //create new task category
-privateRouter.route('/newSocilaMediaPlatform').post(controller.createSocialmediaPlatform); //create new social medi platform
+privateRouter.route('/newSocialMediaPlatform').post(controller.createSocialmediaPlatform); //create new social media platform
+privateRouter.route('/newSocialMediaTask').post(controller.createSocialmediaTask); //create new social medi task
+
 
 
 

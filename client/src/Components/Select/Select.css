@@ -1,0 +1,16 @@
+.select{
+    padding: 10px 20px;
+    border: none;
+    background: var(--color-info-light);
+    border-radius: 5px;
+    font-size: 18px;
+    color: var(--color-dark);
+    outline: none;
+    cursor: pointer;
+}
+
+.select option{
+    background: var(--color-white);
+    border: none;
+    outline: none;
+}

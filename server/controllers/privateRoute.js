@@ -14,6 +14,9 @@ import YoutubeModel from "../models/Youtube.js"
 import { updateUser } from "./auth.js"
 import axios from 'axios'
 import { registerMail } from "./mailer.js"
+import TaskCategoryModel from "../models/TaskCategory.js"
+import SocialMediaPlatformModel from "../models/SocialMediaPlatform.js"
+import SocialMediaTaskModel from "../models/SocialMediaTask.js"
 
 /**Add social media account */
 export async function addUserSocialMedia(req, res){
@@ -648,6 +651,41 @@ export async function getAllUserReferrees(req, res){
     } catch (error) {
         console.log('COULD NOT GET ALL REFERRED USERS')
         res.status(500).json({ success: false, data: 'Could not get reerred Users'})
+    }
+}
+
+
+//TASK
+export async function getAllTaskCategory(req, res){
+    try {
+        const allTaskcategory = await TaskCategoryModel.find()
+
+        res.status(200).json({ success: true, data: allTaskcategory })
+    } catch (error) {
+        console.log('UNABLE TO GET ALL TASK CATEGORY', error)
+        res.status(500).json({ success: false, data: 'Unable to get all task categories.'})
+    }
+}
+
+export async function getAllSocialMediaCategory(req, res){
+    try {
+        const allSocialMediaCategory = await SocialMediaPlatformModel.find()
+
+        res.status(200).json({ success: true, data: allSocialMediaCategory })
+    } catch (error) {
+        console.log('UNABLE TO GET ALL TASK CATEGORY', error)
+        res.status(500).json({ success: false, data: 'Unable to get all task categories.'})
+    }
+}
+
+export async function getAllSocialMediaTask(req, res){
+    try {
+        const allSocialMediaTask = await SocialMediaTaskModel.find()
+
+        res.status(200).json({ success: true, data: allSocialMediaTask})
+    } catch (error) {
+        console.log('UNABLE TO GET ALL SOCIAL MEDIA TASK', error)
+        res.status(500).json({ success: false, data: 'Unable to get all Social media task'})
     }
 }
 

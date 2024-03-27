@@ -10,6 +10,7 @@ import nodemailer from 'nodemailer'
 import { config } from 'dotenv'
 import TaskCategoryModel from "../models/TaskCategory.js"
 import SocialMediaPlatformModel from "../models/SocialMediaPlatform.js"
+import SocialMediaTaskModel from "../models/SocialMediaTask.js"
 config()
 
 
@@ -255,4 +256,35 @@ export async function createSocialmediaPlatform(req, res){
     }
 }
 
-//create social media task options(list)
+//create social media task options
+export async function createSocialmediaTask(req, res){
+    const { platformCode, taskId, task, pricePerFreelancer, unitPrice, minWorkers, icon, createdBy } = req.body
+    try {
+        if(!platformCode || !taskId || !task || !pricePerFreelancer || !unitPrice || !minWorkers || !icon || !createdBy){
+            return res.status(400).json({ success: false, data: 'Fill all necessary Fields'})
+        }
+
+        const taskIdExist = await SocialMediaTaskModel.findOne({ taskId: taskId})
+        if(taskIdExist){
+            res.status(400).json({ success: false, data: 'Task with this ID Already Exist'})
+        }
+
+        const taskExist = await SocialMediaTaskModel.findOne({ task: task})
+        if(taskExist){
+            res.status(400).json({ success: false, data: 'Task Already Exist'})
+        }
+
+        const createTask = new SocialMediaTaskModel({
+            platformCode, taskId, task, pricePerFreelancer, unitPrice, minWorkers, icon, createdBy
+        })
+        await createTask.save()
+
+        const allTask = await SocialMediaTaskModel.find()
+
+        res.status(201).json({ success: true, data: allTask })
+
+    } catch (error) {
+        console.log('UNABLE TO CREATE NEW SOCIAL MEDIA TASK', error)
+        re.status(500).json({ success: false, data: 'Unable to create new social media task'})
+    }
+}

@@ -60,3 +60,23 @@
     margin: 0;
     padding: 0;
 }
+
+.createTask .content .body{
+    display: flex;
+    flex-direction: c;
+    width: 100%;
+}
+
+.createTask .body .contentCard{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.createTask .contentCard .card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+}
