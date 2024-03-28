@@ -11,6 +11,8 @@ privateRouter.route('/sendEmail').post(controller.sendEmail); //send promotion e
 privateRouter.route('/newTaskCategory').post(controller.createTaskCategory); //create new task category
 privateRouter.route('/newSocialMediaPlatform').post(controller.createSocialmediaPlatform); //create new social media platform
 privateRouter.route('/newSocialMediaTask').post(controller.createSocialmediaTask); //create new social medi task
+privateRouter.route('/updateSocialMediaTask').post(controller.updateSocialmediaTask); //update a social medi task
+
 
 
 

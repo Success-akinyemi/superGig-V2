@@ -158,12 +158,12 @@ export async function paysavings({email, amount}){
 }
 
 /**Create task */
-export async function createTask({ platform, platformCode, task, unitPrice, pricePerFreelancer, taskUrl, numberOfWorkers, createdBy }){
+export async function createTask(formData){
     try {
-        const res = await axios.post('/api/createTask', { platform, platformCode, task, unitPrice, pricePerFreelancer, taskUrl, numberOfWorkers, createdBy }, {headers:{ Authorization: `Bearer ${token}`}})
+        const res = await axios.post('/api/createTask', formData, {withCredentials: true})
         
         if(res.data.success){
-            toast.success(res.data.data)
+            toast.success('Task Created Successful')
             return res
         }
     } catch (error) {

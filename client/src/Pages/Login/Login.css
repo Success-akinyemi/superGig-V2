@@ -192,3 +192,13 @@
 .login .forgot .link{
     color: #000;
 }
+
+@media screen and (max-width: 500px) {
+    .login .box{
+        width: 75vw;
+    }   
+
+    .login .input-field .input-box{
+        font-size: 17px;
+    }
+}

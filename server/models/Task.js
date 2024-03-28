@@ -11,6 +11,12 @@ const TaskSchema = new mongoose.Schema({
     platformCode: {
         type: String,
     },
+    categoryCode: {
+        type: String,
+    },
+    icon: {
+        type: String,
+    },
     unitPrice: {
         type: Number,
     },

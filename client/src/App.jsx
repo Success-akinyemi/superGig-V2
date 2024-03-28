@@ -16,6 +16,8 @@ import PayBills from './Components/PayBills/PayBills'
 import Funding from './Components/Funding/Funding'
 import { AuthorizeUser } from './auth/ProtectRoute'
 import MyTranscations from './Pages/MyTranscations/MyTranscations'
+import WithdrawBonus from './Components/WithdrawBonus/WithdrawBonus'
+import WithdrawEarnings from './Components/WithdrawEarnings/WithdrawEarnings'
 
 
 function App() {
@@ -43,6 +45,14 @@ function App() {
       case 'funding' :
         return (
             <Funding />
+        );
+      case 'withdrawBonus' :
+        return (
+            <WithdrawBonus />
+        );
+      case 'withdrawEarning' :
+        return (
+          <WithdrawEarnings />
         );
 
     }

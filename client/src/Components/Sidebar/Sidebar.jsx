@@ -76,7 +76,7 @@ function Sidebar({toggleMenu, menuOpen}) {
 
           {/**Task */}
 
-          <Link onClick={toggleMenu}  to='/createTask' className={`link h-2 menuLinks createTask ${isActive('/createTask') ? 'active' : ''} `}>
+          <Link onClick={toggleMenu}  to='/createTask' className={`link h-2 menuLinks sidebarCreateTask ${isActive('/createTask') ? 'active' : ''} `}>
             <Link to='/createTask' className='link menuLink'>Create Task</Link>
           </Link>
 

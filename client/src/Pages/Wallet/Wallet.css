@@ -1,0 +1,123 @@
+.wallet{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.wallet .top .cards{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+    margin-top: 2rem;
+}
+
+.wallet .top .cards > div{
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.wallet .top .cards > div:hover{
+    box-shadow: none;
+}
+
+.wallet .top .cards > div span{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.wallet .top .cards > div .iconCard{
+    background: coral;
+    padding: 0.5rem;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.wallet .top .cards > div .iconCard.two{
+    background: var(--color-success);
+}
+
+.wallet .top .cards > div .iconCard.three{
+    background: var(--color-primary);
+}
+
+.wallet .top .cards > div .iconCard.four{
+    background: var(--color-danger);
+}
+
+.wallet .top .cards > div:last-child h1{
+    color: var(--second-color);
+}
+
+.wallet .actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 1rem;
+}
+
+.wallet .actions > div{
+    padding: 10px 20px;
+    border-radius: 1rem;
+    color: var(--color-white);
+    cursor: pointer;
+    font-size: 19px;
+    transition: all 300ms ease;
+}
+
+.wallet .actions > div:first-child{
+    background: var(--color-success);
+    border: 2px solid var(--color-success);
+}
+
+.wallet .actions > div:first-child:hover{
+    color: var(--color-success);
+    background: transparent;
+}
+
+.wallet .actions > div:last-child{
+    background: var(--color-danger);
+    border: 2px solid var(--color-danger);
+}
+
+.wallet .actions > div:last-child:hover{
+    color: var(--color-danger);
+    background: transparent;
+}
+
+.wallet .paymentTable{
+    width: 100%;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.wallet .paymentTable h3{
+    color: var(--color-dark-variant);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .wallet .top .cards{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

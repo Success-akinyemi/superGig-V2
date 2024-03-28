@@ -208,7 +208,7 @@ export async function payWithPaystack(req, res){
 /**TASK APIs */
 //create job
 export async function createTask(req, res){
-    const {platform, platformCode, task, unitPrice, pricePerFreelancer, taskUrl, numberOfWorkers, createdBy} = req.body
+    const {platform, platformCode, task, unitPrice, pricePerFreelancer, taskUrl, numberOfWorkers, createdBy, categoryCode, icon} = req.body
 
     try {
         if(!platform || !platformCode || !task || !unitPrice || !pricePerFreelancer || !taskUrl || !numberOfWorkers || !createdBy) {
@@ -224,7 +224,7 @@ export async function createTask(req, res){
         }
 
         const newTask = await TaskModel.create({
-            task, platform, platformCode, unitPrice, pricePerFreelancer, taskUrl, numberOfWorkers, createdBy
+            task, platform, platformCode, unitPrice, pricePerFreelancer, taskUrl, numberOfWorkers, createdBy, categoryCode, icon
         })
 
         user.fundWallet -= amount
@@ -255,8 +255,8 @@ export async function createTask(req, res){
                 text: 'View Job',
             });
 
-
-        res.status(201).json({ success: true, data: 'Task Created Successfuly'})
+            const { password: hashedPassword, ...userData } = user._doc
+        res.status(201).json({ success: true, data: {success: true, data: userData }})
     } catch (error) {
         console.log('ERROR CREATING TASK', error)
         res.status(500).json({ success: false, data: 'Unable to create Task' })

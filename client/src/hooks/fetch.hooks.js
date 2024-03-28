@@ -75,10 +75,8 @@ export function useFetchPaymentOrder(query){
     useEffect(() => {
         const fetchPaymentData =  async () => {
             try {
-                const { id } = !query ? await getUser() : '';
 
-
-                const { data, status} = !query ? await axios.get(`/api/getPaymentOrder/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getPaymentOrder/${id}`,  {headers: {Authorization: `Bearer ${token}`}})
+                const { data, status} = !query ? await axios.get(`/api/getPaymentOrder/${query}`, {withCredentials: true}) : await axios.get(`/api/getPaymentOrder/${query}`, {withCredentials: true})
                 //console.log('Payment Data from Hooks>>>', data)
 
                 if(status === 200){
@@ -351,4 +349,31 @@ export function useFetchAllSocialMediaCategory(query){
     }, [query])
 
     return socialMediaCategory
+}
+
+/**Get All Social media Task Data */
+export function useFetchSocialMediaTask(query){
+    const [socialMediaTaskData, setSocialMediaTaskData] = useState({ isLoadingSocialMediaTaskData: true, socialMediaTaskData: null, socialMediaTaskStatus: null, socialMediaTaskServerError: null})
+    
+    useEffect(() => {
+        const fetchSocialMediaTaskData =  async () => {
+            try {
+
+                const { data, status} = !query ? await axios.get(`/api/getAllSocialMediaTask`, {withCredentials: true}) : await axios.get(`/api/getAllSocialMediaTask`,  {withCredentials: true})
+                //console.log('Transaction Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setSocialMediaTaskData({ isLoadingSocialMediaTaskData: false, socialMediaTaskData: data, socialMediaTaskStatus: status, socialMediaTaskServerError: null})
+                } else{
+                    setSocialMediaTaskData({ isLoadingSocialMediaTaskData: false, socialMediaTaskData: null, socialMediaTaskStatus: status, socialMediaTaskServerError: null})
+                }
+            } catch (error) {
+                console.log('COULF NOT FETCH DATA Transactions', error)
+                setSocialMediaTaskData({ isLoadingSocialMediaTaskData: false, socialMediaTaskData: null, socialMediaTaskStatus: null, socialMediaTaskServerError: error})
+            }
+        };
+        fetchSocialMediaTaskData()
+    }, [query])
+
+    return socialMediaTaskData
 }

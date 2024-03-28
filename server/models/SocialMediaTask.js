@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const SocialMediaTaskSchema = new mongoose.Schema({
-    platformcode: {
+    platformCode: {
         type: String
     },
     taskId: {

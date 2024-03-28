@@ -210,3 +210,9 @@
         gap: 0;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .dashboard .middle{
+        width: 95%;
+    }
+}

@@ -266,12 +266,12 @@ export async function createSocialmediaTask(req, res){
 
         const taskIdExist = await SocialMediaTaskModel.findOne({ taskId: taskId})
         if(taskIdExist){
-            res.status(400).json({ success: false, data: 'Task with this ID Already Exist'})
+            return res.status(400).json({ success: false, data: 'Task with this ID Already Exist'})
         }
 
         const taskExist = await SocialMediaTaskModel.findOne({ task: task})
         if(taskExist){
-            res.status(400).json({ success: false, data: 'Task Already Exist'})
+            return res.status(400).json({ success: false, data: 'Task Already Exist'})
         }
 
         const createTask = new SocialMediaTaskModel({
@@ -285,6 +285,39 @@ export async function createSocialmediaTask(req, res){
 
     } catch (error) {
         console.log('UNABLE TO CREATE NEW SOCIAL MEDIA TASK', error)
-        re.status(500).json({ success: false, data: 'Unable to create new social media task'})
+        res.status(500).json({ success: false, data: 'Unable to create new social media task'})
+    }
+}
+
+//update social media task options
+export async function updateSocialmediaTask(req, res){
+    console.log(req.body)
+    try {
+        if(!req.body.id){
+            return res.status(404).json({ success: false, data: 'Invalid ID'})
+        }
+        const findTask = await SocialMediaTaskModel.findByIdAndUpdate(
+            req.body.id,
+            {
+                $set: {
+                    minWorkers: req.body.minWorkers ,
+                    platformCode: req.body.platformCode,
+                    pricePerFreelancer: req.body.pricePerFreelancer,
+                    task: req.body.task,
+                    taskId: req.body.taskId,
+                    unitPrice: req.body.unitPrice
+                }
+            },
+            {new: true}
+        )
+
+        await findTask.save()
+
+        const allTask = await SocialMediaTaskModel.find()
+
+        res.status(201).json({ success: true, data: allTask })
+    } catch (error) {
+        console.log('UNABLE TO UPDATE SOCIAL MEDIA TASK', error)
+        res.status(500).json({ success: false, data: 'Unable to update social media task'})
     }
 }

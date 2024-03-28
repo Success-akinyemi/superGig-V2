@@ -92,7 +92,7 @@
     font-weight: 500;
 }
 
-.sidebar .createTask{
+.sidebar .sidebarCreateTask{
     background: var(--second-color);
     text-align: center;
     display: flex;
@@ -103,7 +103,7 @@
     margin-top: 3rem;  
 }
 
-.sidebar .createTask:hover{
+.sidebar .sidebarCreateTask:hover{
     color: var(--color-white);
 }
 
@@ -153,6 +153,7 @@
         height: 100vh;
         padding-right: var(--card-padding);
         box-shadow: 1rem 3rem 4rem var(--color-light);
+        overflow-y: scroll;
     }
     
     .sidebar.show{

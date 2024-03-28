@@ -1,0 +1,21 @@
+.withdrawEarnings{
+    width: 40vw;
+    height: 60vh;
+    border-radius: var(--border-radius-3);
+    background: var(--color-white);
+}
+
+@media screen and (max-width: 800px) {
+    .withdrawEarnings{
+        width: 50vw;
+        height: 70vh;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .withdrawEarnings{
+        width: 85vw;
+        height: 70vh;
+    }
+}

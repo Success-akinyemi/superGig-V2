@@ -5,7 +5,7 @@ import Spinner from "../Spinner/Spinner";
 import { formatDistanceToNow } from "date-fns";
 
 function TransactionData({ data, isLoading, error }) {
-  console.log("TR", data)
+
   return (
     <table className="transactionData">
       {isLoading ? (
