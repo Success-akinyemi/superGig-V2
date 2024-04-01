@@ -146,6 +146,11 @@ function Login() {
                     Forgot Password
                   </Link>
                 </div>
+                <div className="forgot">
+                  <Link className="link menuLink" to="/register">
+                    New? Get started here
+                  </Link>
+                </div>
               </div>
             </form>
         </div>

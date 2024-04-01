@@ -1,14 +1,61 @@
 .withdrawEarnings{
     width: 40vw;
-    height: 60vh;
     border-radius: var(--border-radius-3);
     background: var(--color-white);
+}
+
+.withdrawEarnings span{
+    font-size: 17px;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.withdrawEarnings .bonusForm{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.withdrawEarnings .bonusForm input{
+    padding: 16px;
+}
+
+.withdrawEarnings .bonusForm button{
+    margin-top: 1rem;
+    padding: 15px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-white);
+    background: var(--second-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.withdrawEarnings .bonusForm button.active {
+    background: var(--color-success); 
+  }
+
+.withdrawEarnings .bonusForm button:hover{
+    background: var(--second-color-light-2);
+}
+
+.withdrawEarnings .bonusForm .fee,
+.withdrawEarnings .bonusForm .fee span{
+    color: var(--color-success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    gap: 5px;
+    font-size: 17px;
 }
 
 @media screen and (max-width: 800px) {
     .withdrawEarnings{
         width: 50vw;
-        height: 70vh;
     }
 }
 
@@ -16,6 +63,5 @@
 @media screen and (max-width: 500px) {
     .withdrawEarnings{
         width: 85vw;
-        height: 70vh;
     }
 }

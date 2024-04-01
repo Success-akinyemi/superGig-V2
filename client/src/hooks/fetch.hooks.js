@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 async function getUser() {
     // You can return a mock user object with an 'id' property
@@ -43,14 +44,15 @@ export function useFetch(query){
 /**Get User Account Details Hooks */
 export function useFetchAccount(query){
     const [accountData, setAccountData] = useState({ isLoadingAccount: true, apiAccountData: null, accountStatus: null, accountServerError: null})
-
+    const {currentUser} = useSelector(state => state.user)
+    const user = currentUser?.data
+    const id = user._id
 
     useEffect(() => {
         const fetchAccountData =  async () => {
             try {
-                const { id } =  await getUser();
 
-                const { data, status} = !query ? await axios.get(`/api/getUserAccountInfo/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getUserAccountInfo/${id}`, {headers: {Authorization: `Bearer ${token}`}})
+                const { data, status} = !query ? await axios.get(`/api/getUserAccountInfo/${id}`, {withCredentials: true}) : await axios.get(`/api/getUserAccountInfo/${id}`, {withCredentials: true})
                 //console.log('Data from Hook BANKs>>>', data)
 
                 if(status === 200){
@@ -60,6 +62,7 @@ export function useFetchAccount(query){
                 }
             } catch (error) {
                 setAccountData({ isLoadingAccount: false, apiAccountData: null, accountStatus: null, accountServerError: error})
+                console.log('TAP',error)
             }
         };
         fetchAccountData()
@@ -130,9 +133,8 @@ export function useFetchReferres(query){
     useEffect(() => {
         const fetchData =  async () => {
             try {
-                const { id } = !query ? await getUser() : '';
 
-                const { data, status} = !query ? await axios.get(`/api/getAllUserReferrees/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getAllUserReferrees/${query}`, {headers: {Authorization: `Bearer ${token}`}})
+                const { data, status} = !query ? await axios.get(`/api/getAllUserReferrees/${query}`, {withCredentials: true}) : await axios.get(`/api/getAllUserReferrees/${query}`, {withCredentials: true})
                 //console.log('Referral Data from Hooks>>>', data)
 
                 if(status === 200){
@@ -153,14 +155,43 @@ export function useFetchReferres(query){
 /**Get All Task From DB To Freelancer*/
 export function useFetchTask(query){
     const [taskData, setTaskData] = useState({ isLoadingTask: true, apiTaskData: null, taskStatus: null, taskServerError: null})
-
+    const {currentUser} = useSelector(state => state.user)
+    const user = currentUser?.data
+    const id = user._id
 
     useEffect(() => {
         const fetchData =  async () => {
             try {
-                const { id } = !query ? await getUser() : await getUser();
 
-                const { data, status} = !query ? await axios.get(`/api/getAllTask/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getTask/${id}/${query}`, {headers: {Authorization: `Bearer ${token}`}})
+                const { data, status} = !query ? await axios.get(`/api/getAllTask/${id}`, {withCredentials: true}) : await axios.get(`/api/getTask/${id}/${query}`, {withCredentials: true})
+                //console.log('Task Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setTaskData({ isLoadingTask: false, apiTaskData: data, taskStatus: status, taskServerError: null})
+                } else{
+                    setTaskData({ isLoadingTask: false, apiTaskData: null, taskStatus: status, taskServerError: null})
+                }
+            } catch (error) {
+                setTaskData({ isLoadingTask: false, apiTaskData: null, taskStatus: null, taskServerError: error})
+            }
+        };
+        fetchData()
+    }, [query])
+
+    return taskData
+}
+
+/**Get All Task From DB To Freelancer*/
+export function useFetchTaskCompletedByUser(query){
+    const [taskData, setTaskData] = useState({ isLoadingTask: true, apiTaskData: null, taskStatus: null, taskServerError: null})
+    const {currentUser} = useSelector(state => state.user)
+    const user = currentUser?.data
+    const id = user._id
+
+    useEffect(() => {
+        const fetchData =  async () => {
+            try {
+                const { data, status} = !query ? await axios.get(`/api/getAllTaskCompletedByUser/${id}`, {withCredentials: true}) : await axios.get(`/api/getAllTaskCompletedByUser/${id}/${query}`, {withCredentials: true})
                 //console.log('Task Data from Hooks>>>', data)
 
                 if(status === 200){
@@ -181,21 +212,14 @@ export function useFetchTask(query){
 /**Get All task posted by user */
 export function useFetchTaskPostedByUser(query){
     const [taskData, setTaskData] = useState({ isLoadingTask: true, apiTaskData: null, taskStatus: null, taskServerError: null})
-
+    const {currentUser} = useSelector(state => state.user)
+    const user = currentUser?.data
+    const id = user._id
 
     useEffect(() => {
         const fetchData =  async () => {
             try {
-                const { id } = !query ? await getUser() : await getUser();
-                //console.log('POSTED ID', id, 'TASKID', query)
-                let userPath
-                let jobpath
-                if(query){
-                    const { path, userId } = query
-                    userPath = userId
-                    jobpath = path
-                }
-                const { data, status} = !query ? await axios.get(`/api/getAllTaskPostedByUser/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getATaskPostedByUser/${userPath}/${jobpath}`, {headers: {Authorization: `Bearer ${token}`}})
+                const { data, status} = !query ? await axios.get(`/api/getAllTaskPostedByUser/${id}`, {withCredentials: true}) : await axios.get(`/api/getATaskPostedByUser/${id}/${query}`, {withCredentials: true})
                 //console.log('POSTED Task Data from Hooks>>>', data)
 
                 if(status === 200){

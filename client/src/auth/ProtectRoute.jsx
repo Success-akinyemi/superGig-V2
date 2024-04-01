@@ -26,7 +26,7 @@ function AuthorizeUser() {
       }
     }, [currentUser, tokenExist]); 
   
-    return tokenExist && user ? <Outlet /> : <Navigate to={'/login'} />;
+    return tokenExist && user ? <Outlet /> : <Navigate to={'/'} />;
   }
 
 

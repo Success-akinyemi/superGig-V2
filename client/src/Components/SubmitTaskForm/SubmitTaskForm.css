@@ -1,0 +1,148 @@
+.submitTaskForm{
+    width: 30vw;
+    padding: var(--padding-1);
+    display: flex;
+    flex-direction: column;
+}
+
+.submitTaskForm h3{
+    font-size: 18px;
+}
+
+.submitTaskForm p{
+    margin-top: -1rem;
+    color: var(--color-dark);
+    font-size: 17px;
+}
+
+.submitTaskForm .top{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.submitTaskForm .inputGroup{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.submitTaskForm .inputGroup label{
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 0.3rem;
+}
+
+.submitTaskForm .inputGroup input{
+    padding: 10px;
+    font-size: 17px;
+    background: var(--color-info-light);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+.submitTaskForm .middle{
+    display: flex;
+    width: 100%;
+    border: 3px solid var(--color-success);
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    border-radius: 5px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+}
+
+.submitTaskForm .middle h5{
+    font-size: 15px;
+}
+
+.submitTaskForm .middle .screenshootImg{
+    width: 50%;
+}
+
+.submitTaskForm .danger{
+    margin-top: 1rem;
+    color: var(--color-danger);
+    font-weight: 500;
+}
+
+.submitTaskForm .submitBtn{
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    height: 47px;
+    justify-content: flex-start;
+    cursor: pointer;
+    position: relative;
+    color: var(--color-white);
+}
+
+.submitTaskForm .submitBtn.bg{
+    background: var(--color-info-light);
+}
+
+.submitTaskForm .submitBtn .text{
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.submitTaskForm .submitBtn button{
+    height: 100%;
+    outline: none;
+    border: none;
+    background: var(--color-success);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-white);
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms ease-in;
+}
+
+.submitTaskForm .submitBtn button.finishBtn{
+    z-index: 120;
+}
+
+.submitTaskForm .submitBtn button .circle{
+    height: 35px;
+    width: 35px;
+    border: 3px solid var(--color-white);
+    border-color: var(--color-white) transparent var(--color-white) transparent;
+    border-radius: 50%;
+    animation: spin 1.3s ease infinite;
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .submitTaskForm{
+        width: 50vw;
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .submitTaskForm{
+        width: 75vw;
+        padding: 0.7rem;
+    }
+}

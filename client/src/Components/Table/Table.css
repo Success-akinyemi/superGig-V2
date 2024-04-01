@@ -44,6 +44,10 @@
     border-bottom: none;
 }
 
+.table .warning{
+    color: var(--color-warning);
+}
+
 @media screen and (max-width: 1200px) {
     .table thead tr th:nth-child(5){
         display: none;

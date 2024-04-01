@@ -31,7 +31,7 @@ function Table({ data, isLoading, error, td1, td2, td3, td4 }) {
                   <td>{item[td1]}</td>
                   <td>{item[td2]}</td>
                   <td>{item[td3]}</td>
-                  <td>{item[td4]}</td>
+                  <td className={`${item[td4] === 'Pending' ? 'warning' : 'success'}`} >{item[td4]}</td>
                   <td>{formatDistanceToNow(new Date(item?.createdAt))} ago</td>
                 </tr>
               ))

@@ -1,0 +1,100 @@
+.taskPage h1{
+    margin-top: 2rem;
+}
+
+.taskPage .card{
+    margin-top: 2rem;
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.taskPage .card span{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.taskPage .card span p{
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.taskPage .card span p{
+    font-size: 17px;
+    color: var(--color-info-dark);
+    font-weight: 500;
+}
+
+.taskPage .card span .icon{
+    width: 20px;
+}
+
+.taskPage .card span p.success{
+    color: var(--color-success);
+}
+
+.taskPage .card span p.danger{
+    color: var(--color-danger);
+}
+
+.taskPage .para{
+    font-size: 17px;
+}
+
+.taskPage .btn button{
+    padding: 10px 20px;
+    background: var(--color-primary-opa);
+    background: var(--color-primary-variant);
+    font-size: 18px;
+    color: var(--color-white);
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    transition: all 300ms ease;
+}
+
+.taskPage .btn button:hover{
+    background: var(--color-primary-variant-opa);
+}
+
+.taskPage .proof{
+    margin-top: 3rem;
+}
+
+.taskPage .proof button{
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    background: var(--color-danger);
+    color: var(--color-white);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.taskPage .proof button.done{
+    background: var(--color-success);
+}
+
+@media screen and (max-width: 768px) {
+    .taskPage{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .taskPage .card{
+        width: 90%;
+    }
+}

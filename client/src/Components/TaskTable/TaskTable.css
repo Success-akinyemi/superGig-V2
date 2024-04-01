@@ -1,0 +1,134 @@
+.taskTable{
+    background: var(--color-white);
+    width: 100%;
+    text-align: center;
+}
+
+.taskTable thead,
+.taskTable tbody{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.taskTable thead tr{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.taskTable tbody{
+    flex-direction: column;
+    width: 100%;
+}
+
+.taskTable tbody tr{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.taskTable tbody tr .link{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-light);
+}
+
+.taskTable .taskTableSpinner{
+    /**width: 100%;
+    height: 400px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskTable .errorMsg{
+    background: none;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.taskTable .para{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: var(--color-warning);
+}
+
+.taskTable:hover{
+    box-shadow: none;
+}
+
+.taskTable .icon{
+    width: 20px;
+}
+
+.taskTable tbody td{
+    height: 2.8rem;
+    color: var(--color-dark-variant);
+}
+
+.taskTable tbody td.success{
+    color: var(--color-success);
+}
+
+.taskTable tbody td.danger{
+    color: var(--color-danger);
+}
+
+
+.taskTable tbody tr:last-child td{
+    border-bottom: none;
+}
+
+.taskTable .warning{
+    color: var(--color-warning);
+}
+
+@media screen and (max-width: 1200px) {
+    .taskTable thead tr th:nth-child(6){
+        display: none;
+    }
+
+    .taskTable tbody tr td:nth-child(6){
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .taskTable thead tr th:nth-child(3){
+        display: none;
+    }
+
+    .taskTable tbody tr td:nth-child(3){
+        display: none;
+    }
+
+    .taskTable thead tr th:nth-child(5){
+        display: none;
+    }
+
+    .taskTable tbody tr td:nth-child(5){
+        display: none;
+    }
+
+    .taskTable thead tr th:nth-child(6){
+        display: none;
+    }
+
+    .taskTable tbody tr td:nth-child(6){
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .taskTable{
+        font-size: 14px;
+    }
+}

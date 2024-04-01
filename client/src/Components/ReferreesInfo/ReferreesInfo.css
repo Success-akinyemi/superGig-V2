@@ -1,0 +1,27 @@
+.referreesInfo{
+    width: 60vw;
+}
+
+.referreesInfo .infoCard{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.referreesInfo .infoCard .info{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.referreesInfo .infoCard .info p:first-child{
+    font-weight: 600;
+}
+
+@media screen and (max-width: 500px) {
+    .referreesInfo{
+        width: 85vw;
+        height: 60vh;
+    }
+}

@@ -63,7 +63,6 @@ export async function verifyUser({ id, token}){
         const res = await axios.post(`/api/auth/${id}/verify/${token}`)
         console.log(res)
         if(res.data.success){
-            localStorage.setItem('authToken', res.data.token)
             toast.success('Email Verified')
             return res
         }
@@ -83,7 +82,7 @@ export async function verifyUser({ id, token}){
 export async function resetPassword ({ email }){
     try {
         const res = await axios.post('/api/auth/forgotPassword', { email })
-        console.log('RES FROM FORGOT PASSWROD', res)
+        //console.log('RES FROM FORGOT PASSWROD', res)
         if(res.data.success){
             return res
         }
@@ -124,20 +123,45 @@ export async function newPassword({ resetToken, password }){
 /**Pay with Paystack */
 export async function paysavings({email, amount}){
     try {        
-        console.log('before send>>', email, amount)
         if(!email && !amount){
             toast.error('Amount and Email is required')
             return;
         }
-        const response = await axios.post('/api/payWithPaystack', { amount, email }, {headers: { "Authorization" : `Bearer ${token}`}})
+        const response = await axios.post('/api/payWithPaystack', { amount, email }, {withCredentials: true})
         
-        console.log(response.data);
 
         const authorizationUrl = response.data.authorizationUrl; //paystack
         console.log('url', authorizationUrl)
         window.location.href = authorizationUrl; // Redirect the user to the Paystack checkout page
         
         return Promise.resolve({ authorizationUrl })
+    } catch (error) {
+        console.log('ERROR VERIFYING USER API', error)
+        if (error.response && error.response.data) {
+            const errorMsg = error.response.data.data;
+            const errorMsg2 = error.response.data.error;
+            console.log('MSG', errorMsg)
+            console.log('MSG2', errorMsg2)
+            if(errorMsg){
+                toast.error(errorMsg)
+            } else{
+                toast.error(errorMsg2)
+            }
+            return errorMsg;
+          } else {
+            return 'An error occurred during the request.';
+          }
+    }
+}
+
+/**Verify use funding on paystack */
+export async function verifyFunding({reference}){
+    try {
+        console.log('TRANC REF', reference)
+        const res = await axios.post('/api/paystackVerifyFunding', {reference}, {withCredentials: true})
+        if(res.data.success){
+            return res
+        }
     } catch (error) {
         console.log('ERROR VERIFYING USER API', error)
         if (error.response && error.response.data) {
@@ -188,10 +212,10 @@ export async function createTask(formData){
 /**Update user */
 export async function updateUser(formData){
     try {
-        const res = await axios.post('/api/auth/updateUser', formData, {headers:{ Authorization: `Bearer ${token}`}})
+        const res = await axios.post('/api/auth/updateUser', formData, {withCredentials: true})
         if(res.data.success){
-            toast.success(res.data.data)
-            window.location.reload()
+            toast.success('User Profile Updated successful')
+            return res
         }
     } catch (error) {
         console.log('ERROR VERIFYING USER API', error)
@@ -215,10 +239,10 @@ export async function updateUser(formData){
 /**Add user social media account */
 export async function addSocialMediaAccount({accountValue, platformCode, userId}){
     try {
-        const res =  await axios.post('/api/addSocialMediaAccount', {accountValue, platformCode, userId}, {headers:{ Authorization: `Bearer ${token}`}})
+        const res =  await axios.post('/api/addSocialMediaAccount', {accountValue, platformCode, userId}, {withCredentials: true})
         if(res.data.success){
-            toast.success(res.data.data)
-            window.location.reload()
+            toast.success('Account updated Succesful')
+            return res
         }
     } catch (error) {
         console.log('ERROR VERIFYING USER API', error)
@@ -242,9 +266,8 @@ export async function addSocialMediaAccount({accountValue, platformCode, userId}
 /**Submit Task */
 export async function submitTask(formData){
     try {
-        const res = await axios.post('/api/submitTask', formData, {headers:{ Authorization: `Bearer ${token}`}})
+        const res = await axios.post('/api/submitTask', formData, {withCredentials: true})
         if(res.data.success){
-            toast.success(res.data.data)
             return res
         }
     } catch (error) {
@@ -296,7 +319,7 @@ export async function updateAccountInfo(formData){
 /**Update Account Info */
 export async function uploadBankInfo({userId, getBankName, accountName, accountNumber}){
     try {
-        const res = await axios.post('/api/updateAccountInfo', {userId, accountNumber, getBankName, accountName}, {headers: {Authorization: `Bearer ${token}`}})
+        const res = await axios.post('/api/updateAccountInfo', {userId, accountNumber, getBankName, accountName}, {withCredentials: true})
         if(res?.data.success){
             toast.success(res.data.data)
             window.location.reload()
@@ -322,10 +345,10 @@ export async function uploadBankInfo({userId, getBankName, accountName, accountN
 
 export async function withdrawBonusEarning({bonusAmount, userId}){
     try {
-        const res = await axios.post('/api/withdrawBonusEarning', {bonusAmount, userId}, {headers: {Authorization: `Bearer ${token}`}} )
+        const res = await axios.post('/api/withdrawBonusEarning', {bonusAmount, userId}, {withCredentials: true} )
         if(res?.data.success){
-            toast.success(res.data.data)
-            window.location.reload()
+            toast.success('Bonus withdrawn successful')
+            return res
         }
     } catch (error) {
         console.log('ERROR VERIFYING USER API', error)
@@ -348,10 +371,10 @@ export async function withdrawBonusEarning({bonusAmount, userId}){
 
 export async function withdrawEarning({earningAmount, userId}){
     try {
-        const res = await axios.post('/api/withdrawEarnings', {earningAmount, userId}, {headers: {Authorization: `Bearer ${token}`}} )
+        const res = await axios.post('/api/withdrawEarnings', {earningAmount, userId}, {withCredentials: true} )
         if(res?.data.success){
-            toast.success(res.data.data)
-            window.location.reload()
+            toast.success('Withdrawal successfull, payments will be made shortly.')
+            return res
         }
     } catch (error) {
         console.log('ERROR VERIFYING USER API', error)

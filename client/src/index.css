@@ -15,6 +15,7 @@
   --color-dark: #363949;
   --color-light: rgba(132, 139, 200, 0.18);
   --color-primary-variant: #111e88;
+  --color-primary-variant-opa: #2332a8;
   --color-dark-variant: #677483;
   --color-background: #f6f6f9;
 
@@ -41,6 +42,7 @@
 
   --home-bg: #fd840234;
   --home-btn: #34bf77;
+  --home-btn-light: #0eeb7933;
   --home-bg-2: #fd84021e;
 }
 
@@ -190,6 +192,19 @@
 
 /*END OF POPUP*/
 
+.input{
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: 500;
+  border: none;
+  background: var(--color-info-light);
+  color: var(--color-dark);
+  border-radius: 5px;
+  font-size: 18px;
+  outline: none;
+}
+
 @media screen and (max-width: 1200px) {
   .container{
       grid-template-columns: 7rem auto 23rem;
@@ -213,4 +228,7 @@
       position: absolute;
   }
 
+  .asideContainer{
+      height: 3.4rem;
+  }
 }

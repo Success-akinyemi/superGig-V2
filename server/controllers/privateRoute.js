@@ -17,6 +17,7 @@ import { registerMail } from "./mailer.js"
 import TaskCategoryModel from "../models/TaskCategory.js"
 import SocialMediaPlatformModel from "../models/SocialMediaPlatform.js"
 import SocialMediaTaskModel from "../models/SocialMediaTask.js"
+import FundingModel from "../models/Funding.js"
 
 /**Add social media account */
 export async function addUserSocialMedia(req, res){
@@ -35,7 +36,8 @@ export async function addUserSocialMedia(req, res){
             const createAccount =  await InstagramModel.create({ accountValue, userId})
             isUser.instagramAccount = accountValue
             await isUser.save()
-            return res.status(201).json({ success: true, data: `${InstagramModel.name} account created successfully`})
+            const { password: hashedPassword, ...userData } = isUser._doc
+            return res.status(201).json({ success: true, data: {success: true, data: userData }})
         }
 
         if(platformCode === '02'){
@@ -46,7 +48,8 @@ export async function addUserSocialMedia(req, res){
             const createAccount =  await FacebookModel.create({ accountValue, userId})
             isUser.facebookAccount = accountValue
             await isUser.save()
-            return res.status(201).json({ success: true, data: `${FacebookModel.name} account created successfully`})
+            const { password: hashedPassword, ...userData } = isUser._doc
+            return res.status(201).json({ success: true, data: {success: true, data: userData }})
         }
 
         if(platformCode === '03'){
@@ -57,7 +60,8 @@ export async function addUserSocialMedia(req, res){
             const createAccount =  await TwitterModel.create({ accountValue, userId})
             isUser.twitterAccount = accountValue
             await isUser.save()
-            return res.status(201).json({ success: true, data: `${TwitterModel.name} account created successfully`})
+            const { password: hashedPassword, ...userData } = isUser._doc
+            return res.status(201).json({ success: true, data: {success: true, data: userData }})
         }
 
         if(platformCode === '04'){
@@ -68,7 +72,8 @@ export async function addUserSocialMedia(req, res){
             const createAccount =  await ThreadsModel.create({ accountValue, userId})
             isUser.threadsAccount = accountValue
             await isUser.save()
-            return res.status(201).json({ success: true, data: `${ThreadsModel.name} account created successfully`})
+            const { password: hashedPassword, ...userData } = isUser._doc
+            return res.status(201).json({ success: true, data: {success: true, data: userData }})
         }
 
         if(platformCode === '05'){
@@ -79,7 +84,8 @@ export async function addUserSocialMedia(req, res){
             const createAccount =  await TiktokModel.create({ accountValue, userId})
             isUser.tiktokAccount = accountValue
             await isUser.save()
-            return res.status(201).json({ success: true, data: `${TiktokModel.name} account created successfully`})
+            const { password: hashedPassword, ...userData } = isUser._doc
+            return res.status(201).json({ success: true, data: {success: true, data: userData }})
         }
 
         if(platformCode === '06'){
@@ -90,7 +96,8 @@ export async function addUserSocialMedia(req, res){
             const createAccount =  await YoutubeModel.create({ accountValue, userId})
             isUser.tiktokAccount = accountValue
             await isUser.save()
-            return res.status(201).json({ success: true, data: `${YoutubeModel.name} account created successfully`})
+            const { password: hashedPassword, ...userData } = isUser._doc
+            return res.status(201).json({ success: true, data: {success: true, data: userData }})
         }
 
         if(platformCode === '07'){
@@ -101,7 +108,8 @@ export async function addUserSocialMedia(req, res){
             const createAccount =  await TelegramModel.create({ accountValue, userId})
             isUser.tiktokAccount = accountValue
             await isUser.save()
-            return res.status(201).json({ success: true, data: `${TelegramModel.name} account created successfully`})
+            const { password: hashedPassword, ...userData } = isUser._doc
+            return res.status(201).json({ success: true, data: {success: true, data: userData }})
         }
 
     } catch (error) {
@@ -191,7 +199,15 @@ export async function payWithPaystack(req, res){
          income.totalIncome += value
          await income.save()
  
-         console.log('INCOME', income)        
+         console.log('INCOME', income)  
+         
+         //funding model
+         const funding = await FundingModel.create({
+            email: user.email,
+            refrence: refrence,
+            amount: totalAmount,
+            verified: true
+         })
        } else {
          console.log('NOT SUCCESS>>>', statusMsg)
        }
@@ -203,7 +219,28 @@ export async function payWithPaystack(req, res){
      }
    
      res.end()
-   }
+}
+
+export async function paystackVerifyFunding(req, res){
+    const { reference } =  req.body
+    try {
+        const ref = await FundingModel.findOne({ refrence: reference })
+        if(ref){
+            const email = ref.email
+            const user = await UserModel.findOne({ email: email })
+            if(user){
+                const { password: hashedPassword, ...userData } = user._doc
+                return res.status(201).json({ success: true, data: {success: true, data: userData }})
+            }
+        }
+
+        res.status(404).json({ success: false, data: 'Not Found'})
+    }
+     catch (error) {
+        console.log('UNABLE TO GET FUNDING AND SEND TO CLIENT', error)
+        res.status(500).json({ success: false, data: 'Unable to get funding'})
+    }
+}
 
 /**TASK APIs */
 //create job
@@ -301,6 +338,37 @@ export async function getAllTask(req, res){
     }
 }
 
+// get all task completd by user
+export async function getAllTaskCompletedByUser(req, res){
+    const { id } = req.params
+    console.log('ID', id)
+    try {
+        const allTask = await TaskModel.find()
+        const user = await UserModel.findById({ _id: id })
+        if(!user){
+            return res.status(404).json({ success: false, data: 'Invalid User'})
+        }
+        if(!allTask){
+            return res.status(404).json({ success: false, data: 'No Available Task at the moment please check later'})
+        }
+
+        const filteredTask = allTask.filter((task) => {
+            // Check if user is not the creator
+            if (task.createdBy.toString() === id.toString()) {
+              return false;
+            }
+      
+            // Check if user is in approved workers
+            return task.approvedWorkers.some(worker => worker.freelancerId === id);
+        });
+
+        res.status(200).json({ success: true, data: filteredTask})
+    } catch (error) {
+        console.log('COULD NOT get All Task Completed By User', error)
+        res.status(500).json({ success: false, data: 'Could not get All Task Completed By User'})
+    }
+}
+
 //get specific job
 export async function getSpecificTask(req, res){
     const { id, taskId } = req.params
@@ -377,7 +445,9 @@ export async function submitTask(req, res){
             credit: true
         }
         const transaction = await TransactionModel.create(transactionData)
-        res.status(201).json({ success: true, data: 'Job done. All jobs will be checked before payout'})
+        
+        const { password: hashedPassword, ...userData } = user._doc
+        res.status(201).json({ success: true, data: {success: true, data: userData }})
     } catch (error) {
         console.log('UNABLE TO PERFORM JOB COMPLETED ACTION', error)
         res.status(500).json({ success: false, data: 'An error occured'})
@@ -513,7 +583,8 @@ export async function withdrawBonusEarning(req, res){
             credit: false
         })
         
-        res.status(200).json({success: true, data: 'Bonus withdrawn successful'})
+        const { password: hashedPassword, ...userData } = user._doc
+        res.status(200).json({ success: true, data: {success: true, data: userData }})
     } catch (error) {
         console.log('COULD NOT WITHDRAW BONUS EARRNING', error)
         res.status(500).json({ success: false, data: 'Could not withdraw bonus earnings'})
@@ -586,7 +657,9 @@ export async function withdrawEarnings(req, res){
                     text: 'View Job',
                 });
 
-        res.status(201).json({success: true, data: 'Withdrawal successfull, payments will be made shortly.'})
+        res.status(201).json({success: true, data: ''})
+        const { password: hashedPassword, ...userData } = user._doc
+        res.status(200).json({ success: true, data: {success: true, data: userData }})
     } catch (error) {
         console.log('COULD NOT PROCESS EARNING WITHDRAWAL', error)
         res.status(500).json({ success: false, data: 'Could not process earning withdrawal'})

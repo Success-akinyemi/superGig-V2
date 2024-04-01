@@ -6,12 +6,12 @@ import './Wallet.css'
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 import Table from '../../Components/Table/Table'
+import { Link } from 'react-router-dom'
 
 function Wallet({toggleMenu, menuOpen, setSelectedCard}) {
     const {currentUser} = useSelector(state => state.user)
     const user = currentUser?.data
     const { isLoadingPayment, paymentData, paymentServerError } = useFetchPaymentOrder(user._id)
-    console.log('PAYMENT', paymentData)
     const payData = paymentData?.data
     const sortedData = payData?.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
     const maxData = sortedData?.slice(0, 5);
@@ -70,6 +70,7 @@ function Wallet({toggleMenu, menuOpen, setSelectedCard}) {
                             td3={'amount'}
                             td4={`status`}
                         />
+                        <Link to='/withdrawal-histroy' className='link'>View All</Link>
                     </div>
 
                 </div>

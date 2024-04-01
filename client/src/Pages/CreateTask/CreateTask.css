@@ -45,7 +45,7 @@
 }
 
 .createTask .content{
-    width: 50%;
+    width: 30%;
     padding: 20px;
     border-radius: var(--border-radius-2);
     background: var(--color-white);

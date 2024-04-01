@@ -1,11 +1,60 @@
 .funding{
     width: 20vw;
-    height: 40vw;
+}
+
+.funding .fundForm{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.funding .fundForm label{
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+}
+
+.funding .fundForm input{
+    font-weight: 600;
+    padding: 14px;
+}
+
+.funding .fundForm p{
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+}
+
+.funding .fundForm button{
+    padding: 15px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-white);
+    background: var(--second-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.funding .fundForm button.active{
+    background: var(--color-success);
+}
+
+.funding .fundForm button:hover{
+    background: var(--second-color-light-2);
 }
 
 @media screen and (max-width: 768px) {
     .funding{
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .funding{
         width: 85vw;
-        height: 60vh;
     }
 }

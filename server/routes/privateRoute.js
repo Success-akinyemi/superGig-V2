@@ -12,14 +12,14 @@ privateRouter.route('/withdrawBonusEarning').post(Protect, controller.withdrawBo
 privateRouter.route('/withdrawEarnings').post(Protect, controller.withdrawEarnings) //withdraw Earnings
 
 privateRouter.route('/payWithPaystack').post(Protect, controller.payWithPaystack) //withdraw Earnings
-privateRouter.route('/paystackWebhook').post(controller.paystackWebhook) //withdraw Earnings
-
-
+privateRouter.route('/paystackWebhook').post(controller.paystackWebhook) //paystack webhook
+privateRouter.route('/paystackVerifyFunding').post(controller.paystackVerifyFunding) //withdraw Earnings
 
 
 
 /**GET ROUTES */
 privateRouter.route('/getAllTask/:id').get(Protect, controller.getAllTask)
+privateRouter.route('/getAllTaskCompletedByUser/:id').get(Protect, controller.getAllTaskCompletedByUser) //get all task completed by user
 privateRouter.route('/getTask/:id/:taskId').get(Protect, controller.getSpecificTask)
 privateRouter.route('/getAllTaskPostedByUser/:id').get(Protect, controller.getAllJobPostedByUser)
 privateRouter.route('/getATaskPostedByUser/:userId/:jobId').get(Protect, controller.getSpecificJobPostedByUser)

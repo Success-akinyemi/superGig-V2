@@ -16,17 +16,46 @@ import { Link } from 'react-router-dom';
 import ImageSlider from '../../Components/ImageSlider/ImageSlider';
 import { useFetchTransaction } from '../../hooks/fetch.hooks';
 import { slidesData } from '../../data/general';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TransactionData from '../../Components/TransactionData/TransactionData';
+import { verifyFunding } from '../../helper/api';
+import { signInSuccess } from '../../redux/user/userSlice';
 
 function Dashboard({toggleMenu, menuOpen, setSelectedCard}) {
+    const dispatch = useDispatch()
     const slides = slidesData
+    const [ isLoadingData, setIsLoadingData ] = useState(false)
     const {currentUser} = useSelector(state => state.user)
     const user = currentUser?.data
     const { isLoadingTransaction, transactionData, transactionServerError } = useFetchTransaction(user?._id);
     const data = transactionData?.data
     const sortedData = data?.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
     const maxData = sortedData?.slice(0, 5);
+
+    useEffect(() => {
+      const fetchData = async () => {
+        // Parse the URL parameters
+        const queryParams = new URLSearchParams(window.location.search);
+        const reference = queryParams.get('reference');
+        
+        if (reference) {
+          try {
+            setIsLoadingData(true)
+            const res = await verifyFunding({reference})
+            if (res?.data.success) {
+              dispatch(signInSuccess(res.data.data));
+            }
+          } catch (error) {
+            console.log(error)
+          } finally{
+            setIsLoadingData(false)
+          }
+        }
+      }
+  
+      fetchData();
+    }, []);
+
 
   return (
     <div className='container'>
@@ -106,9 +135,12 @@ function Dashboard({toggleMenu, menuOpen, setSelectedCard}) {
                     <span className="line"></span>
                     
                     <div className="moreActions">
+                      {/**
+                       * 
                       <span onClick={() => setSelectedCard('airtime')}><SmartphoneIcon className='icon' /> Buy Airtime</span>
                       <span onClick={() => setSelectedCard('data')}><SignalWifi4BarIcon className='icon' /> Buy Data</span>
                       <span onClick={() => setSelectedCard('payBills')}><PaymentsIcon className='icon' /> Pay Bills</span>
+                       */}
                       <span onClick={() => setSelectedCard('funding')}><AddCardIcon className='icon' /> Fund Account</span>
                     </div>
 

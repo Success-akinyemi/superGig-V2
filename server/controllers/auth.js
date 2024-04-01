@@ -197,7 +197,7 @@ export async function verifyNewUser(req, res, next){
         sendToken(user, 200, res)
     } catch (error) {
         console.log('COULD NOT VERIFY USER', error)
-        res.status(500).json({ success: false, data: error.message})        
+        res.status(500).json({ success: false, data: 'Unable to Verify User Account' })        
     }
 }
 
@@ -412,15 +412,21 @@ export async function updateUser(req, res){
                     lastName: req.body.lastName,
                     gender: req.body.gender,
                     phoneNumber: req.body.phoneNumber,
+                    gender: req.body.gender
                 }
             },
             { new: true }
         );
 
 
-        res.status(200).json({ success: true, data: 'Profile updated successfully' })
+        const { password: hashedPassword, ...userData } = user._doc
+        res.status(201).json({ success: true, data: {success: true, data: userData }})
     } catch (error) {
         console.log('ERROR UPDATING USER', error)
         res.status(500).json({ success: false, data: 'Failed to upload user'})
     }
+}
+
+export async function signout(req, res){
+    res.clearCookie('accessToken').status(200).json({success: true, data: 'Signout success'})
 }

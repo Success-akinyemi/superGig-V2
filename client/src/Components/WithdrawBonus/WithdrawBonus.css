@@ -1,20 +1,60 @@
 .withdrawBonus{
     width: 40vw;
-    height: 60vh;
     border-radius: var(--border-radius-3);
     background: var(--color-white);
+    padding: var(--padding-1);
+    display: flex;
+    flex-direction: column;
+}
+
+.withdrawBonus span{
+    font-size: 17px;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.withdrawBonus .bonusForm{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.withdrawBonus .bonusForm input{
+    padding: 16px;
+}
+
+.withdrawBonus .bonusForm button{
+    margin-top: 1rem;
+    padding: 15px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-white);
+    background: var(--second-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.withdrawBonus .bonusForm button.active{
+    background: var(--color-success);
+}
+
+.withdrawBonus .bonusForm button:hover{
+    background: var(--second-color-light-2);
 }
 
 @media screen and (max-width: 800px) {
     .withdrawBonus{
         width: 50vw;
-        height: 70vh;
+        padding: var(--card-padding);
     }
 }
 
 @media screen and (max-width: 500px) {
     .withdrawBonus{
-        width: 85vw;
-        height: 70vh;
+        width: 80vw;
+        padding: 10px;
     }
 }

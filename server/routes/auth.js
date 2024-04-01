@@ -10,6 +10,8 @@ router.route('/login').post(controller.login)
 router.route('/forgotPassword').post(controller.forgotPassword)
 router.route('/:id/verify/:token').post(controller.verifyNewUser)
 router.route('/updateUser').post(controller.updateUser)
+router.route('/signout').post(controller.signout)
+
 
 
 

@@ -1,0 +1,27 @@
+.viewImgProof{
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.viewImgProof h3{
+    width: 100%;
+}
+
+.viewImgProof img{
+    width: 85%;
+}
+
+@media screen and (max-width: 800px) {
+    .viewImgProof{
+        width: 75vw;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .viewImgProof{
+        width: 75vw;
+    }
+}

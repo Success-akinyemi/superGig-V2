@@ -1,0 +1,115 @@
+.resetEmailSent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    background: var( --color-info-dark);
+    position: relative;
+}
+
+
+.resetEmailSent .logo{
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.resetEmailSent .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: var(--color-background);
+}
+
+.resetEmailSent .box{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 20px 20px 30px 20px;
+    /**min-height: 620px;*/
+    width: 350px;
+    background-color: rgba(255, 225, 225, 0.6);
+    border-radius: 30px;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    justify-content: center;
+}
+
+.resetEmailSent .box-resetEmailSent{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resetEmailSent .box-resetEmailSent .top-header{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.resetEmailSent h2{
+    width: 100%;
+    font-size: 20px;
+}
+
+.resetEmailSent .top-header small{
+    color: var(--color-success);
+}
+
+.resetEmailSent .body{
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    color: var(--color-dark);
+    font-weight: 500;
+}
+
+.resetEmailSent .action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 18px;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--second-color);
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.resetEmailSent .action:hover{
+    color: var(--second-color-light-2);
+}
+
+.resetEmailSent .warn{
+    color: var(--color-danger);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.resetEmailSent .box-resetEmailSent .top-header small{
+    margin-top: -15px;
+    text-align: center;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 500px) {
+    .resetEmailSent .box{
+        width: 75vw;
+    }   
+
+}
