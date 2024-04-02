@@ -15,6 +15,15 @@ function Navbar({setContent, toggle, menuOpen}) {
                 <div className={`users ${menuOpen ? 'active' : 'inactive'}`}>
                     <span onClick={() => setContent('business')}>For Business</span>
                     <span onClick={() => setContent('freelance')}>For Freelance</span>
+
+                    <Link to='/login' className='link signin'>
+                        Sign in
+                    </Link>
+
+                    <Link to='/register' className='link signup'>
+                        Get Started
+                    </Link>
+
                     <div className="closeBtn" onClick={toggle}>
                         <CloseIcon className='close' />
                     </div>

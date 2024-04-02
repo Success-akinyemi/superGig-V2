@@ -6,6 +6,7 @@ import Slide from '../../Components/LandingPage/Slide/Slide'
 import { platform } from '../../data/platform'
 import WhyUs from '../../Components/LandingPage/WhyUs/WhyUs'
 import { whyUs, whyUsImg } from '../../data/whyUs'
+import Footer from '../../Components/LandingPage/Footer/Footer'
 
 function LandingPage() {
   const [ content, setContent ] = useState('business')
@@ -25,6 +26,11 @@ function LandingPage() {
       <Slide data={platform} />
       <div className='bodyContent whyCard'>
         <WhyUs textData={whyUs} imgData={whyUsImg} />
+      </div>
+
+
+      <div className='bodyContent footerCard'>
+        <Footer />
       </div>
     </div>
   )

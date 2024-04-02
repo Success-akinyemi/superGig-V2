@@ -119,3 +119,13 @@
         width: 90%;
     }
 }
+
+@media screen and (max-width: 650px) {
+    .whyUs .rigth{
+        width: 100%;
+    }
+
+    .whyUs .rigth .imgCard .content{
+        width: 85%;
+    }
+}

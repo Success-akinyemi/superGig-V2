@@ -223,3 +223,33 @@
         margin: 0 auto;
     }
 }
+
+@media screen and (max-width: 650px) {
+    .hero{
+        width: 100vw;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .hero .top{
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+
+    .hero .right .imCard{
+        width: 70%;
+    }
+
+    .hero .right .imCard img{
+        width: 100%;
+    }
+
+    .hero .left .btnCard{
+        width: 95%;
+    }
+
+    .hero .left .text{
+        width: 97%;
+        font-size: 40px;
+    }
+}
