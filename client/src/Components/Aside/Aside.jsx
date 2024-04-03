@@ -3,17 +3,12 @@ import { useSelector } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
 import { recentUpdates } from '../../data/recentUpdates';
 import { formatDistanceToNow } from 'date-fns';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
-import AddIcon from '@mui/icons-material/Add'; 
-import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import { useFetchTask } from '../../hooks/fetch.hooks';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TelegramIcon from '@mui/icons-material/Telegram';
 
-function Aside({toggleMenu}) {
+function Aside({toggleMenu, control}) {
     const {currentUser} = useSelector(state => state.user)
     const user = currentUser?.data
 
@@ -40,7 +35,7 @@ function Aside({toggleMenu}) {
             </div>
         </div>
 
-        <div className="recentUpdates">
+        <div className={`recentUpdates ${control ? 'hide' : ''}`}>
             <h2 className="h-2">Recent Tasks</h2>
             <div className="updates">
                 {
@@ -67,7 +62,7 @@ function Aside({toggleMenu}) {
             </div>
         </div>
 
-        <div className="sales-analytics">
+        <div className={`sales-analytics ${control ? 'hide' : ''}`}>
             <h2 className="h-2">Stay Updated -  
                 <small>
                     {' '}Follow us on our social

@@ -1,5 +1,9 @@
+import ImgOne from '../assets/website-banner.png'
+import ImgTwo from '../assets/website-banner2.png'
+import ImgThree from '../assets/website-banner3.png'
+
 export const slidesData = [
-    {color: 'red'},
-    {color: 'blue'},
-    {color: 'pink'},
+    {img: ImgOne},
+    {img: ImgTwo},
+    {img: ImgThree},
   ]

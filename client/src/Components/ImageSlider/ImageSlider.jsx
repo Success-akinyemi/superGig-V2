@@ -1,17 +1,28 @@
 import { useEffect, useRef, useState } from 'react'
 import './ImageSlider.css'
 
-function ImageSlider({slides}) {
+import ImgOne from '../../assets/website-banner.png'
+import ImgTwo from '../../assets/website-banner2.png'
+import ImgThree from '../../assets/website-banner3.png'
+
+function ImageSlider() {
     const timeRef = useRef(null)
     const [ currentSlide, setCurrentSlide ] = useState(0)
+    
+    const slides = [
+        {img: ImgOne},
+        {img: ImgTwo},
+        {img: ImgThree},
+    ]
+    console.log('SLIDES', slides)
 
     const slideStyle = {
         width: '100%',
         height: '100%',
         backgroundPosition: 'center',
         backgroundSize: 'cover',
-        //backgroundImage: `${slides[currentSlide].image}`
-        backgroundColor: `${slides[currentSlide].color}`
+        backgroundImage: `url(${slides[currentSlide].img})`
+        //backgroundColor: `${slides[currentSlide].color}`
     }
 
     const goPrev = () => {

@@ -1,0 +1,8 @@
+.paymentOrder{
+    width: 100%;
+    background: green;
+}
+
+.paymentOrder h1{
+    margin-top: 2rem;
+}

@@ -1,20 +1,20 @@
 import './ControlSidebar.css'
-import { Link } from 'react-router-dom'
 import CloseIcon from '@mui/icons-material/Close';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import ContentPasteIcon from '@mui/icons-material/ContentPaste';
-
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 
 
-function ControlSidebar({toggleControlMenu, controlMenu, setDisplay}) {
+import PeopleIcon from '@mui/icons-material/People';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+
+function ControlSidebar({toggleControlMenu, controlMenu, setDisplay, display}) {
 
     const handleMenu = (menu) => {
         setDisplay(menu)
-        controlMenu()
+        toggleControlMenu()
     }
 
   return (
@@ -29,34 +29,34 @@ function ControlSidebar({toggleControlMenu, controlMenu, setDisplay}) {
         </div>
 
         <div className="menuList">
-          <span onClick={handleMenu('allUsers')} to='/dashboard' className={`link h-2 menuLinks`}>
-            <DashboardIcon className='menuLinks-icon' />
-            <span to='/dashboard' className='link menuLink'>All Users</span>
+          <span onClick={() => handleMenu('allUsers')} className={`link h-2 menuLinks ${display === 'allUsers' ? 'active' : ''}`}>
+            <PeopleIcon className='menuLinks-icon' />
+            <span className='link menuLink'>All Users</span>
           </span>
 
-          <span onClick={handleMenu('paymentOrder')} to='/taskPoint' className={`link h-2 menuLinks `}>
-            <ContentPasteIcon className='menuLinks-icon' />
-            <span to='/taskPoint' className='link menuLink'>Payment Order</span>
+          <span onClick={() => handleMenu('paymentOrder')} className={`link h-2 menuLinks ${display === 'paymentOrder' ? 'active' : ''}`}>
+            <PaymentsIcon className='menuLinks-icon' />
+            <span className='link menuLink'>Payment Order</span>
           </span>
 
-          <span onClick={handleMenu('allTask')} to='/wallet' className={`link h-2 menuLinks  `}>
-            <AccountBalanceWalletIcon className='menuLinks-icon' />
-            <span to='/wallet' className='link menuLink'>All Task</span>
+          <span onClick={() => handleMenu('allTask')} className={`link h-2 menuLinks ${display === 'allTask' ? 'active' : ''} `}>
+            <AssignmentIcon className='menuLinks-icon' />
+            <span className='link menuLink'>All Task</span>
           </span>
           
-          <span onClick={handleMenu('')} to='/invite' className={`link h-2 menuLinks `}>
+          <span onClick={() => handleMenu('')} className={`link h-2 menuLinks ${display === '' ? 'active' : ''} `}>
             <PeopleAltOutlinedIcon className='menuLinks-icon' />
-            <span to='/invite' className='link menuLink'>Invite</span>
+            <span className='link menuLink'>Invite</span>
           </span>
 
-          <span onClick={handleMenu('')} to='/support' className={`link h-2 menuLinks `}>
+          <span onClick={() => handleMenu('')} className={`link h-2 menuLinks ${display === '' ? 'active' : ''} `}>
             <LiveHelpIcon className='menuLinks-icon' />
-            <span to='/support' className='link menuLink'>Support</span>
+            <span className='link menuLink'>Support</span>
           </span>
 
-          <span onClick={handleMenu('')} to='/profile' className={`link h-2 menuLinks `}>
+          <span onClick={() => handleMenu('')} className={`link h-2 menuLinks ${display === '' ? 'active' : ''}`}>
             <AccountCircleRoundedIcon className='menuLinks-icon' />
-            <span to='/profile' className='link menuLink'>Profile</span>
+            <span className='link menuLink'>Profile</span>
           </span>
 
         </div>
