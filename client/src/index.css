@@ -215,10 +215,29 @@
 
 }
 
+
+@media screen and (max-width: 950px) {
+  .mainContainer{
+      width: 82vw;
+      
+      margin-left: 8rem;
+      margin-top: 4rem;
+      overflow-x: hidden;
+  }
+
+  .menubarContainer{
+      position: absolute;
+  }
+
+  .asideContainer{
+      height: 3.4rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .mainContainer{
       width: 94vw;
-      
+      margin-left: 0;
       padding-right: 2rem;
       margin-top: 4rem;
       overflow-x: hidden;

@@ -3,20 +3,25 @@ import { useSelector } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
 import { recentUpdates } from '../../data/recentUpdates';
 import { formatDistanceToNow } from 'date-fns';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import PersonIcon from '@mui/icons-material/Person';
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add'; 
+import ContentPasteIcon from '@mui/icons-material/ContentPaste';
+import { useFetchTask } from '../../hooks/fetch.hooks';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TelegramIcon from '@mui/icons-material/Telegram';
 
 function Aside({toggleMenu}) {
     const {currentUser} = useSelector(state => state.user)
     const user = currentUser?.data
 
-    const data = recentUpdates
-    const sortedStoreData = data.sort((a, b) => new Date(b?.createdAt) - new Date(a?.createdAt));
-    const latestStoreData = sortedStoreData.slice(0, 3);
+    const { isLoadingTask, apiTaskData, taskServerError } = useFetchTask()
+    const data = apiTaskData?.data
+    const sortedData = data?.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
+    const maxData = sortedData?.slice(0, 2);
+
 
   return (
     <div className='aside'>
@@ -36,79 +41,61 @@ function Aside({toggleMenu}) {
         </div>
 
         <div className="recentUpdates">
-            <h2 className="h-2">Recent Updates</h2>
+            <h2 className="h-2">Recent Tasks</h2>
             <div className="updates">
                 {
-                    latestStoreData?.map((item) => (
-                        <div className="update" key={item?._id}>
+                    maxData?.map((item) => (
+                        <Link to={`/taskPoint/${item?._id}`} className="link update" key={item?._id}>
                             <div className="admin-profile">
-                                <NotificationsActiveIcon />
+                                <img style={{width: '70%'}} src={item?.icon} />
                             </div>
                             <div className="message">
                                 <p className="para">
-                                    <b className="bold">{item?.name}</b> {' '}
-                                    {item?.message}
+                                    {item?.task}
                                 </p>
                                 <small className="small text-muted">
                                     {formatDistanceToNow(new Date(item?.createdAt))} Ago.
                                 </small>
                             </div>
-                        </div>
+                        </Link>
                     ))
                 }
+                <Link to='/taskPoint' className='link viewAll'>
+                    View All
+                </Link>
+
             </div>
         </div>
 
         <div className="sales-analytics">
-            <h2 className="h-2">Sales Analytics</h2>
-            <div className="item online">
+            <h2 className="h-2">Stay Updated -  
+                <small>
+                    {' '}Follow us on our social
+                </small> 
+            </h2>
+            <a target='_blank' href='' className="link item online">
                 <div className="icon">
-                    <span className="cartIcon"><ShoppingCartIcon /></span>
+                    <span className="cartIcon"><TelegramIcon /></span>
                 </div>
                 <div className="right">
                     <div className="info">
-                        <h3 className="h-3">ONLINE ORDERS</h3>
-                        <small className="small text-muted">Last 24 Hours</small>
+                        <h3 className="h-3">Join our Telegram</h3>
+                        <p style={{fontSize: '14px'}} className='text-muted'>join our telegram channel to get recent updates on new jobs</p>
                     </div>
-                    <h5 className="h-5 success">+39%</h5>
-                    <h3 className="h3">30000</h3>
                 </div>
-            </div>
+            </a>
 
-            <div className="item offline">
+            <a target='_blank' href='https://www.instagram.com/supergig1' className="link item offline">
                 <div className="icon">
-                    <span className="cartIcon"><LocalShippingIcon /></span>
+                    <span className="cartIcon"><InstagramIcon /></span>
                 </div>
                 <div className="right">
                     <div className="info">
-                        <h3 className="h-3">DELIVERED ORDERS</h3>
-                        <small className="small text-muted">Last 24 Hours</small>
+                        <h3 className="h-3">Follow us on instagram</h3>
                     </div>
-                    <h5 className="h-5 success">+20%</h5>
-                    <h3 className="h3">20</h3>
                 </div>
-            </div>
+            </a>
 
-            <div className="item customers">
-                <div className="icon">
-                    <span className="cartIcon"><PersonIcon /></span>
-                </div>
-                <div className="right">
-                    <div className="info">
-                        <h3 className="h-3">NEW CUSTOMERS</h3>
-                        <small className="small text-muted">Last 24 Hours</small>
-                    </div>
-                    <h5 className="h-5 success">+50%</h5>
-                    <h3 className="h3">30</h3>
-                </div>
-            </div>
-
-            <div className="item add-product">
-                <Link to='/admin-NewProduct' className='div'>
-                    <span className="cartIcon"><AddIcon /></span>
-                    <h3 className='h-3'>Add Product</h3>
-                </Link>
-            </div>
         </div>
     </div>
   )

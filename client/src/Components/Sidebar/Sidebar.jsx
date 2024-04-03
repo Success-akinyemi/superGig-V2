@@ -1,5 +1,5 @@
 import './Sidebar.css'
-import { useDispatch, } from 'react-redux';
+import { useDispatch, useSelector, } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import CloseIcon from '@mui/icons-material/Close';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -17,8 +17,12 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { signOut } from '../../redux/user/userSlice';
 import { apiUrl } from '../../utils/api';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 function Sidebar({toggleMenu, menuOpen}) {
+  const {currentUser} = useSelector(state => state.user)
+  const user = currentUser?.data
+  
     const location = useLocation();
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -78,6 +82,15 @@ function Sidebar({toggleMenu, menuOpen}) {
             <AccountCircleRoundedIcon className='menuLinks-icon' />
             <Link to='/profile' className='link menuLink'>Profile</Link>
           </Link>
+
+          {
+            user?.isAdmin && (
+              <Link onClick={toggleMenu}  to='/control' className={`link h-2 menuLinks ${isActive('/control') ? 'active' : ''} `}>
+                <AdminPanelSettingsIcon className='menuLinks-icon' />
+                <Link to='/control' className='link menuLink'>Control</Link>
+              </Link>
+            )
+          }
 
           {/**Task */}
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import './Footer.css'
 import InstagramIcon from '@mui/icons-material/Instagram';
+import TelegramIcon from '@mui/icons-material/Telegram';
 import LanguageIcon from '@mui/icons-material/Language';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
@@ -30,7 +31,8 @@ function Footer() {
                 <div className="right">
                     <small>Follow us</small>
                     <div className="icons">
-                        <a href='https://www.instagram.com/supergig1' target='_blank'><InstagramIcon className='icon' /></a>
+                        <a className='link' href='https://www.instagram.com/supergig1' target='_blank'><InstagramIcon className='icon' /></a>
+                        <a className='link' href='https://www.instagram.com/supergig1' target='_blank'><TelegramIcon className='icon' /></a>
                     </div>
                 </div>
             </div>

@@ -31,6 +31,7 @@ import ForgotPassword from './Pages/ForgotPassword/ForgotPassword'
 import ResetEmailSent from './Pages/ResetEmailSent/ResetEmailSent'
 import NewPassword from './Pages/NewPassword/NewPassword'
 import LandingPage from './Pages/LandingPage/LandingPage'
+import Controls from './Pages/Controls/Controls'
 
 
 function App() {
@@ -186,6 +187,11 @@ function App() {
           <Route element={<AuthorizeUser />}>
             <Route path='/postedTask/:id' element={<PostedTask menuOpen={menuOpen} toggleMenu={toggleMenu} setSelectedCard={setSelectedCard} setProofImg={setProofImg} />} />
           </Route>
+
+          <Route element={<AuthorizeUser />}>
+            <Route path='/control' element={<Controls menuOpen={menuOpen} toggleMenu={toggleMenu} setSelectedCard={setSelectedCard} setProofImg={setProofImg} />} />
+          </Route>
+          
           
 
         </Routes>

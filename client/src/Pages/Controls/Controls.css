@@ -1,0 +1,16 @@
+.controls{
+
+    min-height: 100vh;
+    background: yellow;
+
+}
+
+.controls .side{
+    width: 15rem;
+}
+
+.controls .body{
+    background: blue;
+    width: 100%;
+    height: 100%;
+}

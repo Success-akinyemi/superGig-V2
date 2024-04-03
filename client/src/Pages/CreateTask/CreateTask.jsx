@@ -6,7 +6,8 @@ import { useFetchAllSocialMediaCategory, useFetchAllTaskCategory, useFetchSocial
 import Select from '../../Components/Select/Select';
 import { createTask } from '../../helper/api';
 import { signInSuccess } from '../../redux/user/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function CreateTask() {
   const dispatch = useDispatch()
@@ -47,7 +48,7 @@ function CreateTask() {
         //console.log('selectedPlatform', trimmedSelectedTaskCategory)
         const filterSocialMediaData = socialMediaTask?.filter(socialMediaTask => socialMediaTask?.platformCode === trimmedSelectedTaskCategory)
         setSelectedSocialMediaData(filterSocialMediaData)
-        console.log('DATA',selectedSocialMediaData)
+        //console.log('DATA',selectedSocialMediaData)
     } else {
         setSelectedSocialMediaData([])
     }
@@ -118,7 +119,12 @@ function CreateTask() {
   }
 
   const handleCreateNewTask = async () => {
+    if(formData.numberOfWorkers * formData.unitPrice > user.fundWallet){
+      toast.error('Insufficient Balance to create task.')
+      return;
+    }
     try {
+      console.log(formData)
       setIsLoading(true)
       const res =  await createTask(formData)
       if(res){
@@ -159,7 +165,7 @@ function CreateTask() {
           <ArrowBackIcon className='backIcon' />
       </div>
       <div className="title">
-        Supergig
+        <Link to='/dashboard' className='link' >Supergig</Link>
       </div>
 
       <div className="content">

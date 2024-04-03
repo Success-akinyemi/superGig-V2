@@ -138,6 +138,11 @@
         display: none;
     }
 
+    .sidebar .menuLinks.sidebarCreateTask .menuLink{
+        display: inline-block;
+        font-size: 14px;
+    }
+
     .sidebar .menuLinks .menuLinks-icon{
         font-size: 2rem;
     }
