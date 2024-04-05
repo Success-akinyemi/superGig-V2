@@ -64,5 +64,6 @@
 
     .landingPage .footerCard{
         margin-top: 30rem;
+        height: 105vh;
     }
 }
