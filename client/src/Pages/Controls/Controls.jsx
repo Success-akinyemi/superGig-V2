@@ -6,10 +6,13 @@ import './Controls.css'
 import MenuIcon from '@mui/icons-material/Menu';
 import AllUsers from '../../Components/Controls/AllUsers/AllUsers'
 import PaymentOrder from '../../Components/Controls/PaymentOrder/PaymentOrder'
+import SocialMediaTask from './SocialMediaTask/SocialMediaTask'
+import TaskforSocialMedia from '../../Components/TaskforSocialMedia/TaskforSocialMedia'
 
 
-function Controls({toggleMenu, menuOpen}) {
+function Controls({toggleMenu, menuOpen, setSelectedCard}) {
     const [ controlMenu, setControlMenu ] = useState(false)
+    const [ platformCode, setPlatformcode ] = useState()
     const [ display, setDisplay ] = useState('allUsers')
     
     const toggleControlMenu = () => {
@@ -22,6 +25,10 @@ function Controls({toggleMenu, menuOpen}) {
             return <AllUsers />;
           case 'paymentOrder':
             return <PaymentOrder />
+          case 'socialMediaTask':
+            return  <SocialMediaTask setSelectedCard={setSelectedCard} setDisplay={setDisplay} toggleControlMenu={toggleControlMenu} setPlatformcode={setPlatformcode} />
+          case 'TaskforSocialMedia': 
+            return <TaskforSocialMedia setSelectedCard={setSelectedCard} platformCode={platformCode}  />
 
     
           default: 

@@ -164,7 +164,7 @@ function CreateTask() {
       <div className="back" onClick={handleBack}>
           <ArrowBackIcon className='backIcon' />
       </div>
-      <div className="title">
+      <div className="ti tle">
         <Link to='/dashboard' className='link' >Supergig</Link>
       </div>
 

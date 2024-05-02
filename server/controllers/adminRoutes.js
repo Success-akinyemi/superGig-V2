@@ -227,7 +227,7 @@ export async function createTaskCategory(req, res){
 export async function createSocialmediaPlatform(req, res){
     const { platform, code, createdby, icon, taskCategoryCode } = req.body
     try {
-        if(!platform || !code || !createdby || !taskCategoryCode){
+        if(!platform || !code || !createdby || !taskCategoryCode || !icon){
             return res.status(400).json({  success: false, data: 'All Feilds are required'})
         }
 
@@ -260,7 +260,7 @@ export async function createSocialmediaPlatform(req, res){
 export async function createSocialmediaTask(req, res){
     const { platformCode, taskId, task, pricePerFreelancer, unitPrice, minWorkers, icon, createdBy } = req.body
     try {
-        if(!platformCode || !taskId || !task || !pricePerFreelancer || !unitPrice || !minWorkers || !icon || !createdBy){
+        if(!platformCode || !taskId || !task || !pricePerFreelancer || !unitPrice || !minWorkers || !createdBy){
             return res.status(400).json({ success: false, data: 'Fill all necessary Fields'})
         }
 
@@ -274,14 +274,19 @@ export async function createSocialmediaTask(req, res){
             return res.status(400).json({ success: false, data: 'Task Already Exist'})
         }
 
+
+        const findIcon = await SocialMediaPlatformModel.findOne({ code: platformCode })
+
+        const setIcon = findIcon.icon
+
         const createTask = new SocialMediaTaskModel({
-            platformCode, taskId, task, pricePerFreelancer, unitPrice, minWorkers, icon, createdBy
+            platformCode, taskId, task, pricePerFreelancer, unitPrice, minWorkers, icon: setIcon, createdBy
         })
         await createTask.save()
 
         const allTask = await SocialMediaTaskModel.find()
 
-        res.status(201).json({ success: true, data: allTask })
+        res.status(201).json({ success: true, data: 'Task Added successful' })
 
     } catch (error) {
         console.log('UNABLE TO CREATE NEW SOCIAL MEDIA TASK', error)
@@ -321,3 +326,27 @@ export async function updateSocialmediaTask(req, res){
         res.status(500).json({ success: false, data: 'Unable to update social media task'})
     }
 }
+
+//get all task of a social media account
+export async function getAllTaskForASocialMedia(req, res) {
+    const { code, id } = req.params;
+    const cleanedCode = code.replace(/[^\w\s]/gi, '');
+    const cleanedId = id ? id.replace(/[^\w\s]/gi, '') : undefined;
+    console.log(cleanedCode, cleanedId);
+    try {
+        let allTask = [];
+        if (!cleanedId || cleanedId === 'undefined' ) {
+            allTask = await SocialMediaTaskModel.find({ platformCode: cleanedCode });
+            console.log('ALL', allTask);
+            return res.status(200).json({ success: true, data: allTask });
+        } else {
+            allTask = await SocialMediaTaskModel.findById(cleanedId);
+            console.log('ALL', allTask);
+            return res.status(200).json({ success: true, data: allTask });
+        }
+    } catch (error) {
+        console.log('UNABLE TO GET ALL TASK FOR A SOCIAL MEDIA', error);
+        res.status(500).json({ success: false, data: 'Unable to get all task for a social media' });
+    }
+}
+

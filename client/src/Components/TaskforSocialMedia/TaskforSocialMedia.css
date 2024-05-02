@@ -1,0 +1,74 @@
+.taskforSocialMedia{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+.taskforSocialMedia .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom:  3px solid var(--color-dark);
+}
+
+.taskforSocialMedia .top button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    outline: none;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: 18px;
+    padding: 10px 30px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.taskforSocialMedia .bodyItem{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.taskforSocialMedia .bodyItem .head{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.taskforSocialMedia .bodyItem .head > h3{
+    flex: 1;
+}
+
+.taskforSocialMedia .bodyItem .card{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 2px solid var(--color-dark);
+    margin-bottom: 1rem;
+    padding-bottom: 10px;
+}
+
+.taskforSocialMedia .bodyItem .card:last-child{
+    border-bottom: none;
+}
+
+.taskforSocialMedia .bodyItem .card > div{
+    flex: 1;
+}
+
+.taskforSocialMedia .bodyItem .card .edit button{
+    padding: 10px 30px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: 600;
+}

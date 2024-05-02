@@ -32,6 +32,8 @@ import ResetEmailSent from './Pages/ResetEmailSent/ResetEmailSent'
 import NewPassword from './Pages/NewPassword/NewPassword'
 import LandingPage from './Pages/LandingPage/LandingPage'
 import Controls from './Pages/Controls/Controls'
+import NewSocialMedia from './Components/NewSocialMedia/NewSocialMedia'
+import NewSocialMediaTask from './Components/NewSocialMediaTask/NewSocialMediaTask'
 
 
 function App() {
@@ -87,6 +89,14 @@ function App() {
       case 'viewImgProof' :
         return (
           <ViewImgProof proofImg={proofImg} />
+        );
+      case 'newSocialMedia' :
+        return (
+            <NewSocialMedia />
+        );
+      case 'newSocialMediaTask' :
+        return (
+            <NewSocialMediaTask />
         );
 
     }

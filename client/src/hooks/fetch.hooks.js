@@ -401,3 +401,30 @@ export function useFetchSocialMediaTask(query){
 
     return socialMediaTaskData
 }
+
+/**Get All Task for a Social media */
+export function useFetchGetAllSocialMediaTask(query){
+    const [socialMediaTaskData, setSocialMediaTaskData] = useState({ isLoadingSocialMediaTaskData: true, socialMediaTaskData: null, socialMediaTaskStatus: null, socialMediaTaskServerError: null})
+    
+    useEffect(() => {
+        const fetchSocialMediaTaskData =  async () => {
+            try {
+                const { code, id} = query
+                const { data, status} = !query ? await axios.get(`/api/admin/getAllTaskForSocialMedia/:${code}`, {withCredentials: true}) : await axios.get(`/api/admin/getAllTaskForSocialMedia/:${code}/:${id}`,  {withCredentials: true})
+                //console.log('Transaction Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setSocialMediaTaskData({ isLoadingSocialMediaTaskData: false, socialMediaTaskData: data, socialMediaTaskStatus: status, socialMediaTaskServerError: null})
+                } else{
+                    setSocialMediaTaskData({ isLoadingSocialMediaTaskData: false, socialMediaTaskData: null, socialMediaTaskStatus: status, socialMediaTaskServerError: null})
+                }
+            } catch (error) {
+                console.log('COULF NOT FETCH DATA Transactions', error)
+                setSocialMediaTaskData({ isLoadingSocialMediaTaskData: false, socialMediaTaskData: null, socialMediaTaskStatus: null, socialMediaTaskServerError: error})
+            }
+        };
+        fetchSocialMediaTaskData()
+    }, [query])
+
+    return socialMediaTaskData
+}

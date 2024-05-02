@@ -1,0 +1,59 @@
+.socialMediaTask{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.socialMediaTask .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--color-dark);
+}
+
+.socialMediaTask .top h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.socialMediaTask .top button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: var(--color-primary-opa);
+    transition: all 300ms ease-in;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: var(--color-white);
+}
+
+.socialMediaTask .top button:hover{
+    background: var(--color-primary);
+}
+
+.socialMediaTask .bodyItem{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.socialMediaTask .bodyItem .card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--color-dark);
+    width: 100%;
+}
+
+.socialMediaTask .card img{
+    width: 20px;
+}
+.socialMediaTask .card .btn{
+    padding: 5px 20px;
+    background: var(--color-primary-opa);
+    cursor: pointer;
+    color: var(--color-white);
+    border-radius: 10px;
+}

@@ -44,9 +44,9 @@ function ControlSidebar({toggleControlMenu, controlMenu, setDisplay, display}) {
             <span className='link menuLink'>All Task</span>
           </span>
           
-          <span onClick={() => handleMenu('')} className={`link h-2 menuLinks ${display === '' ? 'active' : ''} `}>
+          <span onClick={() => handleMenu('socialMediaTask')} className={`link h-2 menuLinks ${display === 'socialMediaTask' ? 'active' : ''} `}>
             <PeopleAltOutlinedIcon className='menuLinks-icon' />
-            <span className='link menuLink'>Invite</span>
+            <span className='link menuLink'>Social Media Task</span>
           </span>
 
           <span onClick={() => handleMenu('')} className={`link h-2 menuLinks ${display === '' ? 'active' : ''} `}>
