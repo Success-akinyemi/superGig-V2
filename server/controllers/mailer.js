@@ -21,7 +21,7 @@ let MailGenerator = new Mailgen({
     theme: 'default',
     product: {
         name: process.env.MAIL_WEBSITE_NAME || 'SuperGig',
-        link: process.env.MAIL_WEBSITE_LINK || 'https://supergig.onrender.com'
+        link: process.env.MAIL_WEBSITE_LINK || 'https://supergig.com.ng'
     }
 })
 
