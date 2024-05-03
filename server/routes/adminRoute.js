@@ -19,8 +19,8 @@ privateRouter.route('/updateSocialMediaTask').post(Protect, controller.updateSoc
 
 
 
-privateRouter.route('/getAllPaymentOrder/:query').get(Protect, AdminProtect, controller.getAllPaymentOrder); //get all payment order
-privateRouter.route('/getAPaymentOrder/:id').get(Protect, AdminProtect, controller.getAPaymentOrder); //get all payment order
+privateRouter.route('/getAllPaymentOrder/:query').get(Protect, controller.getAllPaymentOrder); //get all payment order
+privateRouter.route('/getAPaymentOrder/:id').get(Protect, controller.getAPaymentOrder); //get all payment order
 privateRouter.route('/getAllTask/:id').get(Protect, controller.getAllTask)
 privateRouter.route('/getAllTaskForSocialMedia/:code').get(Protect, controller.getAllTaskForASocialMedia)
 privateRouter.route('/getAllTaskForSocialMedia/:code/:id').get(Protect, controller.getAllTaskForASocialMedia)

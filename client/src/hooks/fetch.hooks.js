@@ -246,7 +246,7 @@ export function useFetchAllPaymentOrder(query){
             try {
                 const { id } = !query ? await getUser() : '';
                 
-                const { data, status} = !query ? await axios.get(`/api/admin/getAllPaymentOrder/${query}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/admin/getAllPaymentOrder/${query}`, {headers: {Authorization: `Bearer ${token}`}})
+                const { data, status} = !query ? await axios.get(`/api/admin/getAllPaymentOrder/${query}`, {withCredentials: true}) : await axios.get(`/api/admin/getAllPaymentOrder/${query}`, {withCredentials: true})
                 //console.log('ALL PAYMENT DATA from Hooks>>>', data)
 
                 if(status === 200){

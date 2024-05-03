@@ -1,0 +1,57 @@
+.paymentCard{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--primary-color);
+    border-radius: 20px;
+}
+
+.paymentCard .headTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.paymentCard .headTitle h2{
+    font-size: 20px;
+}
+
+.paymentCard .bodyInfo{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.paymentCard .bodyInfo .noItem{
+    text-align: center;
+    display: flex;
+    width: 100%;
+    color: red;
+    justify-content: center;
+    align-items: center;
+}
+
+.paymentCard .bodyInfo .paymentItem{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid gray;
+}
+
+.paymentCard .bodyInfo .paymentItem:last-child{
+    border-bottom: none;
+}
+
+.paymentCard .bodyInfo .paymentItem .action{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .paymentCard{
+        width: 100%;
+    }
+}
