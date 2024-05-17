@@ -102,9 +102,9 @@ const mailGenerator = new Mailgen({
  */
 
  export async function register(req, res, next) {
-    const { email, username, password, referredBy } = req.body;
+    const { email, username, password, phoneNumber, referredBy } = req.body;
 
-    if (!email || !password || !username) {
+    if (!email || !password || !username || !phoneNumber) {
         return res.status(400).json({ success: false, data: 'Please provide all required fields' });
     }
 
@@ -114,7 +114,12 @@ const mailGenerator = new Mailgen({
             return res.status(400).json({ success: false, data: 'Email already exists. Please use another email' });
         }
 
-        const user = await UserModel.create({ username, email, password });
+        const existingPhoneNumber = await UserModel.findOne({ phoneNumber });
+        if (existingPhoneNumber) {
+            return res.status(400).json({ success: false, data: 'Phone Number already exists. Please use another Phone Number' });
+        }
+
+        const user = await UserModel.create({ username, email, password, phoneNumber });
         console.log('USER CREATED');
 
         const referralLink = `${process.env.CLIENT_URL}/register?ref=${user._id}`;

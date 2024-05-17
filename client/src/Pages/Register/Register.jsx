@@ -11,10 +11,11 @@ function Register() {
   const queryParams = new URLSearchParams(location.search);
   const refParams = queryParams.get("ref");
   const referredBy = refParams;
-  console.log('ID', referredBy)
+  //console.log('ID', referredBy)
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [comfirmPassword, setComfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -74,7 +75,7 @@ function Register() {
 
     try {
       setIsLoading(true);
-      const res = await registerUser({ username, email, password, referredBy });
+      const res = await registerUser({ username, email, password, phoneNumber, referredBy });
 
       if (res.data.success) {
         console.log(res.data.success);
@@ -144,6 +145,18 @@ function Register() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <label htmlFor="regEmail">Email Address</label>
+              </div>
+
+              <div className="input-field">
+                <input
+                  type="text"
+                  id="regPhoneNumber"
+                  className="input-box"
+                  required
+                  value={email}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+                <label htmlFor="regPhoneNumber">Phone Number</label>
               </div>
 
               <div className="input-field">
