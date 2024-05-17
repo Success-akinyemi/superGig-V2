@@ -1,10 +1,12 @@
 .footer{
-    width: 1180px;
+    width: 75vw;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    padding-bottom: 40px;
 }
 
 .footer .footerContent{
@@ -38,7 +40,7 @@
 }
 
 .footer .top .left .linkInfo:hover{
-    color: var(--second-color);
+    color: #0e0704;
 }
 
 .footer .top .middle{
@@ -62,7 +64,7 @@
 
 .footer .top .middle .links .link:hover,
 .footer .tc .link:hover{
-    color: var(--second-color);
+    color: #0e0704;
 }
 
 .footer .top .right{
@@ -101,7 +103,7 @@
 }
 
 .footer .icons a .icon:hover{
-    color: var(--second-color);
+    color: #0e0704;
 }
 
 @media screen and (max-width: 1200px) {

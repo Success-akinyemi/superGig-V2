@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import './Hero.css'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
-import HeroImg from '../../../assets/herobg.jpg'
+//import HeroImg from '../../../assets/herobg.jpg'
+//import HeroImg from '../../../assets/herobg2.jpg'
+import HeroImg from '../../../assets/herobg3.jpg'
+
 
 function Hero({ content, setContent}) {
     const [text] = useTypewriter({
@@ -59,6 +62,7 @@ function Hero({ content, setContent}) {
             </div>
 
             <div className="right">
+                <div className="backLayer"></div>
                 <div className='imCard'>
                     <img src={HeroImg} alt='hero' />
                 </div>

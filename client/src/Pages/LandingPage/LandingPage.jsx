@@ -29,7 +29,7 @@ function LandingPage() {
       </div>
 
 
-      <div className='bodyContent footerCard'>
+      <div className='footerCard'>
         <Footer />
       </div>
     </div>
