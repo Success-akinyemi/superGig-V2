@@ -1,282 +1,220 @@
 .hero{
+    margin-top: 65px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.hero .heroCard{
+    width: 80vw;
     display: flex;
     align-items: center;
+    gap: 2rem;
+    justify-content: space-between;
+    position: relative;
+    
+}
+
+.hero .heroCard .bonus{
+    position: absolute;
+    border-radius: 50%;
+    padding: 20px;
+    background: var(--second-color);
+    color: var(--color-white);
+    display: flex;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+    bottom: 6rem;
+    left: 20rem;
+    width: 100px;
+    height: 100px;
 }
 
-.hero .top{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: var(--color-dark);
-    transition: all 500ms ease;
-    margin-bottom: 5rem;
-    margin-top: 4rem;
-    justify-content: flex-start;
-    margin-right: auto;
+.hero .heroCard .bonus h2{
+    font-size: 20px;
+    font-family: "Birthstone", cursive;
+    font-weight: 500;
 }
 
-.hero .top span{
-    padding: 15px 25px;
-    border-radius: 20px;
-    font-size: 17px;
+.hero .heroCard .bonus span{
+    font-size: 40px;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 500ms ease;
+    margin-top: -3rem;
+    margin-bottom: -3rem;
 }
 
-.hero .top .active1{
-    background: var(--second-color-light);
-    color: var(--second-color);
-    transition: all 500ms ease;
+.hero .heroCard .bonus p{
+    font-size: 14px;
 }
 
-.hero .top .active2{
-    background: var(--home-btn-light);
-    color: var(--home-btn);
-    transition: all 500ms ease;
+.hero .heroCard .left,
+.hero .heroCard .right{
+    flex: 1;
 }
 
-.hero .body{
+.hero .heroCard .left h1{
+    font-family: "Birthstone", cursive;
+    font-weight: 400;
+    font-size: 120px;
+}
+
+.hero .heroCard .floatingText{
+    margin-top: -6rem;
+    height: 70px;
+    overflow: hidden;
+}
+
+.hero .heroCard .floatingText span{
     display: flex;
-    width: 100%;
-    gap: 2rem;
-    align-items: center;
+    height: 100%;
+    font-size: 50px;
+    animation: spin 6s infinite;
+    font-weight: 600;
+    color: var(--second-color);
+
 }
 
-.hero .left{
-    flex: 1.3;
+@keyframes spin {
+    10%{
+        transform:  translateY(-112%);
+    }
+    25%{
+        transform:  translateY(-100%);
+    }
+    35%{
+        transform:  translateY(-212%);
+    }
+    50%{
+        transform:  translateY(-200%);
+    }
+    60%{
+        transform:  translateY(-312%);
+    }
+    75%{
+        transform:  translateY(-300%);
+    }
+    85%{
+        transform:  translateY(-412%);
+    }
+    100%{
+        transform:  translateY(-400%);
+    }
 }
 
-.hero .right{
-    flex: 1.5;
+.hero .heroCard .left p{
+    font-size: 20px;
+    font-weight: 500;
 }
 
-.hero .left .content{
+.hero .heroCard .left p span{
+    color: var(--second-color);
+    font-weight: 700;
+    font-size: 23px;
+}
+
+.hero .heroCard .left p span:last-child{
+    font-size: 35px;
+}
+
+.hero .left .cta{
+    margin-top: 3rem;
+}
+
+.hero .left .cta .link{
+    padding: 10px 25px;
+    background: var(--second-color);
+    color: var(--primary-color);
+    font-size: 20px;
+    border-radius: 15px;
+    margin-top: 1rem;
     transition: all 300ms ease;
 }
 
-.hero .left .text{
-    font-size: 55px;
-    color: var(--second-color);
-    margin-top: -3.5rem;
-    font-weight: 600;
-}
-
-.hero .left .moreText{
-    color: #009ddb;
-}
-
-.hero .left p{
-    font-size: 16px;
-    color: var(--color-dark);
-    font-weight: 500;
-}
-
-.hero .left .btnCard{
-    margin-top: 2rem;
-    width: 100%;
+.hero .heroCard .right{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.hero .left .btnCard .btn{
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-weight: 500;
-    border-radius: 20px;
-}
-
-.hero .left .btnCard .btn-1{
-    border: 3px solid var(--color-dark);
-    color: var(--color-dark);
-}
-
-.hero .left .btnCard .btn-2{
-    color: var(--color-white);
-    background: #009ddb;
-}
-
-.hero .left .contentTwo .text{
-    color: var(--home-btn);
-    line-height: -2rem;
-}
-
-.hero .left .contentTwo .btn-2{
-    background: var(--home-btn);
-}
-
-.hero .right{
-    display: flex;
-    align-items: center;
     justify-content: flex-end;
-    position: relative;
 }
 
-.hero .right .imCard{
-    width: 90%;
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
+.hero .heroCard .right img{
+    width: 70%;
 }
 
-.hero .right .backLayer{
-    position: absolute;
-    width: 90%;
-    height: 100%;
-    background: var(--second-color);
-    border-radius: 10px;
-    right: -20px;
-    bottom: -20px;
+@media screen and (max-width: 1010px) {
+    .hero .heroCard .bonus{
+        width: 70px;
+        height: 70px;
+        bottom: 4rem;
+    }
+
+    .hero .heroCard .bonus span{
+        font-size: 30px;
+    }
+
+    .hero .heroCard .bonus p{
+        font-size: 11px;
+    }
 }
 
-.hero .right .imCard img{
-    width: 100%;
-    border-radius: 10px;
-    transform: scaleX(-1);
-}
-
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 800px) {
     .hero{
-        width: 90%;
+        padding-bottom: 4rem;
     }
 
-    .hero .left .text{
-        font-size: 40px;
-        margin-top: -2rem;
+    .hero .heroCard .bonus{
+        top: 4rem;
+        left: 50vw;
+        padding: 30px;
     }
 
-    .hero .left{
-        flex: 1;
-    }
-    
-    .hero .right{
-        flex: 1;
+    .hero .heroCard{
+        width: 95vw;
     }
 
-    .hero .right .imCard img{
-        width: 100%;
-        margin-left: auto;
-    }
-
-    .hero .right .backLayer{
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 1100px) {
-    .hero{
-        width: 80%;
-    }
-
-    .hero .left{
-        flex: 1;
-    }
-    
-    .hero .right{
-        flex: 1;
-    }
-
-    .hero .right .imCard img{
-        width: 80%;
-    }
-
-    .hero .right .backLayer{
-        width: 80%;
-    }
-}
-
-@media screen and (max-width: 980px) {
-    .hero{
-        width: 70%;
-    }
-}
-
-@media screen and (max-width: 850px) {
-    .hero{
-        width: 60%;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .hero{
-        width: 100%;
-    }
-
-    .hero .top{
-        margin-top: 3rem;
-        justify-content: flex-start;
-        margin-left: 17rem;
-        margin-bottom: 5rem;
-    }
-    
-    .hero .body{
+    .hero .heroCard{
         flex-direction: column;
-        width: 100%;
     }
 
-    .hero .left{
-        flex: 1;
-    }
-    
-    .hero .right{
-        flex: 1;
+    .hero .heroCard .right{
         justify-content: center;
-        align-items: center;
-        margin-top: 5rem;
-    }
-
-    .hero .right .imCard{
-        width: 60%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .hero .right .imCard img{
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .hero .right .backLayer{
-        display: none;
     }
 }
 
-@media screen and (max-width: 650px) {
-    .hero{
-        width: 100vw;
-        padding-left: 10px;
-        padding-right: 10px;
+@media screen and (max-width: 600px) {
+    .hero .heroCard .bonus{
+        top: 4rem;
+        left: 70vw;
+        padding: 30px;
     }
 
-    .hero .top{
-        justify-content: flex-start;
-        margin-left: 0;
+    .hero .heroCard .bonus span{
+        font-size: 25px;
+
     }
 
-    .hero .right .imCard{
-        width: 80%;
+    .hero .heroCard .bonus p{
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .hero .heroCard .bonus{
+        top: 3rem;
+        left: 70vw;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
     }
 
-    .hero .right .imCard img{
-        width: 100%;
+    .hero .heroCard .bonus span{
+        font-size: 20px;
+        font-weight: 700;
     }
-
-    .hero .left .btnCard{
-        width: 95%;
-    }
-
-    .hero .left .text{
-        width: 97%;
-        font-size: 40px;
+    
+    .hero .heroCard .bonus p{
+        font-size: 11px;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
     }
 }

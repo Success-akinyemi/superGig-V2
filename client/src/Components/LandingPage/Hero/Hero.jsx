@@ -1,71 +1,42 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import './Hero.css'
-import { Cursor, useTypewriter } from 'react-simple-typewriter'
-//import HeroImg from '../../../assets/herobg.jpg'
-//import HeroImg from '../../../assets/herobg2.jpg'
-import HeroImg from '../../../assets/herobg3.jpg'
+import HeroImg from '../../../assets/one.jpg'
 
-
-function Hero({ content, setContent}) {
-    const [text] = useTypewriter({
-        words: ['Audience', 'Interaction', 'Awareness', 'Upvotes', 'Reposts'],
-        loop: {},
-        typeSpeed: 120,
-        deleteSpeed: 80,
-    });
-
+function Hero() {
   return (
     <div className='hero'>
-        <div className="top">
-            <span onClick={() => setContent('business')} className={`contentOption ${content === 'business' ? 'active1' : ''}`}>Business</span>
-            <span onClick={() => setContent('freelance')} className={`contentOption ${content === 'freelance' ? 'active2' : ''}`}>Freelance</span>
-        </div>
+        <div className='componentWidth heroCard'>
+          <div className="bonus">
+            <h2>Get up to</h2> <br />
+            <span>15%</span> <br />
+            <p>deposit bonus</p>
+          </div>
 
-        <div className='body'>
             <div className="left">
-            
-                {
-                    content === 'business' && (
-                        <div className="content contentOne">
-                            <h2 className='text'>Get More</h2>
-                            <h2 className='text moreText'>
-                                <span>{text}</span>
-                                <Cursor cursorStyle='<' />
-                            </h2>
-                            <h2 className='text'>Get More Profit</h2>
-                            <p>
-                            Expand your business horizons and enhance your global presence.<br /> Elevate your brand visibility and attain your objectives with effective promotion.
-                            </p>
+                <h1>Get More</h1>
+                <div className="floatingText">
+                  <div clasName='words'>
+                    <span>Followers</span>
+                    <span>Profits</span>
+                    <span>Comments</span>
+                    <span>Audinces</span>
+                    <span>Votes</span>
+                  </div>
+                </div>
 
-                            <div className="btnCard">
-                                <Link className='link btn btn-2' to='/register'>Post a Task</Link>
-                                <Link className='link btn btn-1' to='/login'>sign in</Link>
-                            </div>
-                        </div>
-                    )
-                }
+                <p>
+                  With supergig, move closer to you target <span>Audience</span>, more <span>Engagement</span>,
+                  more <span>Attention</span>, more <span>Retweets</span>,
+                  more <span>Profits!.</span>
+                </p>
 
-                {
-                    content === 'freelance' && (
-                        <div className="content contentTwo">
-                            <h2 className='text'>Boost Income by completing simple task</h2>
-                            <p>with superGig earn extra cash doing what you love</p>
-
-                            <div className="btnCard">
-                                <Link className='link btn btn-2' to='/register'>Complete a Task</Link>
-                                <Link className='link btn btn-1' to='/login'>sign in</Link>
-                            </div>
-                        </div>
-                    )
-                }
-
+                <div className="cta">
+                  <Link className="link" to='/register'>Get Started</Link>
+                </div>
             </div>
 
             <div className="right">
-                <div className="backLayer"></div>
-                <div className='imCard'>
-                    <img src={HeroImg} alt='hero' />
-                </div>
+              <img src={HeroImg} alt='More followers more sales more profits' />
             </div>
         </div>
     </div>

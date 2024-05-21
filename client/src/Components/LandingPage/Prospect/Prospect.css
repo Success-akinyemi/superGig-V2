@@ -1,0 +1,163 @@
+.prospect{
+    width: 100%;
+    background: var(--color-white);
+    background: rgba(219, 62, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 7rem;
+}
+
+.prospect .prospectContainer{
+    width: 85vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.prospect .prospectContainer h1{
+    text-align: center;
+    font-size: 24px;
+}
+
+.prospect .prospectContainer h1 span{
+    color: var(--second-color);
+    font-family: "Birthstone", cursive;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+.prospect .prospectContainer p{
+    font-size: 19px;
+    text-align: center;
+    margin-top: -0.5rem;
+}
+
+.prospect .prospectContainer .imgCard{
+    width: 95vw;
+    margin-bottom: 5rem;
+    margin-top: 2rem;
+}
+
+.prospect .prospectContainer .imgCard img{
+    width: 50px;
+}
+
+.slick-slide > div{
+    width: 60px;
+}
+
+.prospect .prospectContainer .whyUs h1{
+    font-family: "Birthstone", cursive;
+    font-weight: 600;
+    font-size: 60px;
+    color: var(--second-color);
+}
+
+.prospect .prospectContainer .whyUs .content{
+    display: flex;
+    gap: 6rem;
+    align-items: center;
+}
+
+.prospect .prospectContainer .whyUs .content .left{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.4rem;
+}
+
+.prospect .prospectContainer .whyUs .content .left .card{
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: var(--color-white);
+    box-shadow: var(--box-shadow);
+}
+
+.prospect .prospectContainer .whyUs .content .left .card:nth-child(2){
+    background-color: var(--color-info-light);
+}
+
+.prospect .prospectContainer .whyUs .content .left .card:last-child{
+    background-color: var(--color-light);
+}
+
+.prospect .prospectContainer .whyUs .content .left .card img{
+    width: 100px;
+}
+
+.prospect .prospectContainer .whyUs .content .left .card h2{
+    width: 100%;
+}
+
+.prospect .prospectContainer .whyUs .content .left .card p{
+    color: var(--color-dark);
+    font-size: 17px;
+}
+
+.prospect .prospectContainer .whyUs .content .right{
+    flex: 1;
+    border-radius: 20px;
+    background: var(--color-white);
+    box-shadow: var(--box-shadow);
+}
+
+.prospect .prospectContainer .whyUs .content .right .imgCardRight{
+    padding: 30px;
+    height: 700px;
+}
+
+.prospect .content .right .imgCardRight .contentRight{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.prospect .content .imgCardRight .card{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.prospect .content .imgCardRight .card img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media screen and (max-width: 800px) {
+    .prospect .prospectContainer{
+        width: 95vw;
+    }
+
+    .prospect .prospectContainer .whyUs .content{
+        flex-direction: column;
+    }
+
+    .prospect .prospectContainer .whyUs .content .left .card{
+        width: 80%;
+    }
+
+    .prospect .prospectContainer .whyUs .content .right{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .prospect .prospectContainer .whyUs .content .right .imgCardRight{
+        width: 85%;
+    }
+}

@@ -1,0 +1,67 @@
+.accordion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+}
+
+.accordion .accordionCard{
+    width: 85vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5rem;
+}
+
+.accordion .accordionCard h1{
+    color: var(--second-color);
+    font-family: "Birthstone", cursive;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+.accordion .accordionCard .faqCard{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.accordion .accordionCard .faqCard .card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.accordion .accordionCard .faqCard .card .title{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--second-color);
+    flex-direction: row-reverse;
+    border-bottom:  3px solid var(--second-color);
+    padding: 0.5rem;
+}
+
+.accordion .accordionCard .faqCard .card .title .icon{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.accordion .accordionCard .faqCard .dropDown p{
+    font-size: 19px;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 800px) {
+    .accordion .accordionCard .faqCard{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .accordion .accordionCard .faqCard{
+        width: 90%;
+    }
+}
