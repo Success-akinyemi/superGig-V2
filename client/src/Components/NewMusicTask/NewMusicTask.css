@@ -1,0 +1,36 @@
+.newMusicTask{
+    width: 30vw;
+    height: 45vh;
+    overflow-y: auto;
+}
+
+.newMusicTask .inputGroup{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.newMusicTask .inputGroup label{
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+}
+
+.newMusicTask .inputGroup input,
+.newMusicTask .inputGroup select{
+    padding: 5px;
+    border: none;
+    border-bottom: 3px solid var(--color-dark);
+    transition: all 300ms ease-in;
+    outline: none;
+    font-size: 17px;
+}
+
+.newMusicTask .inputGroup input:focus{
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.newMusicTask .btn{
+    width: 100%;
+}

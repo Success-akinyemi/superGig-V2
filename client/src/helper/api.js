@@ -447,6 +447,32 @@ export async function newSocialMediaPlatform(formData){
     }
 }
 
+export async function newMusicPlatform(formData){
+    try {
+        const res = await axios.post('/api/admin/newMusicPlatform', formData, {withCredentials: true} )
+        if(res?.data.success){
+            toast.success('New music platform added')
+            window.location.reload()
+        }
+    } catch (error) {
+        console.log('ERROR VERIFYING USER API', error)
+        if (error.response && error.response.data) {
+            const errorMsg = error.response.data.data;
+            const errorMsg2 = error.response.data.error;
+            console.log('MSG', errorMsg)
+            console.log('MSG2', errorMsg2)
+            if(errorMsg){
+                toast.error(errorMsg)
+            } else{
+                toast.error(errorMsg2)
+            }
+            return errorMsg;
+          } else {
+            return 'An error occurred during the request.';
+          }
+    }
+}
+
 export async function newSocialMediaTask(formData){
     try {
         const res = await axios.post('/api/admin/newSocialMediaTask', formData, {withCredentials: true} )
@@ -473,8 +499,83 @@ export async function newSocialMediaTask(formData){
     }
 }
 
+export async function newMusicTask(formData){
+    try {
+        const res = await axios.post('/api/admin/createMusicTask', formData, {withCredentials: true} )
+        if(res?.data.success){
+            toast.success(res?.data.data)
+            window.location.reload()
+        }
+    } catch (error) {
+        console.log('ERROR VERIFYING USER API', error)
+        if (error.response && error.response.data) {
+            const errorMsg = error.response.data.data;
+            const errorMsg2 = error.response.data.error;
+            console.log('MSG', errorMsg)
+            console.log('MSG2', errorMsg2)
+            if(errorMsg){
+                toast.error(errorMsg)
+            } else{
+                toast.error(errorMsg2)
+            }
+            return errorMsg;
+          } else {
+            return 'An error occurred during the request.';
+          }
+    }
+}
 
+export async function newTaskCategory(formData){
+    try {
+        const res = await axios.post('/api/admin/newTaskCategory', formData, {withCredentials: true} )
+        if(res?.data.success){
+            toast.success(res?.data.data)
+            window.location.reload()
+        }
+    } catch (error) {
+        console.log('ERROR VERIFYING USER API', error)
+        if (error.response && error.response.data) {
+            const errorMsg = error.response.data.data;
+            const errorMsg2 = error.response.data.error;
+            console.log('MSG', errorMsg)
+            console.log('MSG2', errorMsg2)
+            if(errorMsg){
+                toast.error(errorMsg)
+            } else{
+                toast.error(errorMsg2)
+            }
+            return errorMsg;
+          } else {
+            return 'An error occurred during the request.';
+          }
+    }
+}
 
+export async function updateTaskCategory(formData){
+    try {
+        const res = await axios.post('/api/admin/updateTaskCategory', formData, {withCredentials: true} )
+        if(res?.data.success){
+            toast.success(res?.data.data)
+            window.location.reload()
+        }
+    } catch (error) {
+        console.log('ERROR VERIFYING USER API', error)
+        if (error.response && error.response.data) {
+            const errorMsg = error.response.data.data;
+            const errorMsg2 = error.response.data.error;
+            console.log('MSG', errorMsg)
+            console.log('MSG2', errorMsg2)
+            if(errorMsg){
+                toast.error(errorMsg)
+            } else{
+                toast.error(errorMsg2)
+            }
+            return errorMsg;
+          } else {
+            return 'An error occurred during the request.';
+          }
+    }
+}
 
 
 

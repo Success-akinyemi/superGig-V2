@@ -18,11 +18,7 @@ export const Protect = async (req, res, next) => {
 
 
 export const AdminProtect = async (req, res, next) => {
-    let token;
-
-    if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
-        token = req.headers.authorization.split(' ')[1]
-    }
+    const token = req.cookies.token
 
     if(!token){
         return next(new ErrorResponse('Not Authorized to access this route', 401))
@@ -38,7 +34,7 @@ export const AdminProtect = async (req, res, next) => {
         }
 
         if(!user.isAdmin){
-            return next(new ErrorResponse('No User Found with this ID', 404))
+            return next(new ErrorResponse('Not Authorized to access this route', 404))
         }
 
         req.user = user

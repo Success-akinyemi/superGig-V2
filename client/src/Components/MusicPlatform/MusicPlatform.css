@@ -1,0 +1,59 @@
+.musicPlatform{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.musicPlatform .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--color-dark);
+}
+
+.musicPlatform .top h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.musicPlatform .top button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: var(--color-primary-opa);
+    transition: all 300ms ease-in;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: var(--color-white);
+}
+
+.musicPlatform .top button:hover{
+    background: var(--color-primary);
+}
+
+.musicPlatform .bodyItem{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+.musicPlatform .bodyItem .card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--color-dark);
+    width: 100%;
+}
+
+.musicPlatform .card img{
+    width: 20px;
+}
+.musicPlatform .card .btn{
+    padding: 5px 20px;
+    background: var(--color-primary-opa);
+    cursor: pointer;
+    color: var(--color-white);
+    border-radius: 10px;
+}

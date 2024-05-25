@@ -31,35 +31,40 @@ function TaskPage({toggleMenu, menuOpen, setSelectedCard, setTaskId, setUserProf
     if(platformCode === '01'){
       userHasAccount = user.instagramAccount
       if(!userHasAccount){
-        toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        //toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        toast.error(`Update Your Social media Account to Perform task`)
         navigate('/profile')
       }
     }
     if(platformCode === '02'){
       userHasAccount = user.facebookAccount
       if(!userHasAccount){
-        toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        //toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        toast.error(`Update Your Social media Account to Perform task`)
         navigate('/profile')
       }
     }
     if(platformCode === '03'){
       userHasAccount = user.twitterAccount
       if(!userHasAccount){
-        toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        //toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        toast.error(`Update Your Social media Account to Perform task`)
         navigate('/profile')
       }
     }
     if(platformCode === '04'){
       userHasAccount = user.threadsAccount
       if(!userHasAccount){
-        toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        //toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        toast.error(`Update Your Social media Account to Perform task`)
         navigate('/profile')
       }
     }
     if(platformCode === '05'){
       userHasAccount = user.tiktokAccount
       if(!userHasAccount){
-        toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        //toast.error(`Update Your ${task?.platform} Account to Perform task`)
+        toast.error(`Update Your Social media Account to Perform task`)
         navigate('/profile')
       }
     }

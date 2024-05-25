@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useFetchAllSocialMediaCategory } from '../../../hooks/fetch.hooks';
 import './SocialMediaTask.css'
+import { useFetchAllSocialMediaCategory } from '../../hooks/fetch.hooks';
 
 function SocialMediaTask({setSelectedCard, setDisplay, toggleControlMenu, setPlatformcode}) {
   const { isLoadingSocialMediaCategory, SocialMediaCategoryData } = useFetchAllSocialMediaCategory();

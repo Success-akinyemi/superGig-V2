@@ -39,14 +39,19 @@ function ControlSidebar({toggleControlMenu, controlMenu, setDisplay, display}) {
             <span className='link menuLink'>Payment Order</span>
           </span>
 
-          <span onClick={() => handleMenu('allTask')} className={`link h-2 menuLinks ${display === 'allTask' ? 'active' : ''} `}>
+          <span onClick={() => handleMenu('allTaskCategory')} className={`link h-2 menuLinks ${display === 'allTask' ? 'active' : ''} `}>
             <AssignmentIcon className='menuLinks-icon' />
-            <span className='link menuLink'>All Task</span>
+            <span className='link menuLink'>All Task Category</span>
           </span>
           
           <span onClick={() => handleMenu('socialMediaTask')} className={`link h-2 menuLinks ${display === 'socialMediaTask' ? 'active' : ''} `}>
             <PeopleAltOutlinedIcon className='menuLinks-icon' />
-            <span className='link menuLink'>Social Media Task</span>
+            <span className='link menuLink'>Social Media</span>
+          </span>
+
+          <span onClick={() => handleMenu('musicPlatform')} className={`link h-2 menuLinks ${display === 'musicPlatform' ? 'active' : ''} `}>
+            <PeopleAltOutlinedIcon className='menuLinks-icon' />
+            <span className='link menuLink'>Music platform</span>
           </span>
 
           <span onClick={() => handleMenu('')} className={`link h-2 menuLinks ${display === '' ? 'active' : ''} `}>

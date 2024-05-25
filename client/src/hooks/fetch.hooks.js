@@ -23,7 +23,7 @@ export function useFetch(query){
                 const { id } = !query ? await getUser() : '';
 
 
-                const { data, status} = !query ? await axios.get(`/api/auth/user/${id}`) : await axios.get(`/api/auth/${query}`)
+                const { data, status} = !query ? await axios.get(`/api/admin/getAllUser`, {withCredentials: true}) : await axios.get(`/api/admin/getAllUser`, {withCredentials: true})
                 //console.log('Data from Hooks>>>', data)
 
                 if(status === 200){
@@ -375,6 +375,33 @@ export function useFetchAllSocialMediaCategory(query){
     return socialMediaCategory
 }
 
+/**Get All Music Platform Data */
+export function useFetchAllMusicPlatform(query){
+    const [musicPlatform, setMusicPlatform] = useState({ isLoadingMusicPlatform: true, musicPlatformData: null, musicPlatformStatus: null, musicPlatformServerError: null})
+    
+    useEffect(() => {
+        const fetchMusicPlatform =  async () => {
+            try {
+
+                const { data, status} = !query ? await axios.get(`/api/getAllMusicPlatform`, {withCredentials: true}) : await axios.get(`/api/getAllMusicPlatform`,  {withCredentials: true})
+                //console.log('Transaction Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setMusicPlatform({ isLoadingMusicPlatform: false, musicPlatformData: data, musicPlatformStatus: status, musicPlatformServerError: null})
+                } else{
+                    setMusicPlatform({ isLoadingMusicPlatform: false, musicPlatformData: null, musicPlatformStatus: status, musicPlatformServerError: null})
+                }
+            } catch (error) {
+                console.log('COULF NOT FETCH DATA socail media category', error)
+                setMusicPlatform({ isLoadingMusicPlatform: false, musicPlatformData: null, musicPlatformStatus: null, musicPlatformServerError: error})
+            }
+        };
+        fetchMusicPlatform()
+    }, [query])
+
+    return musicPlatform
+}
+
 /**Get All Social media Task Data */
 export function useFetchSocialMediaTask(query){
     const [socialMediaTaskData, setSocialMediaTaskData] = useState({ isLoadingSocialMediaTaskData: true, socialMediaTaskData: null, socialMediaTaskStatus: null, socialMediaTaskServerError: null})
@@ -402,7 +429,34 @@ export function useFetchSocialMediaTask(query){
     return socialMediaTaskData
 }
 
-/**Get All Task for a Social media */
+/**Get All Music Task Data */
+export function useFetchMusicTask(query){
+    const [musicTaskData, setMusicTaskData] = useState({ isLoadingMusicTaskData: true, musicTaskData: null, musicTaskStatus: null, musicTaskServerError: null})
+    
+    useEffect(() => {
+        const fetchMusicTaskData =  async () => {
+            try {
+
+                const { data, status} = !query ? await axios.get(`/api/getAllMusicTask`, {withCredentials: true}) : await axios.get(`/api/getAllMusicTask`,  {withCredentials: true})
+                //console.log('Transaction Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setMusicTaskData({ isLoadingMusicTaskData: false, musicTaskData: data, musicTaskStatus: status, musicTaskServerError: null})
+                } else{
+                    setMusicTaskData({ isLoadingMusicTaskData: false, musicTaskData: null, musicTaskStatus: status, musicTaskServerError: null})
+                }
+            } catch (error) {
+                console.log('COULF NOT FETCH DATA Transactions', error)
+                setMusicTaskData({ isLoadingMusicTaskData: false, musicTaskData: null, musicTaskStatus: null, musicTaskServerError: error})
+            }
+        };
+        fetchMusicTaskData()
+    }, [query])
+
+    return musicTaskData
+}
+
+/**Get All Task for a Social media platform */
 export function useFetchGetAllSocialMediaTask(query){
     const [socialMediaTaskData, setSocialMediaTaskData] = useState({ isLoadingSocialMediaTaskData: true, socialMediaTaskData: null, socialMediaTaskStatus: null, socialMediaTaskServerError: null})
     
@@ -428,3 +482,31 @@ export function useFetchGetAllSocialMediaTask(query){
 
     return socialMediaTaskData
 }
+
+/**Get All Task for a music Platform */
+export function useFetchGetAllMusicTask(query){
+    const [musicTaskData, setMusicTaskData] = useState({ isLoadingMusicTaskData: true, musicTaskData: null, musicTaskStatus: null, musicTaskServerError: null})
+    
+    useEffect(() => {
+        const fetchMusicTaskData =  async () => {
+            try {
+                const { code, id} = query
+                const { data, status} = !query ? await axios.get(`/api/admin/getAllTaskForMusic/:${code}`, {withCredentials: true}) : await axios.get(`/api/admin/getAllTaskForMusic/:${code}/:${id}`,  {withCredentials: true})
+                //console.log('Transaction Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setMusicTaskData({ isLoadingMusicTaskData: false, musicTaskData: data, musicTaskStatus: status, musicTaskServerError: null})
+                } else{
+                    setMusicTaskData({ isLoadingMusicTaskData: false, musicTaskData: null, musicTaskStatus: status, musicTaskServerError: null})
+                }
+            } catch (error) {
+                console.log('COULF NOT FETCH DATA Transactions', error)
+                setMusicTaskData({ isLoadingMusicTaskData: false, musicTaskData: null, musicTaskStatus: null, musicTaskServerError: error})
+            }
+        };
+        fetchMusicTaskData()
+    }, [query])
+
+    return musicTaskData
+}
+

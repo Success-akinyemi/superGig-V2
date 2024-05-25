@@ -18,6 +18,8 @@ import TaskCategoryModel from "../models/TaskCategory.js"
 import SocialMediaPlatformModel from "../models/SocialMediaPlatform.js"
 import SocialMediaTaskModel from "../models/SocialMediaTask.js"
 import FundingModel from "../models/Funding.js"
+import MusicTaskModel from "../models/MusicTask.js"
+import MusicPlatformModel from "../models/MusicPlatform.js"
 
 /**Add social media account */
 export async function addUserSocialMedia(req, res){
@@ -288,11 +290,11 @@ export async function createTask(req, res){
                 outro: `
                     price: ${amount}, platForm: ${platform}, Workers needed: ${numberOfWorkers}, Task: ${task}
                 `,
-                verifyUrl: 'https://supergig.onrender.com',
+                verifyUrl: 'https://supergig.com.ng',
                 text: 'View Job',
             });
 
-            const { password: hashedPassword, ...userData } = user._doc
+            const { resetPasswordToken, resetPasswordExpire, password: hashedPassword, ...userData } = user._doc
         res.status(201).json({ success: true, data: {success: true, data: userData }})
     } catch (error) {
         console.log('ERROR CREATING TASK', error)
@@ -762,4 +764,26 @@ export async function getAllSocialMediaTask(req, res){
     }
 }
 
+export async function getAllMusicPlatform(req, res){
+    try {
+        console.log('ALL MUSIC PALTFORM')
+        const allMusicPlatform = await MusicPlatformModel.find()
+
+        res.status(200).json({ success: true, data: allMusicPlatform })
+    } catch (error) {
+        console.log('UNABLE TO GET ALL TASK CATEGORY(MUSIC)', error)
+        res.status(500).json({ success: false, data: 'Unable to get all task categories.'})
+    }
+}
+
+export async function getAllMusicTask(req, res){
+    try {
+        const allMusicTask = await MusicTaskModel.find()
+
+        res.status(200).json({ success: true, data: allMusicTask})
+    } catch (error) {
+        console.log('UNABLE TO GET ALL SOCIAL MEDIA TASK', error)
+        res.status(500).json({ success: false, data: 'Unable to get all Social media task'})
+    }
+}
 //api to update job rejected by user flag freelancer

@@ -282,7 +282,7 @@ export async function login (req, res, next){
         //sendToken(user, 200, res)
         const token = user.getSignedToken();
         const expiryDate = new Date(Date.now() + 10 * 60 * 60 * 1000)
-        const { password: hashedPassword, ...userData } = user._doc
+        const { resetPasswordToken, resetPasswordExpire, password: hashedPassword, ...userData } = user._doc
         //res.status(200).json({ success: true, token: token, isVerified: true, data: {success: true, data: userData }})
         res.cookie('token', token, { httpOnly: true, expires: expiryDate, sameSite: 'None', secure: true } ).status(200).json({ success: true, token: token, isVerified: true, data: {success: true, data: userData }})
     } catch (error) {
@@ -424,7 +424,7 @@ export async function updateUser(req, res){
         );
 
 
-        const { password: hashedPassword, ...userData } = user._doc
+        const { resetPasswordToken, resetPasswordExpire, password: hashedPassword, ...userData } = user._doc
         res.status(201).json({ success: true, data: {success: true, data: userData }})
     } catch (error) {
         console.log('ERROR UPDATING USER', error)

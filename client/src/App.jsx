@@ -34,6 +34,10 @@ import LandingPage from './Pages/LandingPage/LandingPage'
 import Controls from './Pages/Controls/Controls'
 import NewSocialMedia from './Components/NewSocialMedia/NewSocialMedia'
 import NewSocialMediaTask from './Components/NewSocialMediaTask/NewSocialMediaTask'
+import NewTaskCategory from './Components/NewTaskCategory/NewTaskCategory'
+import EditTaskCategory from './Components/EditTaskCategory/EditTaskCategory'
+import NewMusic from './Components/NewMusic/NewMusic'
+import NewMusicTask from './Components/NewMusicTask/NewMusicTask'
 
 
 function App() {
@@ -43,6 +47,7 @@ function App() {
   const [ taskId, setTaskId ] = useState()
   const [ userProfile, setUserProfile ] = useState()
   const [ proofImg, setProofImg ] = useState()
+  const [ editTaskId, setEditTaskId ] = useState()
 
   const redirectToTaskPoint = () => {
     window.location.href = '/taskPoint'; 
@@ -94,9 +99,25 @@ function App() {
         return (
             <NewSocialMedia />
         );
+      case 'newMusicPlatform' :
+        return (
+            <NewMusic />
+        );
       case 'newSocialMediaTask' :
         return (
             <NewSocialMediaTask />
+        );
+      case 'newMusicTask' :
+        return (
+            <NewMusicTask />
+        );
+      case 'newTaskCategory' :
+        return (
+            <NewTaskCategory />
+        );
+      case 'editTaskCategory' :
+        return (
+            <EditTaskCategory editTaskId={editTaskId} />
         );
 
     }
@@ -199,7 +220,7 @@ function App() {
           </Route>
 
           <Route element={<AuthorizeUser />}>
-            <Route path='/control' element={<Controls menuOpen={menuOpen} toggleMenu={toggleMenu} setSelectedCard={setSelectedCard} setProofImg={setProofImg} />} />
+            <Route path='/control' element={<Controls menuOpen={menuOpen} toggleMenu={toggleMenu} setSelectedCard={setSelectedCard} setEditTaskId={setEditTaskId} />} />
           </Route>
           
           

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const SocialMediaTaskSchema = new mongoose.Schema({
+const MusicTaskSchema = new mongoose.Schema({
     platformCode: {
         type: String
     },
@@ -26,5 +26,5 @@ const SocialMediaTaskSchema = new mongoose.Schema({
 {timestamps: true}
 )
 
-const SocialMediaTaskModel = mongoose.model('SocialMediaTask', SocialMediaTaskSchema)
-export default SocialMediaTaskModel
+const MusicTaskModel = mongoose.model('musicTask', MusicTaskSchema)
+export default MusicTaskModel

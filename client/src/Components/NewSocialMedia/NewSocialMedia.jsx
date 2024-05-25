@@ -57,7 +57,7 @@ function NewSocialMedia() {
             console.log(formData)
             const res = await newSocialMediaPlatform(formData)
         } catch (error) {
-            console.log('Unable to create new scoial media platform::', error)
+            console.log('Unable to create new social media platform::', error)
         } finally {
             setIsLoading(false)
         }

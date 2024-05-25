@@ -8,6 +8,8 @@ import { createTask } from '../../helper/api';
 import { signInSuccess } from '../../redux/user/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import SocialMedia from './Task/SocialMedia';
+import MusicTask from './Task/MusicTask';
 
 function CreateTask() {
   const dispatch = useDispatch()
@@ -35,6 +37,8 @@ function CreateTask() {
   const { isLoadingSocialMediaTaskData, socialMediaTaskData } = useFetchSocialMediaTask()
   const socialMediaTask = socialMediaTaskData?.data
   //console.log(socialMediaTask)
+
+  const [currentComponent, setCurrentComponent] = useState(null);
   
 
   const [selectedTaskCategory, setSelectedTaskCategory] = useState('');
@@ -159,12 +163,35 @@ function CreateTask() {
     console.log('formData', formData)
   }, [formData])
 
+  const handleNextTask = () => {
+    if (selectedTaskCategory === '1'){
+      setContent(2)
+      setCurrentComponent('socialMedia')
+    }
+    if (selectedTaskCategory === '3'){
+      setContent(2)
+      setCurrentComponent('musicTask')
+    }
+  }
+
+  const renderComponent = () => {
+    switch (currentComponent) {
+      case 'socialMedia':
+        return <SocialMedia content={content} setContent={setContent} />;
+      case 'musicTask':
+        return <MusicTask content={content} setContent={setContent} />;
+      // Add more cases here for other components
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className='createTask'>
       <div className="back" onClick={handleBack}>
           <ArrowBackIcon className='backIcon' />
       </div>
-      <div className="ti tle">
+      <div className="title">
         <Link to='/dashboard' className='link' >Supergig</Link>
       </div>
 
@@ -174,8 +201,8 @@ function CreateTask() {
         <div className="body">
           {
             content === 1 && (
-              <div className="contentCard">
-                <div className="card">
+              <div className="contentCard" style={{width: '100%'}}>
+                <div className="card" >
                   <label>Select Category</label>
                   <Select 
                     data={catData}
@@ -186,32 +213,37 @@ function CreateTask() {
                     heading= {`Select Category`}
                   />
                 </div>
-
-                {
-                  selectedTaskCategory === '1' && (
-                    <div className="card">
-                      <label>Select Platform</label>
-                      <Select 
-                        data={socialMediaData}
-                        onChange={(e) => handlePlatform(e, socialMediaData)}
-                        //id={`platformCode`}
-                        value={`code`}
-                        text={`platform`}
-                        heading= {`Select Platform`}
-                      />
-                    </div>
-                  )
-                }
-                <p className='danger errorMsg'>{noPlatform ? noPlatform : ''}</p>
+                {/**
+                 * 
+                 {
+                   selectedTaskCategory === '1' && (
+                     <div className="card">
+                       <label>Select Platform</label>
+                       <Select 
+                         data={socialMediaData}
+                         onChange={(e) => handlePlatform(e, socialMediaData)}
+                         //id={`platformCode`}
+                         value={`code`}
+                         text={`platform`}
+                         heading= {`Select Platform`}
+                       />
+                     </div>
+                   )
+                 }
+                 * 
+                 */}
+                <p className='danger errorMsg'>{!formData.categoryCode ? 'Select a Category' : ''}</p>
                 <div className='btn'>
-                  <button onClick={() => handleNextSlide('one')}>
+                  <button onClick={handleNextTask}>
                     Proceed
                   </button>
                 </div>
               </div>
             )
           }
-
+          
+          {renderComponent()}
+{/**
           {
             content === 2 && (
               <div className="contentCard">
@@ -289,6 +321,7 @@ function CreateTask() {
               </div>  
             )
           }
+        */}
           
         </div>
       </div>
