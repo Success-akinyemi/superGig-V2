@@ -22,5 +22,5 @@ const MobileApplicationPlatformSchema = new mongoose.Schema({
 {timestamps: true}
 )
 
-const MobileApplicationPlatformModel = mongoose.model('musicPlatform', MobileApplicationPlatformSchema)
+const MobileApplicationPlatformModel = mongoose.model('mobileApplicationPlatform', MobileApplicationPlatformSchema)
 export default MobileApplicationPlatformModel

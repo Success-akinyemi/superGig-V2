@@ -26,5 +26,5 @@ const MobileApplicationTaskSchema = new mongoose.Schema({
 {timestamps: true}
 )
 
-const MobileApplicationTaskModel = mongoose.model('musicTask', MobileApplicationTaskSchema)
+const MobileApplicationTaskModel = mongoose.model('mobileApplicationTask', MobileApplicationTaskSchema)
 export default MobileApplicationTaskModel
