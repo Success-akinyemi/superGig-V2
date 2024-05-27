@@ -2,7 +2,7 @@ import { useFetchGetAllMobileApplicationTask } from '../../hooks/fetch.hooks'
 import './TaskformobileApplication.css'
 
 function TaskformobileApplication({platformCode, setSelectedCard}) {
-    const { isLoadingMobileApplicationTaskData, mobileApplicationTaskData } = useFetchGetAllMobileApplicationTask()
+    const { isLoadingMobileApplicationTaskData, mobileApplicationTaskData } = useFetchGetAllMobileApplicationTask({code: platformCode})
     const data = mobileApplicationTaskData?.data
     return (
     <div className='taskformobileApplication'>

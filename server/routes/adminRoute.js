@@ -35,8 +35,8 @@ privateRouter.route('/getAllTaskForSocialMedia/:code/:id').get(Protect, AdminPro
 privateRouter.route('/getAllTaskForMusic/:code').get(Protect, AdminProtect, controller.getAllTaskForAMusic)
 privateRouter.route('/getAllTaskForMusic/:code/:id').get(Protect, AdminProtect, controller.getAllTaskForAMusic)
 
-privateRouter.route('/getAllTaskForAMobileApplication/:code').get(Protect, AdminProtect, controller.getAllTaskForAMusic)
-privateRouter.route('/getAllTaskForAMobileApplication/:code/:id').get(Protect, AdminProtect, controller.getAllTaskForAMusic)
+privateRouter.route('/getAllTaskForAMobileApplication/:code').get(Protect, AdminProtect, controller.getAllTaskForAMobileApplication)
+privateRouter.route('/getAllTaskForAMobileApplication/:code/:id').get(Protect, AdminProtect, controller.getAllTaskForAMobileApplication)
 
 
 //privateRouter.route('/getTask/:id/:taskId').get(Protect, controller.getSpecificTask)
