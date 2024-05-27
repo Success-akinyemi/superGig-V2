@@ -21,6 +21,7 @@ import FundingModel from "../models/Funding.js"
 import MusicTaskModel from "../models/MusicTask.js"
 import MusicPlatformModel from "../models/MusicPlatform.js"
 import MobileApplicationPlatformModel from "../models/MoblieApplicationPlatform.js"
+import MobileApplicationTaskModel from "../models/MobileApplicationTask.js"
 
 /**Add social media account */
 export async function addUserSocialMedia(req, res){
@@ -797,6 +798,17 @@ export async function getAllMobileApplicationPlatform(req, res){
     } catch (error) {
         console.log('UNABLE TO GET ALL TASK CATEGORY(MOBILE APPLICATION)', error)
         res.status(500).json({ success: false, data: 'Unable to get all mobile application'})
+    }
+}
+
+export async function getAllMobileApplicationTask(req, res){
+    try {
+        const allMusicTask = await MobileApplicationTaskModel.find()
+
+        res.status(200).json({ success: true, data: allMusicTask})
+    } catch (error) {
+        console.log('UNABLE TO GET ALL SOCIAL MEDIA TASK', error)
+        res.status(500).json({ success: false, data: 'Unable to get all Social media task'})
     }
 }
 

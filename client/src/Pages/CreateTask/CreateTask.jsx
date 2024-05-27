@@ -168,6 +168,10 @@ function CreateTask() {
       setContent(2)
       setCurrentComponent('socialMedia')
     }
+    if (selectedTaskCategory === '2'){
+      setContent(2)
+      setCurrentComponent('mobileTask')
+    }
     if (selectedTaskCategory === '3'){
       setContent(2)
       setCurrentComponent('musicTask')
@@ -180,6 +184,9 @@ function CreateTask() {
         return <SocialMedia content={content} setContent={setContent} />;
       case 'musicTask':
         return <MusicTask content={content} setContent={setContent} />;
+      case 'mobileTask':
+        return <MusicTask content={content} setContent={setContent} />;
+
       // Add more cases here for other components
       default:
         return null;

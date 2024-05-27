@@ -34,6 +34,6 @@ privateRouter.route('/getAllSocialMediaTask').get(Protect, controller.getAllSoci
 privateRouter.route('/getAllMusicPlatform').get(Protect, controller.getAllMusicPlatform)
 privateRouter.route('/getAllMusicTask').get(Protect, controller.getAllMusicTask)
 privateRouter.route('/getAllMobileApplicationPlatform').get(Protect, controller.getAllMobileApplicationPlatform)
-
+privateRouter.route('/getAllMobileApplicationTask').get(Protect, controller.getAllMobileApplicationTask)
 export default privateRouter
 
