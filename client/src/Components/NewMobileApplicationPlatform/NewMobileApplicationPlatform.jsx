@@ -74,7 +74,7 @@ function NewMobileApplicationPlatform() {
         </div>
         <div className="inputGroup">
             <label>Task category code</label>
-            <input onChange={handleChange} type="text" id="taskCategoryCode" placeholder='Enter 3' />
+            <input onChange={handleChange} type="text" id="taskCategoryCode" placeholder='Enter 2' />
         </div>
 
         <div className="imgGroup" onClick={() => fileRef.current.click()} >

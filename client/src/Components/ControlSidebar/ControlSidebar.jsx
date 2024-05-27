@@ -54,7 +54,7 @@ function ControlSidebar({toggleControlMenu, controlMenu, setDisplay, display}) {
             <span className='link menuLink'>Music platform</span>
           </span>
 
-          <span onClick={() => handleMenu('mobileApplicationPlatform')} className={`link h-2 menuLinks ${display === 'musicPlatform' ? 'active' : ''} `}>
+          <span onClick={() => handleMenu('mobileApplicationPlatform')} className={`link h-2 menuLinks ${display === 'mobileApplicationPlatform' ? 'active' : ''} `}>
             <PeopleAltOutlinedIcon className='menuLinks-icon' />
             <span className='link menuLink'>Mobile Application platform</span>
           </span>
