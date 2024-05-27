@@ -14,7 +14,7 @@ function MobileApplicationPlatform({setSelectedCard, setDisplay, toggleControlMe
   return (
     <div className='mobileApplicationPlatform'>
                 <div className="top">
-          <h2>All Music task</h2>
+          <h2>All Mobile Application task</h2>
           <div className="btn" onClick={() => setSelectedCard('newMobileApplicationPlatform')} >
             <button>Add New</button>
           </div>
