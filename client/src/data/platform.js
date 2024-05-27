@@ -9,11 +9,13 @@ import ApplemusicImg from '../assets/applemusic.png'
 import AudiomackImg from '../assets/audiomack.png'
 import SoundcloudImg from '../assets/soundcloud.png'
 import SpotifyImg from '../assets/spotify.png'
-
-
 import AndriodImg from '../assets/andriod.png'
 import AppleImg from '../assets/apple.png'
 import LinkedinImg from '../assets/linkedin.png'
+import GooglePlayImg from '../assets/googlePlay.png'
+import GooglePlayMusicImg from '../assets/googlePlayMusic.png'
+import YoutubeMusicImg from '../assets/YoutubeMusic.png'
+
 
 
 export const platform = [
@@ -58,5 +60,11 @@ export const platform = [
     },
     {
         img: LinkedinImg
+    },
+    {
+        img: GooglePlayImg
+    },
+    {
+        img: YoutubeMusicImg
     },
 ]

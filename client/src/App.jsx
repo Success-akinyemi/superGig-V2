@@ -39,6 +39,7 @@ import EditTaskCategory from './Components/EditTaskCategory/EditTaskCategory'
 import NewMusic from './Components/NewMusic/NewMusic'
 import NewMusicTask from './Components/NewMusicTask/NewMusicTask'
 import NewMobileApplicationPlatform from './Components/NewMobileApplicationPlatform/NewMobileApplicationPlatform'
+import NewMobileApplicationTask from './Components/NewMobileApplicationTask/NewMobileApplicationTask'
 
 
 function App() {
