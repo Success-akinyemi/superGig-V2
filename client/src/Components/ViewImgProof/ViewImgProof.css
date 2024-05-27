@@ -1,5 +1,7 @@
 .viewImgProof{
     width: 40vw;
+    height: 75vh;
+    overflow-y: auto;
     display: flex;
     align-items: center;
     justify-content: center;
