@@ -13,6 +13,7 @@ import SocialMediaTask from '../../Components/SocialMediaTask/SocialMediaTask'
 import MusicPlatform from '../../Components/MusicPlatform/MusicPlatform'
 import TaskForMusic from '../../Components/TaskForMusic/TaskForMusic'
 import MobileApplicationPlatform from '../../Components/MobileApplicationPlatform/MobileApplicationPlatform'
+import TaskformobileApplication from '../../Components/TaskformobileApplication/TaskformobileApplication'
 
 
 function Controls({toggleMenu, menuOpen, setSelectedCard, setEditTaskId}) {
@@ -43,7 +44,7 @@ function Controls({toggleMenu, menuOpen, setSelectedCard, setEditTaskId}) {
             case 'mobileApplicationPlatform':
               return <MobileApplicationPlatform setSelectedCard={setSelectedCard} setDisplay={setDisplay} toggleControlMenu={toggleControlMenu} setPlatformcode={setPlatformcode} /> 
             case 'TaskformobileApplication': 
-              return <TaskForMusic setSelectedCard={setSelectedCard} platformCode={platformCode}  />
+              return <TaskformobileApplication setSelectedCard={setSelectedCard} platformCode={platformCode}  />
 
           default: 
             return <AllUsers />
