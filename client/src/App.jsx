@@ -111,6 +111,10 @@ function App() {
         return (
             <NewMusicTask />
         );
+      case 'newMobileApplicationTask':
+        return (
+          <NewMobileApplicationTask />
+        )
       case 'newTaskCategory' :
         return (
             <NewTaskCategory />
@@ -119,6 +123,10 @@ function App() {
         return (
             <EditTaskCategory editTaskId={editTaskId} />
         );
+      case 'newMobileApplicationPlatform' :
+        return (
+          <NewMobileApplicationPlatform />
+        )
 
     }
   }

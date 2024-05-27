@@ -510,3 +510,57 @@ export function useFetchGetAllMusicTask(query){
     return musicTaskData
 }
 
+/**MOBILE APPLICATION */
+/**Get All Mobile appliaction Platform Data */
+export function useFetchAllMobileApplicationPlatform(query){
+    const [mobileApplicationPlatfrom, setMobileApplicationPlatfrom] = useState({ isLoadingData: true, mobileApplicationPlatformData: null, mobileApplicationPlatfromStatus: null, mobileApplicationServerError: null})
+    
+    useEffect(() => {
+        const fetchMobileApplicationPlatfrom =  async () => {
+            try {
+
+                const { data, status} = !query ? await axios.get(`/api/getAllMobileApplicationPlatform`, {withCredentials: true}) : await axios.get(`/api/getAllMobileApplicationPlatform`,  {withCredentials: true})
+                //console.log('Transaction Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setMobileApplicationPlatfrom({ isLoadingData: false, mobileApplicationPlatformData: data, mobileApplicationPlatfromStatus: status, mobileApplicationServerError: null})
+                } else{
+                    setMobileApplicationPlatfrom({ isLoadingData: false, mobileApplicationPlatformData: null, mobileApplicationPlatfromStatus: status, mobileApplicationServerError: null})
+                }
+            } catch (error) {
+                console.log('COULF NOT FETCH DATA socail media category', error)
+                setMobileApplicationPlatfrom({ isLoadingData: false, mobileApplicationPlatformData: null, mobileApplicationPlatfromStatus: null, mobileApplicationServerError: error})
+            }
+        };
+        fetchMobileApplicationPlatfrom()
+    }, [query])
+
+    return mobileApplicationPlatfrom
+}
+
+/**Get All Task for a music Platform */
+export function useFetchGetAllMobileApplicationTask(query){
+    const [mobileApplicationTaskData, setMobileApplicationTaskData] = useState({ isLoadingMobileApplicationTaskData: true, mobileApplicationTaskData: null, mobileApplicationTaskStatus: null, mobileApplicationTaskServerError: null})
+    
+    useEffect(() => {
+        const fetchMobileApplicationTaskData =  async () => {
+            try {
+                const { code, id} = query
+                const { data, status} = !query ? await axios.get(`/api/admin/getAllTaskForAMobileApplication/:${code}`, {withCredentials: true}) : await axios.get(`/api/admin/getAllTaskForAMobileApplication/:${code}/:${id}`,  {withCredentials: true})
+                //console.log('Transaction Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setMobileApplicationTaskData({ isLoadingMobileApplicationTaskData: false, mobileApplicationTaskData: data, mobileApplicationTaskStatus: status, mobileApplicationTaskServerError: null})
+                } else{
+                    setMobileApplicationTaskData({ isLoadingMobileApplicationTaskData: false, mobileApplicationTaskData: null, mobileApplicationTaskStatus: status, mobileApplicationTaskServerError: null})
+                }
+            } catch (error) {
+                console.log('COULF NOT FETCH DATA Transactions', error)
+                setMobileApplicationTaskData({ isLoadingMobileApplicationTaskData: false, mobileApplicationTaskData: null, mobileApplicationTaskStatus: null, mobileApplicationTaskServerError: error})
+            }
+        };
+        fetchMobileApplicationTaskData()
+    }, [query])
+
+    return mobileApplicationTaskData
+}

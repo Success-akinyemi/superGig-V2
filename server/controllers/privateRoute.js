@@ -20,6 +20,7 @@ import SocialMediaTaskModel from "../models/SocialMediaTask.js"
 import FundingModel from "../models/Funding.js"
 import MusicTaskModel from "../models/MusicTask.js"
 import MusicPlatformModel from "../models/MusicPlatform.js"
+import MobileApplicationPlatformModel from "../models/MoblieApplicationPlatform.js"
 
 /**Add social media account */
 export async function addUserSocialMedia(req, res){
@@ -786,4 +787,17 @@ export async function getAllMusicTask(req, res){
         res.status(500).json({ success: false, data: 'Unable to get all Social media task'})
     }
 }
+
+export async function getAllMobileApplicationPlatform(req, res){
+    try {
+        console.log('ALL MOBILE APPLICATION PALTFORM')
+        const allMobileApplicationPlatform = await MobileApplicationPlatformModel.find()
+
+        res.status(200).json({ success: true, data: allMobileApplicationPlatform })
+    } catch (error) {
+        console.log('UNABLE TO GET ALL TASK CATEGORY(MOBILE APPLICATION)', error)
+        res.status(500).json({ success: false, data: 'Unable to get all mobile application'})
+    }
+}
+
 //api to update job rejected by user flag freelancer

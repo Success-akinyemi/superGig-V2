@@ -11,6 +11,11 @@ import SoundcloudImg from '../assets/soundcloud.png'
 import SpotifyImg from '../assets/spotify.png'
 
 
+import AndriodImg from '../assets/andriod.png'
+import AppleImg from '../assets/apple.png'
+import LinkedinImg from '../assets/linkedin.png'
+
+
 export const platform = [
     {
         img: IGImg
@@ -44,5 +49,14 @@ export const platform = [
     },
     {
         img: SpotifyImg
+    },
+    {
+        img: AndriodImg
+    },
+    {
+        img: AppleImg
+    },
+    {
+        img: LinkedinImg
     },
 ]

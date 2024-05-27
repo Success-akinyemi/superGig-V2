@@ -18,6 +18,9 @@ privateRouter.route('/updateSocialMediaTask').post(Protect, AdminProtect, contro
 privateRouter.route('/newMusicPlatform').post(Protect, AdminProtect, controller.createMusicPlatform); //create a music platform
 privateRouter.route('/createMusicTask').post(Protect, AdminProtect, controller.createMusicTask); //create new music task
 
+privateRouter.route('/newMobileApplicationPlatform').post(Protect, AdminProtect, controller.createMobileApplicationPlatform); //create a Mobile Application Platform
+privateRouter.route('/createMobileApplicationTask').post(Protect, AdminProtect, controller.createMobileApplicationTask); //create new Mobile Application Task
+
 
 
 
@@ -31,6 +34,10 @@ privateRouter.route('/getAllTaskForSocialMedia/:code/:id').get(Protect, AdminPro
 
 privateRouter.route('/getAllTaskForMusic/:code').get(Protect, AdminProtect, controller.getAllTaskForAMusic)
 privateRouter.route('/getAllTaskForMusic/:code/:id').get(Protect, AdminProtect, controller.getAllTaskForAMusic)
+
+privateRouter.route('/getAllTaskForAMobileApplication/:code').get(Protect, AdminProtect, controller.getAllTaskForAMusic)
+privateRouter.route('/getAllTaskForAMobileApplication/:code/:id').get(Protect, AdminProtect, controller.getAllTaskForAMusic)
+
 
 //privateRouter.route('/getTask/:id/:taskId').get(Protect, controller.getSpecificTask)
 

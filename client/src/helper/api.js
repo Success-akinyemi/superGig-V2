@@ -473,6 +473,32 @@ export async function newMusicPlatform(formData){
     }
 }
 
+export async function newMobileApplicationPlatform(formData){
+    try {
+        const res = await axios.post('/api/admin/newMobileApplicationPlatform', formData, {withCredentials: true} )
+        if(res?.data.success){
+            toast.success('New mobile application platform added')
+            window.location.reload()
+        }
+    } catch (error) {
+        console.log('ERROR VERIFYING USER API', error)
+        if (error.response && error.response.data) {
+            const errorMsg = error.response.data.data;
+            const errorMsg2 = error.response.data.error;
+            console.log('MSG', errorMsg)
+            console.log('MSG2', errorMsg2)
+            if(errorMsg){
+                toast.error(errorMsg)
+            } else{
+                toast.error(errorMsg2)
+            }
+            return errorMsg;
+          } else {
+            return 'An error occurred during the request.';
+          }
+    }
+}
+
 export async function newSocialMediaTask(formData){
     try {
         const res = await axios.post('/api/admin/newSocialMediaTask', formData, {withCredentials: true} )
@@ -502,6 +528,32 @@ export async function newSocialMediaTask(formData){
 export async function newMusicTask(formData){
     try {
         const res = await axios.post('/api/admin/createMusicTask', formData, {withCredentials: true} )
+        if(res?.data.success){
+            toast.success(res?.data.data)
+            window.location.reload()
+        }
+    } catch (error) {
+        console.log('ERROR VERIFYING USER API', error)
+        if (error.response && error.response.data) {
+            const errorMsg = error.response.data.data;
+            const errorMsg2 = error.response.data.error;
+            console.log('MSG', errorMsg)
+            console.log('MSG2', errorMsg2)
+            if(errorMsg){
+                toast.error(errorMsg)
+            } else{
+                toast.error(errorMsg2)
+            }
+            return errorMsg;
+          } else {
+            return 'An error occurred during the request.';
+          }
+    }
+}
+
+export async function newMobileApplicationTask(formData){
+    try {
+        const res = await axios.post('/api/admin/createMobileApplicationTask', formData, {withCredentials: true} )
         if(res?.data.success){
             toast.success(res?.data.data)
             window.location.reload()

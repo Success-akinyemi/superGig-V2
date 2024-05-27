@@ -33,6 +33,7 @@ privateRouter.route('/getAllSocialMediaCategory').get(Protect, controller.getAll
 privateRouter.route('/getAllSocialMediaTask').get(Protect, controller.getAllSocialMediaTask)// get all social media task (for creating new task by users)
 privateRouter.route('/getAllMusicPlatform').get(Protect, controller.getAllMusicPlatform)
 privateRouter.route('/getAllMusicTask').get(Protect, controller.getAllMusicTask)
+privateRouter.route('/getAllMobileApplicationPlatform').get(Protect, controller.getAllMobileApplicationPlatform)
 
 export default privateRouter
 

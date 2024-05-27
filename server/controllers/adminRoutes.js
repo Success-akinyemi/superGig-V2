@@ -13,6 +13,8 @@ import SocialMediaPlatformModel from "../models/SocialMediaPlatform.js"
 import SocialMediaTaskModel from "../models/SocialMediaTask.js"
 import MusicPlatformModel from "../models/MusicPlatform.js"
 import MusicTaskModel from "../models/MusicTask.js"
+import MobileApplicationPlatformModel from "../models/MoblieApplicationPlatform.js"
+import MobileApplicationTaskModel from "../models/MobileApplicationTask.js"
 config()
 
 //Get All users
@@ -262,6 +264,7 @@ export async function updateTaskCategory(req, res){
     }
 }
 
+//SOCIAL MEDIA
 //create social media platform
 export async function createSocialmediaPlatform(req, res){
     const { platform, code, createdby, icon, taskCategoryCode } = req.body
@@ -292,40 +295,6 @@ export async function createSocialmediaPlatform(req, res){
     } catch (error) {
      console.log('UNABLE TO CREATE A NEW SOCIAL MEDIA PLATFORM', error)
      res.status(500).json({ success: false, data: 'Unable to create a new social media platform'})   
-    }
-}
-
-//create Music platform
-export async function createMusicPlatform(req, res){
-    const { platform, code, createdby, icon, taskCategoryCode } = req.body
-    try {
-        if(!platform || !code || !createdby || !taskCategoryCode || !icon){
-            return res.status(400).json({  success: false, data: 'All Feilds are required'})
-        }
-
-        const platformCodeCategoryExist = await MusicPlatformModel.findOne({ code: code })
-
-        if(platformCodeCategoryExist){
-            return res.status(400).json({  success: false, data: 'Code already Exist'})
-        }
-
-        const SocialMediaPlatformExist = await MusicPlatformModel.findOne({ platform: platform })
-
-        if(SocialMediaPlatformExist){
-            return res.status(400).json({  success: false, data: 'Platform already Exist'})
-        }
-
-        const newTaskcategory = new MusicPlatformModel({
-            platform, code, createdby, icon, taskCategoryCode
-        })
-        await newTaskcategory.save()
-
-        const SocialMediaPlatform = await MusicPlatformModel.find()
-        console.log('MUSIC PLATFORM ADDED')
-        res.status(201).json({ success: true, data: 'New Music platform added' })
-    } catch (error) {
-     console.log('UNABLE TO CREATE A NEW MUSIC PLATFORM', error)
-     res.status(500).json({ success: false, data: 'Unable to create a new music platform'})   
     }
 }
 
@@ -364,6 +333,97 @@ export async function createSocialmediaTask(req, res){
     } catch (error) {
         console.log('UNABLE TO CREATE NEW SOCIAL MEDIA TASK', error)
         res.status(500).json({ success: false, data: 'Unable to create new social media task'})
+    }
+}
+
+//update social media task options
+export async function updateSocialmediaTask(req, res){
+    console.log(req.body)
+    try {
+        if(!req.body.id){
+            return res.status(404).json({ success: false, data: 'Invalid ID'})
+        }
+        const findTask = await SocialMediaTaskModel.findByIdAndUpdate(
+            req.body.id,
+            {
+                $set: {
+                    minWorkers: req.body.minWorkers ,
+                    platformCode: req.body.platformCode,
+                    pricePerFreelancer: req.body.pricePerFreelancer,
+                    task: req.body.task,
+                    taskId: req.body.taskId,
+                    unitPrice: req.body.unitPrice
+                }
+            },
+            {new: true}
+        )
+
+        await findTask.save()
+
+        const allTask = await SocialMediaTaskModel.find()
+
+        res.status(201).json({ success: true, data: allTask })
+    } catch (error) {
+        console.log('UNABLE TO UPDATE SOCIAL MEDIA TASK', error)
+        res.status(500).json({ success: false, data: 'Unable to update social media task'})
+    }
+}
+
+//get all task of a social media account
+export async function getAllTaskForASocialMedia(req, res) {
+    const { code, id } = req.params;
+    const cleanedCode = code.replace(/[^\w\s]/gi, '');
+    const cleanedId = id ? id.replace(/[^\w\s]/gi, '') : undefined;
+    console.log(cleanedCode, cleanedId);
+    try {
+        let allTask = [];
+        if (!cleanedId || cleanedId === 'undefined' ) {
+            allTask = await SocialMediaTaskModel.find({ platformCode: cleanedCode });
+            console.log('ALL', allTask);
+            return res.status(200).json({ success: true, data: allTask });
+        } else {
+            allTask = await SocialMediaTaskModel.findById(cleanedId);
+            console.log('ALL', allTask);
+            return res.status(200).json({ success: true, data: allTask });
+        }
+    } catch (error) {
+        console.log('UNABLE TO GET ALL TASK FOR A SOCIAL MEDIA', error);
+        res.status(500).json({ success: false, data: 'Unable to get all task for a social media' });
+    }
+}
+
+//MUSIC
+//create Music platform
+export async function createMusicPlatform(req, res){
+    const { platform, code, createdby, icon, taskCategoryCode } = req.body
+    try {
+        if(!platform || !code || !createdby || !taskCategoryCode || !icon){
+            return res.status(400).json({  success: false, data: 'All Feilds are required'})
+        }
+
+        const platformCodeCategoryExist = await MusicPlatformModel.findOne({ code: code })
+
+        if(platformCodeCategoryExist){
+            return res.status(400).json({  success: false, data: 'Code already Exist'})
+        }
+
+        const SocialMediaPlatformExist = await MusicPlatformModel.findOne({ platform: platform })
+
+        if(SocialMediaPlatformExist){
+            return res.status(400).json({  success: false, data: 'Platform already Exist'})
+        }
+
+        const newTaskcategory = new MusicPlatformModel({
+            platform, code, createdby, icon, taskCategoryCode
+        })
+        await newTaskcategory.save()
+
+        const SocialMediaPlatform = await MusicPlatformModel.find()
+        console.log('MUSIC PLATFORM ADDED')
+        res.status(201).json({ success: true, data: 'New Music platform added' })
+    } catch (error) {
+     console.log('UNABLE TO CREATE A NEW MUSIC PLATFORM', error)
+     res.status(500).json({ success: false, data: 'Unable to create a new music platform'})   
     }
 }
 
@@ -406,39 +466,6 @@ export async function createMusicTask(req, res){
     }
 }
 
-//update social media task options
-export async function updateSocialmediaTask(req, res){
-    console.log(req.body)
-    try {
-        if(!req.body.id){
-            return res.status(404).json({ success: false, data: 'Invalid ID'})
-        }
-        const findTask = await SocialMediaTaskModel.findByIdAndUpdate(
-            req.body.id,
-            {
-                $set: {
-                    minWorkers: req.body.minWorkers ,
-                    platformCode: req.body.platformCode,
-                    pricePerFreelancer: req.body.pricePerFreelancer,
-                    task: req.body.task,
-                    taskId: req.body.taskId,
-                    unitPrice: req.body.unitPrice
-                }
-            },
-            {new: true}
-        )
-
-        await findTask.save()
-
-        const allTask = await SocialMediaTaskModel.find()
-
-        res.status(201).json({ success: true, data: allTask })
-    } catch (error) {
-        console.log('UNABLE TO UPDATE SOCIAL MEDIA TASK', error)
-        res.status(500).json({ success: false, data: 'Unable to update social media task'})
-    }
-}
-
 //update music task options
 export async function updateMusicTask(req, res){
     console.log(req.body)
@@ -472,30 +499,7 @@ export async function updateMusicTask(req, res){
     }
 }
 
-//get all task of a social media account
-export async function getAllTaskForASocialMedia(req, res) {
-    const { code, id } = req.params;
-    const cleanedCode = code.replace(/[^\w\s]/gi, '');
-    const cleanedId = id ? id.replace(/[^\w\s]/gi, '') : undefined;
-    console.log(cleanedCode, cleanedId);
-    try {
-        let allTask = [];
-        if (!cleanedId || cleanedId === 'undefined' ) {
-            allTask = await SocialMediaTaskModel.find({ platformCode: cleanedCode });
-            console.log('ALL', allTask);
-            return res.status(200).json({ success: true, data: allTask });
-        } else {
-            allTask = await SocialMediaTaskModel.findById(cleanedId);
-            console.log('ALL', allTask);
-            return res.status(200).json({ success: true, data: allTask });
-        }
-    } catch (error) {
-        console.log('UNABLE TO GET ALL TASK FOR A SOCIAL MEDIA', error);
-        res.status(500).json({ success: false, data: 'Unable to get all task for a social media' });
-    }
-}
-
-//get all task of a social media account
+//get all task of a music platform account
 export async function getAllTaskForAMusic(req, res) {
     const { code, id } = req.params;
     const cleanedCode = code.replace(/[^\w\s]/gi, '');
@@ -518,3 +522,132 @@ export async function getAllTaskForAMusic(req, res) {
     }
 }
 
+//MOBILE APPLICATION
+//create mobile application platform platform
+export async function createMobileApplicationPlatform(req, res){
+    const { platform, code, createdby, icon, taskCategoryCode } = req.body
+    try {
+        if(!platform || !code || !createdby || !taskCategoryCode || !icon){
+            return res.status(400).json({  success: false, data: 'All Feilds are required'})
+        }
+
+        const platformCodeCategoryExist = await MobileApplicationPlatformModel.findOne({ code: code })
+
+        if(platformCodeCategoryExist){
+            return res.status(400).json({  success: false, data: 'Code already Exist'})
+        }
+
+        const mobileAppplicationPlatformExist = await MobileApplicationPlatformModel.findOne({ platform: platform })
+
+        if(mobileAppplicationPlatformExist){
+            return res.status(400).json({  success: false, data: 'Platform already Exist'})
+        }
+
+        const newTaskcategory = new MobileApplicationPlatformModel({
+            platform, code, createdby, icon, taskCategoryCode
+        })
+        await newTaskcategory.save()
+
+        const moblieApllicationPlatform = await MobileApplicationPlatformModel.find()
+        console.log('MOBILE APPLICATION PLATFORM ADDED')
+        res.status(201).json({ success: true, data: 'New Mobile platform added' })
+    } catch (error) {
+     console.log('UNABLE TO CREATE A NEW MOBILE PLATFORM', error)
+     res.status(500).json({ success: false, data: 'Unable to create a new mobile platform'})   
+    }
+}
+
+//create mobile application task options
+export async function createMobileApplicationTask(req, res){
+    const { platformCode, taskId, task, pricePerFreelancer, unitPrice, minWorkers, icon, createdBy } = req.body
+    try {
+        if(!platformCode || !taskId || !task || !pricePerFreelancer || !unitPrice || !minWorkers || !createdBy){
+            return res.status(400).json({ success: false, data: 'Fill all necessary Fields'})
+        }
+
+        const taskIdExist = await MobileApplicationTaskModel.findOne({ taskId: taskId})
+        if(taskIdExist){
+            return res.status(400).json({ success: false, data: 'Task with this ID Already Exist'})
+        }
+
+        const taskExist = await MobileApplicationTaskModel.findOne({ task: task})
+        if(taskExist){
+            return res.status(400).json({ success: false, data: 'Task Already Exist'})
+        }
+
+
+        const findIcon = await MobileApplicationPlatformModel.findOne({ code: platformCode })
+
+        const setIcon = findIcon.icon
+
+        const createTask = new MobileApplicationTaskModel({
+            platformCode, taskId, task, pricePerFreelancer, unitPrice, minWorkers, icon: setIcon, createdBy
+        })
+        await createTask.save()
+
+        const allTask = await MobileApplicationTaskModel.find()
+        console.log('NEW MOBILE APPLICATION TASK ADDED')
+
+        res.status(201).json({ success: true, data: 'Task Added successful' })
+
+    } catch (error) {
+        console.log('UNABLE TO CREATE NEW MOBILE APPLICATION TASK', error)
+        res.status(500).json({ success: false, data: 'Unable to create new mobile application'})
+    }
+}
+
+//update music task options
+export async function updateMobileApplicationTask(req, res){
+    console.log(req.body)
+    try {
+        if(!req.body.id){
+            return res.status(404).json({ success: false, data: 'Invalid ID'})
+        }
+        const findTask = await MobileApplicationTaskModel.findByIdAndUpdate(
+            req.body.id,
+            {
+                $set: {
+                    minWorkers: req.body.minWorkers ,
+                    platformCode: req.body.platformCode,
+                    pricePerFreelancer: req.body.pricePerFreelancer,
+                    task: req.body.task,
+                    taskId: req.body.taskId,
+                    unitPrice: req.body.unitPrice
+                }
+            },
+            {new: true}
+        )
+
+        await findTask.save()
+
+        const allTask = await MobileApplicationTaskModel.find()
+
+        res.status(201).json({ success: true, data: allTask })
+    } catch (error) {
+        console.log('UNABLE TO UPDATE MOBILE APPLICATION TASK', error)
+        res.status(500).json({ success: false, data: 'Unable to update mobile application task'})
+    }
+}
+
+//get all task of a mobile appplication media platform
+export async function getAllTaskForAMobileApplication(req, res) {
+    const { code, id } = req.params;
+    const cleanedCode = code.replace(/[^\w\s]/gi, '');
+    const cleanedId = id ? id.replace(/[^\w\s]/gi, '') : undefined;
+    console.log('MUSIC',cleanedCode, cleanedId);
+    try {
+        let allTask = [];
+        if (!cleanedId || cleanedId === 'undefined' ) {
+            allTask = await MobileApplicationTaskModel.find({ platformCode: cleanedCode });
+            console.log('ALL', allTask);
+            return res.status(200).json({ success: true, data: allTask });
+        } else {
+            allTask = await MobileApplicationTaskModel.findById(cleanedId);
+            console.log('ALL', allTask);
+            return res.status(200).json({ success: true, data: allTask });
+        }
+    } catch (error) {
+        console.log('UNABLE TO GET ALL TASK FOR A MOBILE APPLICATION PLATFORM', error);
+        res.status(500).json({ success: false, data: 'Unable to get all task for a mobile application platform' });
+    }
+}
