@@ -1,4 +1,4 @@
-import './createMobileApplicationTask.css'
+import './NewMobileApplicationTask.css'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useFetchAllMobileApplicationPlatform } from '../../hooks/fetch.hooks';
