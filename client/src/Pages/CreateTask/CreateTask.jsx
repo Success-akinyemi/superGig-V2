@@ -187,13 +187,13 @@ function CreateTask() {
   const renderComponent = () => {
     switch (currentComponent) {
       case 'socialMedia':
-        return <SocialMedia content={content} setContent={setContent} />;
+        return <SocialMedia setTaskformHeading={setTaskformHeading} content={content} setContent={setContent} />;
       case 'musicTask':
-        return <MusicTask content={content} setContent={setContent} />;
+        return <MusicTask setTaskformHeading={setTaskformHeading} content={content} setContent={setContent} />;
       case 'mobileTask':
-        return <Mobile content={content} setContent={setContent} />;
+        return <Mobile setTaskformHeading={setTaskformHeading} content={content} setContent={setContent} />;
       case 'customTask':
-        return <CustomTask content={content} setContent={setContent} />;
+        return <CustomTask setTaskformHeading={setTaskformHeading} content={content} setContent={setContent} />;
         
 
       // Add more cases here for other components

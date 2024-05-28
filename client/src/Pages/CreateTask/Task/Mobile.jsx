@@ -8,7 +8,7 @@ import { signInSuccess } from '../../../redux/user/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-function Mobile({content, setContent}) {
+function Mobile({content, setContent, setTaskformHeading}) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {currentUser} = useSelector(state => state.user)
@@ -23,7 +23,7 @@ function Mobile({content, setContent}) {
     const [ isLaoding, setIsLoading ] = useState(false)
   
   
-    const [ taskFormHeading, setTaskformHeading ] = useState('Create Task')
+    
     //const [ content, setContent ] = useState(1)
     const [ formData, setFormData ] = useState({ createdBy: user?._id })
     const { isLoadingData, mobileApplicationPlatformData } = useFetchAllMobileApplicationPlatform();

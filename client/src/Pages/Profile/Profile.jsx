@@ -114,6 +114,7 @@ function Profile({ toggleMenu, menuOpen }) {
       setIsLoading(true);
       const res = await updateUser(formData);
       if (res?.data.success) {
+        
         dispatch(signInSuccess(res.data.data));
       }
     } catch (error) {

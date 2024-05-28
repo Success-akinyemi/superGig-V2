@@ -252,7 +252,17 @@ export async function createTask(req, res){
     const {platform, platformCode, task, unitPrice, pricePerFreelancer, taskUrl, numberOfWorkers, createdBy, categoryCode, icon} = req.body
 
     try {
-        if(!platform || !platformCode || !task || !unitPrice || !pricePerFreelancer || !taskUrl || !numberOfWorkers || !createdBy) {
+        let price = pricePerFreelancer
+        if (/^Custom\s+Task/.test(platform)) {
+            const percent = 28.57
+            const subCharge = Math.ceil((percent * unitPrice) / 100)
+            const amount = unitPrice - subCharge
+            price = amount
+        }
+        const payingPrice = price
+        console.log('first', payingPrice)
+        
+        if(!platform || !platformCode || !task || !unitPrice || !payingPrice || !taskUrl || !numberOfWorkers || !createdBy) {
             return res.status(400).json({ success: false, data: 'All Field are required'})
         }
         const user = await UserModel.findById({ _id: createdBy })
@@ -265,7 +275,7 @@ export async function createTask(req, res){
         }
 
         const newTask = await TaskModel.create({
-            task, platform, platformCode, unitPrice, pricePerFreelancer, taskUrl, numberOfWorkers, createdBy, categoryCode, icon
+            task, platform, platformCode, unitPrice, pricePerFreelancer: payingPrice, taskUrl, numberOfWorkers, createdBy, categoryCode, icon
         })
 
         user.fundWallet -= amount
