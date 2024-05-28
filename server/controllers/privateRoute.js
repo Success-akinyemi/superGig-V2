@@ -254,6 +254,9 @@ export async function createTask(req, res){
     try {
         let price = pricePerFreelancer
         if (/^Custom\s+Task/.test(platform)) {
+            if(unitPrice < 70){
+                return res.status(400).json({ success: false, data: 'Minimium price per freelancer is 70.'})
+            }
             const percent = 28.57
             const subCharge = Math.ceil((percent * unitPrice) / 100)
             const amount = unitPrice - subCharge
