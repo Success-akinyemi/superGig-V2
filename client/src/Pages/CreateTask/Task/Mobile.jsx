@@ -8,7 +8,7 @@ import { signInSuccess } from '../../../redux/user/userSlice';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
-function Mobile() {
+function Mobile({content, setContent}) {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const {currentUser} = useSelector(state => state.user)
@@ -28,7 +28,7 @@ function Mobile() {
     const [ formData, setFormData ] = useState({ createdBy: user?._id })
     const { isLoadingData, mobileApplicationPlatformData } = useFetchAllMobileApplicationPlatform();
     const socialMediaData = mobileApplicationPlatformData?.data
-    //console.log(socialMediaData)
+    console.log('uooo',socialMediaData)
     const { isLoadingMobileTaskData, mobileApplicationTaskData } = useFetchMobileApplicationTask()
     const socialMediaTask = mobileApplicationTaskData?.data
     //console.log(socialMediaTask)

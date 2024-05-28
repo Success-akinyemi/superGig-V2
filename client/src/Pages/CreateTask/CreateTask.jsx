@@ -10,6 +10,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import SocialMedia from './Task/SocialMedia';
 import MusicTask from './Task/MusicTask';
+import CustomTask from './Task/CustomTask';
+import Mobile from './Task/Mobile';
 
 function CreateTask() {
   const dispatch = useDispatch()
@@ -176,6 +178,10 @@ function CreateTask() {
       setContent(2)
       setCurrentComponent('musicTask')
     }
+    if (selectedTaskCategory === '4'){
+      setContent(2)
+      setCurrentComponent('customTask')
+    }
   }
 
   const renderComponent = () => {
@@ -185,7 +191,10 @@ function CreateTask() {
       case 'musicTask':
         return <MusicTask content={content} setContent={setContent} />;
       case 'mobileTask':
-        return <MusicTask content={content} setContent={setContent} />;
+        return <Mobile content={content} setContent={setContent} />;
+      case 'customTask':
+        return <CustomTask content={content} setContent={setContent} />;
+        
 
       // Add more cases here for other components
       default:
