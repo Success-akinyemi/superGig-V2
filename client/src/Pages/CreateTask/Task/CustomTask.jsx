@@ -50,7 +50,7 @@ function CustomTask({content, setContent, setTaskformHeading}) {
         }
         if(prop === 'four'){
           if(!formData.taskUrl){
-            setNoTaskUrl('Enter number of workers needed')
+            setNoTaskUrl('Enter task url')
             setTimeout(() => setNoTaskUrl(null), 4000)
             return
           }
@@ -158,7 +158,7 @@ function CustomTask({content, setContent, setTaskformHeading}) {
                 
                 <div className="card">
                   <label>Enter Task Instruction</label>
-                  <input type="text" onChange={handleChange} id='task' placeholder='Enter Task instructions' />
+                  <textarea type="text" onChange={handleChange} id='task' placeholder='Enter Task instructions'></textarea>
                 </div>
                 <p className='danger errorMsg'>{noTask ? noTask : ''}</p>
                 
