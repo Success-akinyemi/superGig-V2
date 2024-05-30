@@ -153,7 +153,7 @@ function Register() {
                   id="regPhoneNumber"
                   className="input-box"
                   required
-                  value={email}
+                  value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                 />
                 <label htmlFor="regPhoneNumber">Phone Number</label>
