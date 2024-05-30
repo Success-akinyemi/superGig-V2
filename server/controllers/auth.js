@@ -103,7 +103,7 @@ const mailGenerator = new Mailgen({
 
  export async function register(req, res, next) {
     const { email, username, password, phoneNumber, referredBy } = req.body;
-
+    console.log(email, username, password, phoneNumber, referredBy)
     if (!email || !password || !username || !phoneNumber) {
         return res.status(400).json({ success: false, data: 'Please provide all required fields' });
     }
@@ -404,6 +404,12 @@ export async function updateUser(req, res){
     const user = await UserModel.findById({ _id: req.body.userId})
     if(!user){
         return res.status(404).json({ success: false, data: 'No user exist'})
+    }
+    if(req.body.phoneNumber){
+        const existingPhoneNumber = await UserModel.findOne({ phoneNumber });
+        if (existingPhoneNumber) {
+            return res.status(400).json({ success: false, data: 'Phone Number already exists. Please use another Phone Number' });
+        }
     }
 
     try {

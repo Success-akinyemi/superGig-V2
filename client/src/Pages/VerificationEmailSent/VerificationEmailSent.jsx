@@ -27,10 +27,10 @@ function VerificationEmailSent() {
                     </div>
 
                     <div className="action" onClick={openEmailApp}>
-                        Go to Email <MarkEmailUnreadIcon className='icon' />
+                        Click to go to Email <MarkEmailUnreadIcon className='icon' />
                     </div>
 
-                    <small className='warn'>Check spam box for email also</small>
+                    <small className='warn'>Check spam box for email sent also</small>
                 </div>
             </div>
         </div>

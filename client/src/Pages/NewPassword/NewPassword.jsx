@@ -55,7 +55,7 @@ function NewPassword() {
         const res = await newPassword({ resetToken, password });
   
         if (res?.data?.success) {
-          navigate("/register");
+          navigate("/login");
         } else if (!res.data.success) {
           setError(res.data.data);
           setTimeout(() => {

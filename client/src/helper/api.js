@@ -24,17 +24,19 @@ const token = localStorage.getItem('authToken')
  */
 
 /**Register New User */
-export async function registerUser({username, email, password, referredBy }){
+export async function registerUser({username, email, password, phoneNumber, referredBy }){
     try {
-        const res = await axios.post('/api/auth/register', {username, email, password, referredBy })
-        console.log('respones', res.data)
+        const res = await axios.post('/api/auth/register', {username, email, password, phoneNumber, referredBy })
+        //console.log('respones', res.data)
         if(res.data.success){
             return res        
         }
     
     } catch (error) {
-        const errorMsg = error.response.data.error
-        console.log(errorMsg)
+        const errorMsg = error?.response.data.data
+        //console.log('errorMsg',errorMsg)
+        toast.error(errorMsg)
+        //console.log('ERROR',error)
         return errorMsg
     }
 }

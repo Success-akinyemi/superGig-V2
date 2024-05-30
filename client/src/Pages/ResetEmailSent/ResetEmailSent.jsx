@@ -23,11 +23,11 @@ function ResetEmailSent() {
                     </div>
 
                     <div className="body">
-                        <p>{msg}</p>
+                      <b>Sent to:</b>  <p>{msg}</p>
                     </div>
 
                     <div className="action" onClick={openEmailApp}>
-                        Go to Email <MarkEmailUnreadIcon className='icon' />
+                        Click to go to Email <MarkEmailUnreadIcon className='icon' />
                     </div>
 
                     <small className='warn'>Check spam box for email also</small>

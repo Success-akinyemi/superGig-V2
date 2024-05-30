@@ -77,13 +77,13 @@ function Register() {
       setIsLoading(true);
       const res = await registerUser({ username, email, password, phoneNumber, referredBy });
 
-      if (res.data.success) {
-        console.log(res.data.success);
+      if (res?.data.success) {
+        console.log(res?.data.success);
         navigate("/VerificationEmailSent", {
           state: { resMsg: res?.data.data },
         });
-      } else if (!res.data.success) {
-        setError(res.data.data);
+      } else if (!res?.data.success) {
+        setError(res?.data.data);
         setTimeout(() => {
           setError("");
         }, 5000);

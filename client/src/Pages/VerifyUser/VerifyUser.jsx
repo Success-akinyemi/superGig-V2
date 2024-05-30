@@ -18,7 +18,7 @@ function VerifyUser() {
                 const res = await verifyUser({ id, token})
 
                 if(res.data.success){
-                    navigate('/register')
+                    navigate('/login')
                 } 
             } catch (error) {
                 setErrorMsg('Unable To verify Account')
