@@ -36,7 +36,7 @@ function Register() {
       setTimeout(() => {
         setError("");
       }, 5000);
-      return setError("Password must contain at least on special character");
+      return setError("Password must contain at least one special character");
     }
     if (password.length < 6) {
       setPassword("");
