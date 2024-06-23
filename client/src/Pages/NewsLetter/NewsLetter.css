@@ -1,0 +1,155 @@
+.newsLetter{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+    background: var(--color-background);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.newsLetter .logo{
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    color: var(--second-color);
+
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    font-style: italic;
+}
+
+.newsLetter form{
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.newsLetter form > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.newsLetter form .heading h3{
+    width: 100%;
+    font-size: 22px;
+    color: var(--second-color);
+}
+
+.newsLetter .heading p{
+    text-align: center;
+    margin-top: -1rem;
+    font-weight: 500;
+}
+
+.newsLetter .inputGroup{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.newsLetter .inputGroup label{
+    width: 100%;
+    color: var(--second-color);
+    font-weight: 600;
+}
+
+.newsLetter .inputGroup input{
+    width: 100%;
+    margin-top: 12px;
+    padding: 5px;
+    font-size: 19px;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #000;
+    transition: all 300ms ease-in;
+}
+
+.newsLetter .inputGroup input:focus{
+    border-bottom: 3px solid var(--second-color);
+}
+
+.newsLetter .agree .box{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.newsLetter .agree .box input{
+    width: 30px;
+    height: 30px;
+}
+
+.newsLetter .agree .box input:checked{
+    background-color: var(--second-color);
+}
+
+.newsLetter .agree small{
+    margin-bottom: 1rem;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.newsLetter .btn{
+    width: 100%;
+}
+
+.newsLetter .btn .button{
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+
+.newsLetter .btn .button:hover{
+    transform: scale(1.02);
+}
+
+.newsLetter .Loadbutton{
+    width: 100%;
+    background: var(--second-color);
+    border-radius: 10px;
+    padding: 5px;
+    outline: none;
+    border: none;
+}
+
+.newsLetter .Loadbutton .spinner{
+    height: 35px;
+    width: 35px;
+    border: 5px solid var(--color-white);
+    border-color: var(--color-white) transparent var(--color-white) transparent;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: newsLetterSpin 1.3s ease infinite;
+}
+
+@keyframes newsLetterSpin {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .newsLetter form{
+        width: 85vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .newsLetter .logo{
+        font-size: 20px;
+    }
+
+    .newsLetter form{
+        width: 92vw;
+    }
+}
+

@@ -5,6 +5,8 @@ import Prospect from '../../Components/LandingPage/Prospect/Prospect'
 import { platform } from '../../data/platform'
 import Accordion from '../../Components/LandingPage/Accordion/Accordion'
 import Footer from '../../Components/LandingPage/Footer/Footer'
+import UseCase from '../../Components/LandingPage/UseCase/UseCase'
+import { useCases } from '../../data/useCase'
 
 function LandingPage() {
   return (
@@ -12,6 +14,7 @@ function LandingPage() {
       <Navbar />
       <Hero />
       <Prospect data={platform} />
+      <UseCase data={useCases} />
       <Accordion />
       <Footer />
     </div>

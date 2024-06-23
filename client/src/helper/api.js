@@ -238,6 +238,33 @@ export async function updateUser(formData){
     }
 }
 
+/**Update account info */
+export async function joinNewsLetter(formData){
+    try {
+        const res = await axios.post('/api/newsLetter/joinNewsLetter', formData)
+        if(res.data.success){
+            toast.success(res.data.data)
+            return res?.data
+        }
+    } catch (error) {
+        console.log('ERROR VERIFYING USER API', error)
+        if (error.response && error.response.data) {
+            const errorMsg = error.response.data.data;
+            const errorMsg2 = error.response.data.error;
+            console.log('MSG', errorMsg)
+            console.log('MSG2', errorMsg2)
+            if(errorMsg){
+                toast.error(errorMsg)
+            } else{
+                toast.error(errorMsg2)
+            }
+            return errorMsg;
+          } else {
+            return 'Unable to join newsletter';
+          }
+    }
+}
+
 /**Add user social media account */
 export async function addSocialMediaAccount({accountValue, platformCode, userId}){
     try {
@@ -294,7 +321,7 @@ export async function submitTask(formData){
 /**Update account info */
 export async function updateAccountInfo(formData){
     try {
-        const res = await axios.post('/api/updateAccountInfo', formData, {headers: {Authorization: `Bearer ${token}`}})
+        const res = await axios.post('/api/updateAccountInfo', formData, {withCredentials: true})
         if(res.data.success){
             toast.success(res.data.data)
             window.location.reload()
@@ -636,7 +663,7 @@ export async function updateTaskCategory(formData){
 export async function buyAirtime({networkCode,amount,userPhoneNumber,email}){
     try {
 
-        const response = await axios.post('/api/handleAirtime', {networkCode,amount,userPhoneNumber,email}, {headers: {Authorization: `Bearer ${token}`}})
+        const response = await axios.post('/api/handleAirtime', {networkCode,amount,userPhoneNumber,email}, {withCredentials: true})
         
         console.log(response.data)
         console.log(response.data.data);
@@ -656,7 +683,7 @@ export async function buyAirtime({networkCode,amount,userPhoneNumber,email}){
 export async function buyData({networkCode,amount,userPhoneNumber,email,buyType,dataPlanCode,cp}){
     try {
 
-        const response = await axios.post('/api/handleData', {networkCode,amount,userPhoneNumber,email,buyType,dataPlanCode,cp}, {headers: {Authorization: `Bearer ${token}`}})
+        const response = await axios.post('/api/handleData', {networkCode,amount,userPhoneNumber,email,buyType,dataPlanCode,cp}, {withCredentials: true})
         
         console.log('1>>',response.data)
         console.log('2>>' ,response.data.data);
@@ -683,7 +710,7 @@ export async function buyData({networkCode,amount,userPhoneNumber,email,buyType,
 export async function buyCableTvSubscription({userPhoneNumber,smartCardNumber,email,selectedCableTvCode,amount,cableTv}){
     try {
 
-        const response = await axios.post('/api/cableTvSubscription', {userPhoneNumber,smartCardNumber,email,selectedCableTvCode,amount,cableTv}, {headers: {Authorization: `Bearer ${token}`}})
+        const response = await axios.post('/api/cableTvSubscription', {userPhoneNumber,smartCardNumber,email,selectedCableTvCode,amount,cableTv}, {withCredentials: true})
         
         console.log(response.data)
         console.log(response.data.data);
@@ -703,7 +730,7 @@ export async function buyCableTvSubscription({userPhoneNumber,smartCardNumber,em
 export async function verifyCableTvSmartCard({smartCardNumber,cableTv}){
     try {
 
-        const response = await axios.post('/api/verifyCableTvSmartCard', {smartCardNumber,cableTv}, {headers: {Authorization: `Bearer ${token}`}})
+        const response = await axios.post('/api/verifyCableTvSmartCard', {smartCardNumber,cableTv}, {withCredentials: true})
         return response.data;
     } catch (error) {
         console.log(error)
@@ -713,7 +740,7 @@ export async function verifyCableTvSmartCard({smartCardNumber,cableTv}){
 export async function buyElectricBill({email, userMeterNumber, userMeterType, electricCompany, userPhoneNumber,amount}){
     try {
 
-        const response = await axios.post('/api/buyElectricBill', {email, userMeterNumber, userMeterType, electricCompany, userPhoneNumber,amount}, {headers: {Authorization: `Bearer ${token}`}})
+        const response = await axios.post('/api/buyElectricBill', {email, userMeterNumber, userMeterType, electricCompany, userPhoneNumber,amount}, {withCredentials: true})
         
         console.log(response.data)
         console.log(response.data.data)

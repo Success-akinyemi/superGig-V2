@@ -28,7 +28,22 @@
     font-size: 50px;
 }
 
+.prospect .prospectContainer .text{
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.prospect .prospectContainer .btn{
+    margin-bottom: 2rem;
+}
+
+.prospect .prospectContainer .btn .button{
+    padding: 10px;
+    background: var(--second-color);
+}
+
 .prospect .prospectContainer p{
+    color: var(--second-color);
     font-size: 19px;
     text-align: center;
     margin-top: -0.5rem;
@@ -49,9 +64,10 @@
 }
 
 .prospect .prospectContainer .whyUs h1{
-    font-family: "Birthstone", cursive;
+    font-family: "Raleway", sans-serif;
     font-weight: 600;
-    font-size: 60px;
+    font-size: 50px;
+    font-style: italic;
     color: var(--second-color);
 }
 
@@ -160,4 +176,14 @@
     .prospect .prospectContainer .whyUs .content .right .imgCardRight{
         width: 85%;
     }
+}
+
+@media screen and (max-width: 450px) {
+    .prospect .prospectContainer .text{
+        font-size: 17px;
+    }
+
+    .prospect .prospectContainer p{
+        font-size: 16px;
+    }    
 }

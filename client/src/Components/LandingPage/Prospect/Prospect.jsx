@@ -6,6 +6,7 @@ import { whyUs, whyUsImg } from '../../../data/whyUs';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 function Prospect({data}) {
   const textData = whyUs
@@ -56,14 +57,14 @@ function Prospect({data}) {
       useEffect(() => {
           const nextSlide = () => {
             setCurrent((current) => (current === length - 1 ? 0 : current + 1)) // Increment current
-            console.log('CURRENT 1', current)
+            //console.log('CURRENT 1', current)
           }
           timeout.current = setTimeout(nextSlide, 6000)
       
           return function () {
             if (timeout.current) {
               clearTimeout(timeout.current)
-              console.log('CURRENT 2', current)
+              //console.log('CURRENT 2', current)
             }
           }
         }, [current, length])
@@ -78,6 +79,14 @@ function Prospect({data}) {
     <div className='prospect'>
         <div className="prospectContainer">
             <h1>Take charge, <span>Grow</span> your brand online reputation</h1>
+            <p className="text">
+            Trusted and used for organic online growth and promotion by leading influencers, brands and individuals.
+            </p>
+            <div className="btn">
+              <Link className='button link'>
+                Get Started
+              </Link>
+            </div>
             <p>We provide value across a range of your preferred platforms, including, but not restricted to, the following</p>
                 <div className="imgCard">
                     <Slider {...settings}>

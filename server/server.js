@@ -4,6 +4,7 @@ import express from 'express'
 import router from './routes/auth.js'
 import privateRouter from './routes/privateRoute.js'
 import adminRouter from './routes/adminRoute.js'
+import newsLetterRouter from './routes/newsLetter.js'
 import errorHandler from './middleware/error.js'
 import schedule  from 'node-schedule'
 import cookieParser from 'cookie-parser'
@@ -41,6 +42,8 @@ import UserModel from './models/User.js';
 app.use('/api/auth', router)
 app.use('/api', privateRouter)
 app.use('/api/admin', adminRouter)
+app.use('/api/newsLetter', newsLetterRouter)
+
 
 
 //Scheduler to run every 10 mintues

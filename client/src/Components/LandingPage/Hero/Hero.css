@@ -54,13 +54,14 @@
 }
 
 .hero .heroCard .left h1{
-    font-family: "Birthstone", cursive;
-    font-weight: 400;
-    font-size: 120px;
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 90px;
+    font-style: italic;
 }
 
 .hero .heroCard .floatingText{
-    margin-top: -6rem;
+    margin-top: -2rem;
     height: 70px;
     overflow: hidden;
 }
@@ -114,7 +115,7 @@
 }
 
 .hero .heroCard .left p span:last-child{
-    font-size: 35px;
+    font-size: 28px;
 }
 
 .hero .left .cta{
@@ -153,6 +154,12 @@
 
     .hero .heroCard .bonus p{
         font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .hero .heroCard .left h1{
+        font-size: 70px;
     }
 }
 

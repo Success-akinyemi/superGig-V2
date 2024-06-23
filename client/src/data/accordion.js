@@ -8,6 +8,10 @@ export const accordion = [
         ans: "simply start by registering, click on 'create task' in your dashboard, choose the platform and task you want to promote, and the number you want. Do this eveery time.\n as easy as pie.",
     },
     {
+        qns: 'Do you use bots',
+        ans: "No. We are completly against bots all accounts used are from real and verified people.",
+    },
+    {
         qns: 'How can I start',
         ans: 'Click on register create and verify your account via email and you are good to go.'
     },

@@ -1,0 +1,74 @@
+.useCase{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--color-background);
+}
+
+.useCase .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80vw;
+}
+
+.useCase .up{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.useCase .up p{
+    margin-top: -1rem;
+}
+
+.useCase .up h1{
+    color: var(--second-color);
+}
+
+.useCase .cases{
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.useCase .cases .case{
+    width: 230px;
+    margin-top: -1.5rem;
+}
+
+.useCase .cases .case .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.useCase .cases .case .top p{
+    font-weight: 700;
+    color: var(--second-color);
+    flex: 1;
+}
+
+.useCase .cases .case .top span{
+    flex: 1;
+    width: 100px;
+    height: 5px;
+    background: var(--second-color);
+}
+
+.useCase .cases .case img{
+    width: 230px;
+    height: 200px;
+}
+
+@media screen and (max-width: 900vw) {
+    .useCase .cases{
+        gap: 2rem;
+    }
+}

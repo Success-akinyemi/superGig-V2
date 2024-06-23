@@ -16,9 +16,10 @@
 
 .accordion .accordionCard h1{
     color: var(--second-color);
-    font-family: "Birthstone", cursive;
+    font-family: "Raleway", sans-serif;
     font-weight: 600;
     font-size: 50px;
+    font-style: italic;
 }
 
 .accordion .accordionCard .faqCard{
@@ -54,7 +55,7 @@
     font-weight: 500;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .accordion .accordionCard .faqCard{
         width: 80%;
     }

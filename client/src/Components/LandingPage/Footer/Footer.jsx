@@ -4,8 +4,37 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import LanguageIcon from '@mui/icons-material/Language';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { useState } from 'react';
+import { toast } from 'react-hot-toast'
+import { joinNewsLetter } from '../../../helper/api';
 
 function Footer() {
+    const [ loading, setIsLoading ] = useState(false)
+    const [ formData, setFormData ] = useState('')
+
+    const handleChange = () => {
+        setFormData({...formData, [e.target.id]: e.target.value })
+    }
+
+    const handleNewsLetter = async (e) => {
+        e.preventDefault()
+        if(!email){
+            toast('Enter a valid email')
+        }
+        try {
+            setIsLoading(true)
+            const res = await joinNewsLetter(formData)
+            
+            if(res.success){
+                toast.success(res.data)
+            }
+        } catch (error) {
+            
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
   return (
     <div className='footer'>
         <div className="footerCard">
@@ -25,6 +54,7 @@ function Footer() {
                     <div className="links">
                         <Link className='link'>How to create task</Link>
                         <Link className='link'>Policy</Link>
+                        <Link className='link' to='/newsLetter'>NewsLetter</Link>
                     </div>
                 </div>
 
@@ -37,6 +67,22 @@ function Footer() {
                     </div>
                 </div>
             </div>
+
+            <form className="subscribe" onSubmit={handleNewsLetter}>
+                <h3>Join our News Letter for more Insightful tps on how to grow your online presence</h3>
+                <input onChange={handleChange} type="email" name="email" id="email" placeholder='Enter email, join our newsletter, get insightful tips.' />
+                <div className="btn">
+                    {
+                        loading ? ( 
+                            <button disabled className='button'>
+                                <div className="spinner"></div>
+                            </button>
+                        ) : (
+                            <button className="button">Subscribe</button>
+                        )
+                    }
+                </div>
+            </form>
 
             <div className="down">
                 <div className="imprint">

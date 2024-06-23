@@ -40,6 +40,7 @@ import NewMusic from './Components/NewMusic/NewMusic'
 import NewMusicTask from './Components/NewMusicTask/NewMusicTask'
 import NewMobileApplicationPlatform from './Components/NewMobileApplicationPlatform/NewMobileApplicationPlatform'
 import NewMobileApplicationTask from './Components/NewMobileApplicationTask/NewMobileApplicationTask'
+import NewsLetter from './Pages/NewsLetter/NewsLetter'
 
 
 function App() {
@@ -173,6 +174,7 @@ function App() {
       <BrowserRouter>
         <Routes>
         <Route path='/' element={<LandingPage />} />
+        <Route path='/newsLetter' element={<NewsLetter />} />
 
 
           <Route path='/login' element={<Login />} />
