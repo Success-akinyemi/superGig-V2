@@ -20,6 +20,7 @@ function Footer() {
         e.preventDefault()
         if(!email){
             toast('Enter a valid email')
+            return
         }
         try {
             setIsLoading(true)

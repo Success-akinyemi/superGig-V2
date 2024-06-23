@@ -146,10 +146,41 @@
 @media screen and (max-width: 450px) {
     .newsLetter .logo{
         font-size: 20px;
+        position: relative;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        left: 0;
+        top: 0;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .newsLetter form{
-        width: 92vw;
+        width: 80vw;
+    }
+
+    .newsLetter form .heading h3{
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .newsLetter .heading p{
+        font-size: 15px;
+    }
+
+    .newsLetter form .inputGroup{
+        width: 95%;
+    }
+
+    .newsLetter form .inputGroup label{
+        font-size: 15px;
+    }
+
+    .newsLetter .agree small{
+        font-size: 13px;
     }
 }
 

@@ -54,7 +54,7 @@ function NewsLetter() {
         <form onSubmit={newSubscriber}>
             <div className="heading">
                 <h3>Get first hand tips and tricks on how to boost your online presence</h3>
-                <p>Subscribe to our news letter list and be the first to now.</p>
+                <p>Subscribe to our news letter list and be the first to know.</p>
             </div>
 
             <div className="inputGroup">
