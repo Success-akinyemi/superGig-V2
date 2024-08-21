@@ -15,6 +15,8 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  console.log('ORIGIN', origin)
     res.header('Access-Control-Allow-Origin', `${process.env.CLIENT_URL}`);
     res.header('Access-Control-Allow-Credentials', true);
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
