@@ -46,21 +46,7 @@ app.use('/api/newsLetter', newsLetterRouter)
 
 
 
-//Scheduler to run every 10 mintues
-const rule = new schedule.RecurrenceRule();
-rule.minute = new schedule.Range(0, 59, 2); // This task runs every 10 minutes
 
-// Schedule the task
-const task = schedule.scheduleJob(rule, async () => {
-
-  try {
-    const users = await UserModel.find()
-
-    console.log('Total number of users.', users.length);
-  } catch (error) {
-    console.error('Error get all users:', error);
-  }
-});
 
 //Error Handler Last piece of middleware
 app.use(errorHandler)
